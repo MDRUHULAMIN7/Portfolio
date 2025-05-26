@@ -26,7 +26,7 @@ const Home = async () => {
       <div id="home" className="relative z-10 flex flex-col-reverse lg:flex-row items-center md:items-end  w-full xl:gap-10 min-h-screen ">
         <LeftSection avatarData={avatarData?.[0]} />
 
-        <div className="w-full lg:w-2/5">
+        <div className="w-full xl:w-2/5 lg:1/2">
           <Avatar avatarData={avatarData} />
         </div>
       </div>
