@@ -56,7 +56,7 @@ function Socials({links}) {
           </Link>
           <Link
           
-            href={"/signIn"}
+            href={"/login"}
             target="_blank"
             className={"relative  h-10 text-white  inline-flex items-center justify-center z-[1] px-2 rounded-xl text-lg overflow-hidden group bg-white/10 hover:text-white"}
           >
