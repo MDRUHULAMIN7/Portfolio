@@ -25,7 +25,7 @@ function LoginButton() {
     <div className="relative">
       {loggedInUser ? (
         <div className="relative">
-          {/* Avatar with water-fill hover effect */}
+     
           <div
             onClick={() => setIsOpen(!isOpen)}
             className="relative w-[40px] h-[40px] cursor-pointer rounded-full overflow-hidden group border-2 border-[#2c3e57] hover:border-blue-500 bg-white/10 transition"

@@ -1,14 +1,8 @@
+import { auth } from "@/auth";
+import { dbConnect } from "@/service/mongoose";
+import DelayedContent from "../loading";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Luckiest_Guy } from "next/font/google";
-import "./globals.css";
-
-import { dbConnect } from "@/service/mongoose";
-
-import Navbar from "@/components/navbar/Navbar";
-import { getAvatar } from "@/queries/avatar";
-import { getSocialLinks } from "@/queries/social";
-import { auth } from "@/auth";
-import DelayedContent from "./loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,10 +26,10 @@ export const metadata = {
   description: " Iam a passionate web developer skilled in JavaScript, React, and Next.js. I love crafting responsive, user-friendly interfaces with clean design and strong functionality. Let’s build something great together!",
 };
 
-export default async function RootLayout({ children }) {
+export default async function DashboardLayout({ children }) {
   await dbConnect();
-   const avatarData = await getAvatar();
-   const links =await getSocialLinks()
+   
+  
       const session = await auth();
 
 
@@ -44,7 +38,7 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased`}
       >
-        <Navbar links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
+       
         <DelayedContent>
  {children}
 

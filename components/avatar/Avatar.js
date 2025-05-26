@@ -102,7 +102,7 @@ function Avatar({ avatarData }) {
         </Canvas>
       </div>
 
-      <h2 className="absolute top-60 md:top-72 lg:top-78 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-7xl lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold text-white z-10 bounce-slow">
+      <h2 className="absolute top-60 md:top-72 lg:top-78 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-[65px] lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold text-white z-10 bounce-slow">
         {avatarData[0]?.title2}
       </h2>
 
@@ -117,7 +117,7 @@ function Avatar({ avatarData }) {
           />
         </div>
       </div>
-      <h2 className="absolute bottom-16 sm:bottom-12 md:-bottom-2 lg:bottom-4 xl:bottom-0 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-7xl lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold stroke-text bounce-slow z-20">
+      <h2 className="absolute bottom-16 sm:bottom-12 md:-bottom-2 lg:bottom-4 xl:bottom-0 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-[65px] lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold stroke-text bounce-slow z-20">
         {avatarData[0]?.title1}
       </h2>
     </div>
