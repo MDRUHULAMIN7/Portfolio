@@ -8,12 +8,12 @@ function LeftSection({avatarData}) {
 
 
   return (
-    <div className=" w-full lg:w-1/2 ">
+    <div className=" w-full lg:w-3/5 mb-4 mt-0 md:mt-10 lg:mt-0 px-2 md:px-8 lg:px-0 ">
       <p className="uppercase text-xl text-gray-400">Hello</p>
       <h1 className="text-5xl 2xl:text-7xl xl:text-6xl font-bold leading-tight">
         I’m <span className="text-white">Ruhul Amin</span>
       </h1>
-      <h2 className="text-4xl 2xl:text-6xl sm:text-5xl font-extrabold text-cyan-400 h-[70px]">
+      <h2 className="text-4xl  sm:text-5xl xl:text-4xl 2xl:text-6xl  font-semibold text-cyan-400 ">
         A{" "}
         <Typewriter
           words={avatarData?.jobRoles}

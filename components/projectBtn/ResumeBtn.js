@@ -8,7 +8,7 @@ function ProjectBtn({resume}) {
       <Link
       href={resume}
       target="_blank"
-      className="group relative inline-flex items-center px-8 py-2 ml-4 rounded-full text-white font-semibold transition-all duration-300 mt-4 overflow-hidden border border-white/20 backdrop-blur-sm bg-white/5 hover:text-white cursor-pointer"
+      className="group relative inline-flex items-center px-8 py-2  rounded-full text-white font-semibold transition-all duration-300 mt-4 overflow-hidden border border-white/20 backdrop-blur-sm bg-white/5 hover:text-white cursor-pointer"
     >
     
       <span className="absolute inset-0 z-0 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-[2000ms] ease-in-out"></span>
