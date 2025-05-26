@@ -5,8 +5,10 @@ import "./globals.css";
 import { dbConnect } from "@/service/mongoose";
 
 import Navbar from "@/components/navbar/Navbar";
-import { getAvatar } from "@/queries.js/avatar";
-import { getSocialLinks } from "@/queries.js/social";
+import { getAvatar } from "@/queries/avatar";
+import { getSocialLinks } from "@/queries/social";
+import { auth } from "@/auth";
+import DelayedContent from "./loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,14 +35,20 @@ export default async function RootLayout({ children }) {
   await dbConnect();
    const avatarData = await getAvatar();
    const links =await getSocialLinks()
+      const session = await auth();
+
 
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased`}
       >
-        <Navbar links={links?.[0]}  avatarData={avatarData?.[0]}></Navbar>
-        {children}
+        <Navbar links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
+        <DelayedContent>
+ {children}
+
+        </DelayedContent>
+       
       </body>
     </html>
   );

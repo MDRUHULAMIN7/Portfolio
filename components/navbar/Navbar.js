@@ -8,7 +8,7 @@ import Navs from "../Navs/Navs";
 import Socials from "../Socials/Socials";
 import Sidebar from "../Sidebar/Sidebar";
 
-function Navbar({ avatarData,links}) {
+function Navbar({ avatarData,links,session}) {
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animateSidebar, setAnimateSidebar] = useState(false);
@@ -22,7 +22,7 @@ function Navbar({ avatarData,links}) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll
+
   useEffect(() => {
     if (sidebarOpen) {
       document.body.style.overflow = "hidden";
@@ -66,7 +66,7 @@ function Navbar({ avatarData,links}) {
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex">
-              <Socials links={links} />
+              <Socials session={session} links={links} />
             </div>
 
             <button
@@ -99,6 +99,7 @@ function Navbar({ avatarData,links}) {
 
           <Sidebar
           links={links}
+          session={session}
           avatarData={avatarData}
             toggleSidebar={toggleSidebar}
             animateSidebar={animateSidebar}

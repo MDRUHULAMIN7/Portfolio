@@ -1,14 +1,13 @@
 import Avatar from "@/components/avatar/Avatar";
 import LeftSection from "@/components/leftSection/LeftSection";
-import { getAvatar } from "@/queries.js/avatar";
+import { getAvatar } from "@/queries/avatar";
 import About from "./about/page";
-import { auth } from "@/auth";
+
 
 
 const Home = async () => {
   const avatarData = await getAvatar();
-   const session = await auth();
-   console.log(session)
+
 
 
   return (

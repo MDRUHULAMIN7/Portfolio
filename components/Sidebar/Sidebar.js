@@ -5,7 +5,7 @@ import { HiOutlineX } from "react-icons/hi";
 import Logo from '../Logo/Logo';
 import Description from '../leftSection/Description';
 
-function Sidebar({animateSidebar,toggleSidebar, avatarData,links}) {
+function Sidebar({animateSidebar,toggleSidebar, avatarData,links,session}) {
 
 
   return (
@@ -34,8 +34,8 @@ function Sidebar({animateSidebar,toggleSidebar, avatarData,links}) {
             </div>
 
             {/* Socials at bottom */}
-            <div className="mt-auto">
-              <Socials links={links} />
+            <div className="mt-auto sm:hidden">
+              <Socials links={links} session={session} />
             </div>
           </div>
   )

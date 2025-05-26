@@ -65,7 +65,7 @@ function Navs() {
   }, []);
 
   return (
-    <ul className="flex flex-col xl:flex-row justify-center lg:items-center items-start h-full space-y-2 lg:space-y-0 text-lg lg:text-[16px] xl:space-x-3 lg:space-x-2 font-semibold text-white">
+    <ul className="flex flex-col xl:flex-row justify-center xl:items-center items-start h-full space-y-2 lg:space-y-0 text-lg lg:text-[16px] xl:space-x-3 lg:space-x-2 font-semibold text-white">
       {links.map(({ name, href }) => {
         const isActive = activeSection === href.replace("#", "");
 

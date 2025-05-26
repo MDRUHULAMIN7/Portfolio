@@ -1,4 +1,6 @@
 
+
+import LoginButton from "@/components/auth/LoginButton";
 import Link from "next/link";
 import { RiFacebookLine, RiGithubLine, RiLinkedinLine } from "react-icons/ri";
 
@@ -54,18 +56,8 @@ function Socials({links}) {
            
             <span className="relative z-10"> <RiFacebookLine /></span>
           </Link>
-          <Link
           
-            href={"/login"}
-            target="_blank"
-            className={"relative  h-10 text-white  inline-flex items-center justify-center z-[1] px-2 rounded-xl text-lg overflow-hidden group bg-white/10 hover:text-white"}
-          >
-        
-            <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400 via-sky-500 to-blue-500 rounded-xl  scale-0 transition-transform duration-700 ease-out origin-center group-hover:scale-100"></span>
-
-           
-            <span className="relative z-10"> SignIn</span>
-          </Link>
+         <LoginButton />
        
       </div>
     </div>
