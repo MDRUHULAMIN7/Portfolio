@@ -21,7 +21,7 @@ function Loading() {
   );
 }
 
-export default function DelayedContent({ children,time }) {
+export default function DelayedContent({ children,time }) {   
   const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
