@@ -7,7 +7,7 @@ const ServiceCard = ({ title, description, icon }) => {
   const [transform, setTransform] = useState('none');
   const [hoverPos, setHoverPos] = useState({ x: 50, y: 50 });
 
-  // 🧠 Set initial glow position to icon's center
+
   useEffect(() => {
     if (iconRef.current && cardRef.current) {
       const iconRect = iconRef.current.getBoundingClientRect();
