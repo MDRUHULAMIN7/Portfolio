@@ -12,9 +12,7 @@ const aboutData = [
   {
     title: "skills",
     info: [
-      {
-        title: "Professional Skills",
-       skills: [
+     
   {
     id: 1,
     title: "Html 5",
@@ -91,16 +89,17 @@ const aboutData = [
   }
 ]
 
-      },
-    ],
+    
   },
   {
-    title: "experience",
+    title: " learning experience",
     info: [
-      {
+      {id:1,
         title: "Complete Web Development",
-        subtitle: "Programming Hero",
-        stage: "2024 - Present",
+        from: "Programming Hero",
+        time: "06 month",
+        description:"As a self-motivated learner, I completed the 'Complete Web Development Course', where I learned HTML, CSS, JavaScript, and React. Through hands-on projects, I developed a strong foundation in front-end development. This course preparing me for a career in web development.",
+        credentials:"https://res.cloudinary.com/dpomtzref/image/upload/v1748857839/bcac5f1e-ec89-4e88-a0b5-058c595356d9.png"
       },
     ],
   },
@@ -108,6 +107,7 @@ const aboutData = [
     title: "education",
     info: [
     {
+      id:1,
   title: "Diploma in Computer Science",
   subject: "Computer Science & Technology",
   Institute: "Rajshahi Polytechnic Institute",
@@ -117,6 +117,7 @@ const aboutData = [
     "Currently pursuing a Diploma in Computer Science with a strong emphasis on software engineering, web development, and practical problem-solving skills.",
 },
 {
+  id:2,
   title: "SSC",
   subject: "Science",
   Institute: "Borgachi Kuthipara High School",
@@ -134,7 +135,7 @@ const aboutData = [
 const About = () => {
 
 
-  const skills = aboutData.find((section) => section.title === 'skills')?.info[0]?.skills || [];
+  const skills = aboutData.find((section) => section.title === 'skills')?.info || [];
   const experience = aboutData.find((section) => section.title === 'experience')?.info || [];
   const education = aboutData.find((section) => section.title === 'education')?.info || [];
 
