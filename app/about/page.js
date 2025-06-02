@@ -1,10 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 import Image from 'next/image';
-import SkillCard from './_components/SkillCard';
+import SkillCard from './_components/Skill';
 import Education from './_components/Education';
 
 
@@ -23,7 +21,8 @@ const aboutData = [
     version: "5",
     icon: "https://res.cloudinary.com/dpomtzref/image/upload/v1748847718/html.png_sk12q7.png",
     updatedDate: "2025-06-02",
-    color:"group-hover:border-orange-400"
+    color:"text-orange-300",
+    bgHover:'	rgba(253, 186, 116, 0.2), transparent 60%)',
   },
   {
     id: 2,
@@ -31,7 +30,8 @@ const aboutData = [
     version: "3",
     icon: "https://res.cloudinary.com/dpomtzref/image/upload/v1748847748/css_xg48g3.png",
     updatedDate: "2025-06-02",
-    color:"group-hover:border-blue-400"
+    color:"text-blue-400",
+    bgHover:'	rgba(96, 165, 250, 0.2), transparent 60%)',
   },
   {
     id: 3,
@@ -39,7 +39,8 @@ const aboutData = [
     version: "ES6+",
     icon: "https://res.cloudinary.com/dpomtzref/image/upload/v1748847798/javascript_yk6wwd.png",
     updatedDate: "2025-06-02",
-    color:"group-hover:border-yellow-400"
+    color:"text-yellow-400",
+     bgHover:'rgba(250, 204, 21, 0.2), transparent 60%)',
   },
   {
     id: 4,
@@ -47,7 +48,8 @@ const aboutData = [
     version: "18",
     icon: "https://res.cloudinary.com/dpomtzref/image/upload/v1748831992/react_xjfdd6.png",
     updatedDate: "2025-06-02",
-    color:"group-hover:border-cyan-300"
+    color:"text-cyan-300",
+     bgHover:'rgba(103, 232, 249, 0.2), transparent 60%)',
   },
   {
     id: 5,
@@ -55,7 +57,8 @@ const aboutData = [
     version: "4",
     icon: "https://res.cloudinary.com/dpomtzref/image/upload/v1748831920/tailwind-css_tdedmz.png",
     updatedDate: "2025-06-02",
-    color:"group-hover:border-sky-400"
+    color:"text-sky-400",
+     bgHover:'rgba(56, 189, 248, 0.2), transparent 60%)',
   },
   {
     id: 6,
@@ -63,7 +66,8 @@ const aboutData = [
     version: "15",
     icon: "https://res.cloudinary.com/dpomtzref/image/upload/v1748845365/hh_hjjxuo.webp",
     updatedDate: "2025-06-02",
-    color:"group-hover:border-gray-500"
+    color:"text-gray-500",
+     bgHover:'	rgba(107, 114, 128, 0.2), transparent 60%)',
   },
   {
     id: 7,
@@ -72,7 +76,8 @@ const aboutData = [
     icon: "https://res.cloudinary.com/dpomtzref/image/upload/v1748847832/github_c6dhuq.webp",
     updatedDate: "2025-06-02",
 
-    color:"group-hover:border-gray-400"
+    color:"text-gray-400",
+     bgHover:'rgba(156, 163, 175, 0.2), transparent 60%)',
   },
   {
     id: 8,
@@ -81,7 +86,8 @@ const aboutData = [
     icon: "https://res.cloudinary.com/dpomtzref/image/upload/v1748847854/git_nd6tfh.webp",
     updatedDate: "2025-06-02",
 
-    color:"group-hover:border-orange-500"
+     color:"text-orange-500",
+    bgHover:'	rgba(249,115,22,0.2), transparent 60%)',
   }
 ]
 
@@ -126,9 +132,7 @@ const aboutData = [
 ];
 
 const About = () => {
-  useEffect(() => {
-    AOS.init({ duration: 900, once: false });
-  }, []);
+
 
   const skills = aboutData.find((section) => section.title === 'skills')?.info[0]?.skills || [];
   const experience = aboutData.find((section) => section.title === 'experience')?.info || [];

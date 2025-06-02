@@ -1,42 +1,93 @@
-import Heading from "@/components/Heading"
-import Image from "next/image"
+'use client';
+import Image from 'next/image';
+import { useRef, useState, useEffect } from 'react';
+
+const SkillCard = ({skill,index}) => {
+      const cardRef = useRef(null);
+  const iconRef = useRef(null);
+  const [transform, setTransform] = useState('none');
+  const [hoverPos, setHoverPos] = useState({ x: 50, y: 50 });
 
 
-const Skills = ({skills}) => {
+  useEffect(() => {
+    if (iconRef.current && cardRef.current) {
+      const iconRect = iconRef.current.getBoundingClientRect();
+      const cardRect = cardRef.current.getBoundingClientRect();
+
+      const iconCenterX = iconRect.left + iconRect.width / 4;
+      const iconCenterY = iconRect.top + iconRect.height / 4;
+
+      const x = ((iconCenterX - cardRect.left) / cardRect.width) * 100;
+      const y = ((iconCenterY - cardRect.top) / cardRect.height) * 100;
+
+      setHoverPos({ x, y });
+    }
+  }, []);
+
+  const handleMouseMove = (e) => {
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    setHoverPos({ x, y });
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const deltaX = e.clientX - rect.left - centerX;
+    const deltaY = e.clientY - rect.top - centerY;
+
+    const rotateX = (-deltaY / centerY) * 8;
+    const rotateY = (deltaX / centerX) * 8;
+
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+  };
+
+  const handleMouseLeave = () => {
+    setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg)');
+  };
+
   return (
-    <div>
+  <div
+       
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="group relative rounded-2xl  lg:p-8 overflow-hidden border border-gray-700 bg-[#1a1a1a] shadow-md transition-transform duration-300"
+      style={{
+        transform,
+        transition: 'transform 0.3s ease-out',
+      }}
+    >
 
-     <Heading title1={'My Qualifications'} title2={'Skills & Tools'}/>
+      <div
+        className="absolute inset-0 z-0 pointer-events-none transition-all duration-700 ease-out"
+        style={{
+          background: `radial-gradient(circle at ${hoverPos.x}% ${hoverPos.y}%, ${skill?.bgHover}	`,
+        }}
+      />
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 ">
-        {skills.map((skill, index) => (
-     <div
+       <div
   key={skill.id}
   data-aos="zoom-in"
   data-aos-delay={index * 100}
-  className={`relative group rounded-2xl p-[2px]  transition-all duration-300 shadow-lg`}
+  className={`relative   transition-all duration-300 `}
 >
-  <div className={`rounded-2xl bg-[#1a1a1a] p-6 h-full w-full flex flex-col items-center justify-center 
-                  border-1 border-transparent ${skill.color}
-                  group-hover:scale-[1.03] transition-all duration-300`}>
+ 
     <Image
+
       height={200}
       width={300}
       src={skill.icon}
       alt={`${skill.title} icon`}
-      className="w-14 h-14 object-contain mb-4 drop-shadow-md"
+      className="w-18 h-18 object-contain mx-auto mb-4 drop-shadow-md"
     />
-    <h3 className="text-white text-lg font-semibold tracking-wider uppercase">
+    <h3 className={`${skill.color} text-center text-xl font-semibold tracking-wider uppercase`}>
       {skill.title}
     </h3>
   </div>
-</div>
 
-
-        ))}
-      </div>
     </div>
   )
 }
 
-export default Skills
+export default SkillCard

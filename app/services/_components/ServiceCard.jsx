@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState, useEffect } from 'react';
 
-const ServiceCard = ({ title, description, icon }) => {
+const ServiceCard = ({ title, description, icon,index }) => {
   const cardRef = useRef(null);
   const iconRef = useRef(null);
   const [transform, setTransform] = useState('none');
@@ -47,6 +47,8 @@ const ServiceCard = ({ title, description, icon }) => {
 
   return (
     <div
+     
+
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -65,7 +67,12 @@ const ServiceCard = ({ title, description, icon }) => {
       />
 
       {/* Content */}
-      <div className="relative z-10">
+      <div
+   
+ data-aos="zoom-in"
+  data-aos-delay={index * 30}
+
+       className="relative z-10">
         <div ref={iconRef} className="mb-4">
           {icon}
         </div>

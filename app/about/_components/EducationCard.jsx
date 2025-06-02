@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState, useEffect } from 'react';
 
-const EducationCard = ({edu,index}) => {
+const EducationCard = ({edu}) => {
       const cardRef = useRef(null);
   const iconRef = useRef(null);
   const [transform, setTransform] = useState('none');
@@ -47,7 +47,8 @@ const EducationCard = ({edu,index}) => {
 
   return (
   <div
-        key={index}
+ 
+        
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

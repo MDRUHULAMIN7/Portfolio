@@ -77,6 +77,7 @@ const Services = () => {
         {services.map((service, idx) => (
           <ServiceCard
             key={idx}
+            index={idx}
             type={service.type}
             title={service.title}
             icon={service.icon}
