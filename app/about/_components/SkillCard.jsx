@@ -52,7 +52,7 @@ const SkillCard = ({skill,index}) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative rounded-2xl  lg:p-8 overflow-hidden border border-gray-700 bg-[#1a1a1a] shadow-md transition-transform duration-300"
+      className="group relative rounded-2xl p-6 lg:p-8 overflow-hidden border border-gray-700 bg-[#1a1a1a] shadow-md transition-transform duration-300"
       style={{
         transform,
         transition: 'transform 0.3s ease-out',
