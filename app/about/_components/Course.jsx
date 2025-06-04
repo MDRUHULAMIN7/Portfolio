@@ -7,7 +7,7 @@ import CourseCard from "./CourseCard"
 const Course =async () => {
 
     const datas = await getCourses()
-    console.log(datas)
+
   return (
     <div className="mt-10 lg:mt-20">
 

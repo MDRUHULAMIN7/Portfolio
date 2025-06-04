@@ -30,6 +30,18 @@ const CourseCard = ({ course }) => {
       setHoverPos({ x, y });
     }
   }, []);
+  useEffect(() => {
+  if (isModalOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [isModalOpen]);
+
 
   const handleMouseMove = (e) => {
     const rect = cardRef.current.getBoundingClientRect();
@@ -104,25 +116,36 @@ const CourseCard = ({ course }) => {
       </div>
 
       {/*  Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="bg-white p-6 rounded-lg max-w-2xl w-full relative">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-2 right-2 text-cyan-500 cursor-pointer text-xl font-bold "
-            >
-            <RxCross1 />
-            </button>
-            <Image
-            height={300}
-            width={400}
-              src={course.credentials}
-              alt="Certificate"
-              className="w-full h-auto rounded-md"
-            />
-          </div>
-        </div>
-      )}
+     
+{isModalOpen && (
+  <>
+    {/* Backdrop */}
+    <div
+      className="fixed inset-0 z-40 bg-black bg-opacity-70 pointer-events-auto"
+      onClick={() => setIsModalOpen(false)} // Optional: click outside to close
+    ></div>
+
+    {/* Modal Content */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+      <div className="bg-white p-6 rounded-lg max-w-lg md:max-w-2xl w-full relative">
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="absolute top-2 right-2 text-cyan-500 cursor-pointer text-xl font-bold"
+        >
+          <RxCross1 />
+        </button>
+        <Image
+          height={300}
+          width={400}
+          src={course.credentials}
+          alt="Certificate"
+          className="w-full h-auto rounded-md"
+        />
+      </div>
+    </div>
+  </>
+)}
+
     </>
   );
 };
