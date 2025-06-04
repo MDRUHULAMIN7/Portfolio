@@ -1,10 +1,11 @@
 import RegistrationForm from "@/components/auth/RegistrationForm";
-
+  
 const RegistrationPage = () => {
+  const registerPermission = false;
   return (
-    <div className="relative min-h-screen w-full overflow-hidden text-white">
-    
-      <div
+    registerPermission ? 
+
+    (<div className="relative min-h-screen w-full overflow-hidden text-white">  <div
         className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0"
         style={{ backgroundImage: "url('/theme_frame.jpeg')" }}
       ></div>
@@ -18,7 +19,11 @@ const RegistrationPage = () => {
           <RegistrationForm />
         </div>
       </div>
-    </div>
+    </div>)
+     : 
+    (<div> <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white text-xl font-semibold">
+    Registration is under construction 
+  </div></div>)
   );
 };
 

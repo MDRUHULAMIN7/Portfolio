@@ -7,22 +7,38 @@ import { signOut } from "next-auth/react";
 function LoginButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const loginPermission = false;
 
-  useEffect(() => {
-    async function fetchMe() {
-      try {
-        const response = await fetch(`/api/me`);
-        const data = await response.json();
-        setLoggedInUser(data);
-      } catch (e) {
-        console.error(e);
+useEffect(() => {
+  async function fetchMe() {
+    try {
+      const response = await fetch(`/api/me`);
+      
+      if (!response.ok) {
+        const text = await response.text();
+        
+        if (text.includes('not authenticated')) {
+          console.log('User is not authenticated');
+          setLoggedInUser(null); 
+          return;
+        }
+
+        throw new Error(`Fetch error: ${text}`);
       }
+
+      const data = await response.json();
+      setLoggedInUser(data);
+    } catch (e) {
+      console.error('Failed to fetch user info:', e);
     }
-    fetchMe();
-  }, []);
+  }
+
+  fetchMe();
+}, []);
+
 
   return (
-    <div className="relative">
+    <div className={`relative ${!loginPermission  && ' hidden' }`}>
       {loggedInUser ? (
         <div className="relative">
      
@@ -44,12 +60,12 @@ function LoginButton() {
      
           {isOpen && (
             <div className="absolute left-14 sm:-left-36 sm:-bottom-24 bottom-10 mt-2 w-40 bg-[#0d1622] text-white shadow-lg rounded-md z-50 overflow-hidden">
-              <Link
+             {  loggedInUser?.email === 'ruhulthisis@gmail.com' && <Link
                 href="/dashboard"
                 className="block px-4 py-2 hover:text-cyan-400 transition duration-200"
               >
                 Dashboard
-              </Link>
+              </Link>}
               <button
                 onClick={() => signOut({callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/login`})}
                 className="w-full text-left px-4 py-2 hover:text-cyan-400 transition duration-200 cursor-pointer"

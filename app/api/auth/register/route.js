@@ -4,12 +4,12 @@ import { User } from "@/model/user-model";
 import { dbConnect } from "@/service/mongoose";
 
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
   const { fname, lname, email, password } = await request.json();
 
-  console.log(fname, lname, email, password);
+ 
 
   await dbConnect();
 
@@ -21,7 +21,6 @@ export const POST = async (request) => {
     password,
   };
 
-  console.log(newUser);
 
   try {
     await User.create(newUser);
