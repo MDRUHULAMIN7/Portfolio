@@ -1,9 +1,9 @@
-
-import { Visitor } from "@/model/visitor-model";
+import { Visitor } from "@/model/visitor-model";  // Import the Visitor model
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
+    // Aggregate visitor data by day
     const data = await Visitor.aggregate([
       {
         $group: {
@@ -16,8 +16,10 @@ export async function GET() {
       { $sort: { _id: 1 } }
     ]);
 
+    // Return aggregated data
     return NextResponse.json(data);
   } catch (error) {
+    // Return error message if aggregation fails
     return NextResponse.json({ error: error.message });
   }
 }
