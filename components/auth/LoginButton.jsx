@@ -83,7 +83,7 @@ useEffect(() => {
           className="relative h-10 text-white inline-flex items-center justify-center z-[1] px-4 rounded-xl text-lg overflow-hidden group bg-white/10 hover:text-white"
         >
           <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400 via-sky-500 to-blue-500 rounded-xl scale-0 transition-transform duration-700 ease-out origin-center group-hover:scale-100"></span>
-          <span className="relative z-10">LogIn</span>
+          <span className="relative z-10">LogIn </span>
         </Link>
       )}
     </div>
