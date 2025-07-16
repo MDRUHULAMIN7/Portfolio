@@ -27,10 +27,10 @@ export const {
                 if (credentials == null) return null;
 
                 try {
-                    const user = await User.findOne({email: credentials.email});
-                    console.log({user})
+                    const user = await User.findOne({email: credentials?.email});
+                    console.log({user, credentials}, "user and credentials in auth.js");
                     if (user) {
-                        const isMatch = credentials.password ===  user.password;
+                        const isMatch = credentials.password ===  user?.password;
                         
                         if(isMatch) {
                             return user;

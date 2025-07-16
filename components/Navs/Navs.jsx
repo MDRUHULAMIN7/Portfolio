@@ -25,7 +25,6 @@ function Navs() {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
       window.history.pushState(null, "", href);
 
-      // ✅ Set active section immediately
       setActiveSection(id);
     }
   };
@@ -57,7 +56,7 @@ function Navs() {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("popstate", handlePopState);
 
-    handleScroll(); // trigger once initially
+    handleScroll(); 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("popstate", handlePopState);

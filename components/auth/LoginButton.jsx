@@ -7,7 +7,7 @@ import { signOut } from "next-auth/react";
 function LoginButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const loginPermission = false;
+  const loginPermission = true; // Assuming login permission is always true for this example
 
 useEffect(() => {
   async function fetchMe() {

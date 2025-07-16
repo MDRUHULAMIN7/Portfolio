@@ -21,7 +21,7 @@ function Navbar({ avatarData,links,session}) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+console.log(session, "session in navbar");
 
   useEffect(() => {
     if (sidebarOpen) {

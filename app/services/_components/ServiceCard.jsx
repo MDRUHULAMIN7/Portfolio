@@ -55,7 +55,7 @@ const ServiceCard = ({ title, description, icon,index }) => {
       className="group relative rounded-2xl p-6 overflow-hidden border border-gray-700 bg-[#1a1a1a] shadow-md transition-transform duration-300"
       style={{
         transform,
-        transition: 'transform 0.3s ease-out',
+        transition: 'transform 1s ease-out',
       }}
     >
 

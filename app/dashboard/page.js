@@ -10,23 +10,24 @@ async function dashboardPage() {
    const session = await auth();
 
   //  console.log( session.user?.email)
-  const response = await fetch("/api/visitor-data"); // Create this route
-const data = await response.json();
+  // const response = await fetch("/api/visitor-data");
+   // Create this route
+// const data = await response.json();
 // Aggregate by day using MongoDB pipeline
-console.log(data);
+// console.log(data);
 
   // Check if the user is authenticated and has the correct role
 
    
-if (
-  !session
-   ||
-  session.user?.email !== 'ruhulthisis@gmail.com'
-  //   ||
-  // session.user?.role !== 'admin'
-) {
-  redirect("/login");
-}
+// if (
+//   !session
+//    ||
+//   session.user?.email !== 'ruhulthisis@gmail.com'
+//   //   ||
+//   // session.user?.role !== 'admin'
+// ) {
+//   redirect("/login");
+// }
   return (
 
     <SectionWrapper>

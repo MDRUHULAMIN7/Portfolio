@@ -1,7 +1,7 @@
 import RegistrationForm from "@/components/auth/RegistrationForm";
   
 const RegistrationPage = () => {
-  const registerPermission = false;
+  const registerPermission = true;
   return (
     registerPermission ? 
 
