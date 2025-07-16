@@ -32,6 +32,5 @@ export async function middleware(req) {
 export const config = {
   matcher: [
     '/', // Only apply on homepage
-    // Add more routes like '/products/:path*', etc., if needed
   ],
 };
