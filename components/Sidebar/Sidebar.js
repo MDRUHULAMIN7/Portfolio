@@ -17,12 +17,12 @@ function Sidebar({animateSidebar,toggleSidebar, avatarData,links,session}) {
           >
          <div className='flex justify-between'>
             <Logo></Logo>
-             <button
+             {/* <button
               onClick={toggleSidebar}
               className="text-cyan-400 text-3xl ml-auto cursor-pointer transition-transform duration-300 "
             >
               <HiOutlineX />
-            </button>
+            </button> */}
          </div>
 
          <Description avatarData={ avatarData}  mobile={true}></Description>

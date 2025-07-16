@@ -57,7 +57,7 @@ function Navbar({ avatarData,links,session}) {
           }}
         />
 
-        <div className="relative flex justify-between items-center h-full px-4">
+        <div className="relative flex justify-between items-center h-full ">
           <Logo />
 
           <div className="hidden xl:flex">
