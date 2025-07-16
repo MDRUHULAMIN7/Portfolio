@@ -1,39 +1,37 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-export function middleware(req) {
-  // Get cookies
+export async function middleware(req) {
   const cookies = req.cookies;
-  
-  // Check if user is logged in (e.g., using JWT or custom user cookie)
-  const user = cookies.token || null;  // Example: if a JWT token is stored in cookies as 'token'
+  const user = cookies.token || null;
 
-  let guestId;
+  const ip =
+    req.headers.get("x-forwarded-for") || req.headers.get("host") || "unknown";
+  const userAgent = req.headers.get("user-agent") || "unknown";
+  const guestId = cookies.guestId || "guest-" + Date.now();
 
-  // If user is not logged in, assign a guest identity
   if (!user) {
-    // If guestId cookie doesn't exist, create one using user-agent or timestamp
-    guestId = cookies.guestId || 'guest-' + Date.now();
-    
-    // Set the guestId cookie for future visits
-    NextResponse.next().cookies.set('guestId', guestId);
-    
-    console.log('Guest Identity:', guestId);
-  } else {
-    // Log the user identity if authenticated
-    console.log('User Identity:', user);
+    // Set guestId cookie
+    const res = NextResponse.next();
+    res.cookies.set("guestId", guestId, { path: "/" });
+
+    // Send visitor info to backend API
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/visitor`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ip, userAgent }),
+    }).catch((err) => console.error("Failed to log visitor:", err));
+
+    return res;
   }
 
-  // Log page visited
-  console.log('Page visited:', req.nextUrl.pathname);
+  console.log("User Identity:", user);
+  console.log("Page visited:", req.nextUrl.pathname);
 
-  // Optionally check if it's localhost or live URL
-  const isLocal = req.headers.get('host').includes('localhost');
-  if (isLocal) {
-    console.log('Visited from localhost');
-  } else {
-    console.log('Visited from live URL');
-  }
-
-  // Return the response and continue the request cycle
   return NextResponse.next();
 }
+export const config = {
+  matcher: [
+    '/', // Only apply on homepage
+    // Add more routes like '/products/:path*', etc., if needed
+  ],
+};

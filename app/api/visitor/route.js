@@ -1,22 +1,16 @@
-import { Visitor } from "@/model/visitor-model";  // Import the Visitor model
-import { NextResponse } from "next/server";
+import { Visitor } from "@/model/visitor-model";
+import { dbConnect } from "@/service/mongoose";
+
 
 export async function POST(req) {
-  // Get IP address from headers
-  const ip = req.headers.get("x-forwarded-for") || req.headers.get("host") || "unknown";
-
-  // Get user-agent from headers
-  const userAgent = req.headers.get("user-agent") || "unknown";
+  const { ip, userAgent } = await req.json();
 
   try {
-    // Save the visitor data to MongoDB for every visit
+    await dbConnect();
     await Visitor.create({ ip, userAgent });
-
-    // Return success response
-    return NextResponse.json({ success: true });
+    return Response.json({ success: true });
   } catch (error) {
-    // Return error response in case of failure
-    return NextResponse.json({ success: false, error: error.message });
+    console.error('Error saving visitor:', error);
+    return Response.json({ success: false, error: error.message }, { status: 500 });
   }
 }
-

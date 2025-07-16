@@ -8,11 +8,6 @@ const nextConfig = {
       },
     ],
   },
-
-  // Middleware configuration
-  middleware: [
-    '/:path*', // Apply middleware for all paths
-  ],
 };
 
 export default nextConfig;

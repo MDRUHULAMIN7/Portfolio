@@ -1,8 +1,12 @@
-import { Visitor } from "@/model/visitor-model";  // Import the Visitor model
+import { Visitor } from "@/model/visitor-model"; // Import the Visitor model
+import connectDb from "@/lib/mongodb"; // MongoDB connection handler
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
+    // Ensure MongoDB is connected
+    await connectDb();
+
     // Aggregate visitor data by day
     const data = await Visitor.aggregate([
       {
