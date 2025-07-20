@@ -56,7 +56,7 @@ function Navs() {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("popstate", handlePopState);
 
-    handleScroll(); 
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("popstate", handlePopState);
@@ -80,9 +80,11 @@ function Navs() {
               {name}
               <span
                 className={`absolute left-1/2 bottom-1 h-[2px] w-0 transition-all duration-500
-                  ${isActive
-                    ? "w-[80%] -translate-x-1/2 bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 shadow-md rounded-full"
-                    : ""}
+                  ${
+                    isActive
+                      ? "w-[80%] -translate-x-1/2 bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 shadow-md rounded-full"
+                      : ""
+                  }
                 `}
               />
             </a>

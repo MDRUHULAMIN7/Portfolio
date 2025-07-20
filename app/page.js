@@ -26,21 +26,21 @@ const Home = async () => {
 
       {/* Services Section */}
       <SectionWrapper>
-        <section id="services" className="scroll-mt-20">
+        <section id="services">
          <Services></Services>
         </section>
       </SectionWrapper>
 
       {/* About Section */}
       <SectionWrapper>
-        <section id="about" className="scroll-mt-20">
+        <section id="about">
           <About />
         </section>
       </SectionWrapper>
 
       {/* Projects Section */}
       <SectionWrapper>
-        <section id="projects" className="scroll-mt-20">
+        <section id="projects">
           <h1 className="text-3xl">Project</h1>
         </section>
       </SectionWrapper>
