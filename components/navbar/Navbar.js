@@ -8,7 +8,7 @@ import Navs from "../Navs/Navs";
 import Socials from "../Socials/Socials";
 import Sidebar from "../Sidebar/Sidebar";
 
-function Navbar({ avatarData,links,session}) {
+function Navbar({ avatarData, links, session }) {
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animateSidebar, setAnimateSidebar] = useState(false);
@@ -21,7 +21,7 @@ function Navbar({ avatarData,links,session}) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-console.log(session, "session in navbar");
+  console.log(session, "session in navbar");
 
   useEffect(() => {
     if (sidebarOpen) {
@@ -48,13 +48,11 @@ console.log(session, "session in navbar");
     <>
       <div className="fixed top-0 left-0 px-10 xl:px-16 w-full h-16 z-50">
         <div
-          className={`absolute inset-0 transition-colors duration-500 ease-in-out pointer-events-none`}
-          style={{
-            backgroundColor: scrolled ? "#0d1622" : "transparent",
-            boxShadow: scrolled
-              ? "0px 7px 18px rgba(24, 16, 16, 0.05)"
-              : "none",
-          }}
+          className={`absolute inset-0 transition-all duration-500 ease-in-out pointer-events-none transform ${
+            scrolled
+              ? "translate-y-0 bg-[#0d1622] shadow-md"
+              : "-translate-y-full bg-transparent shadow-none"
+          }`}
         />
 
         <div className="relative flex justify-between items-center h-full ">
@@ -71,7 +69,7 @@ console.log(session, "session in navbar");
 
             <button
               onClick={toggleSidebar}
-              className="xl:hidden text-cyan-400 cursor-pointer text-3xl transition-transform duration-500 ease-in-out"
+              className="xl:hidden text-cyan-400 cursor-pointer text-3xl transition-transform duration-300 ease-in-out"
             >
               <div
                 className={`transition-transform duration-400 ease-in-out transform ${
@@ -91,16 +89,16 @@ console.log(session, "session in navbar");
       {sidebarOpen && (
         <>
           <div
-            className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-md transition-opacity duration-300 ${
+            className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-md transition-opacity duration-500  ${
               animateSidebar ? "opacity-100" : "opacity-0"
             }`}
             onClick={toggleSidebar}
           ></div>
 
           <Sidebar
-          links={links}
-          session={session}
-          avatarData={avatarData}
+            links={links}
+            session={session}
+            avatarData={avatarData}
             toggleSidebar={toggleSidebar}
             animateSidebar={animateSidebar}
           ></Sidebar>
