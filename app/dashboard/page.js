@@ -1,20 +1,20 @@
-import { auth } from "@/auth";
+// import { auth } from "@/auth";
 import SectionWrapper from "@/components/sectionWrapper/SectionWrapper";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import Services from "../services/page";
 import Overviewpage from "./overview/page";
+// import { dbConnect } from "@/service/mongoose";
 
 
 async function dashboardPage() {
 
-//    const session = await auth();
+  // await dbConnect();
 
-//    console.log( session.user?.email)
-//   const response = await fetch("/api/visitor-data");
-//   //  Create this route
-// const data = await response?.json();
-// // Aggregate by day using MongoDB pipeline
-// console.log(data);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/visitor-data`);
+
+const data = await response?.json();
+
+console.log(data);
 
 //   // Check if the user is authenticated and has the correct role
 

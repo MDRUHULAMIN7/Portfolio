@@ -1,12 +1,11 @@
-'use client';
-import { useRef, useState, useEffect } from 'react';
+"use client";
+import { useRef, useState, useEffect } from "react";
 
-const ServiceCard = ({ title, description, icon,index }) => {
+const ServiceCard = ({ title, description, icon, index }) => {
   const cardRef = useRef(null);
   const iconRef = useRef(null);
-  const [transform, setTransform] = useState('none');
+  const [transform, setTransform] = useState("none");
   const [hoverPos, setHoverPos] = useState({ x: 50, y: 50 });
-
 
   useEffect(() => {
     if (iconRef.current && cardRef.current) {
@@ -38,27 +37,26 @@ const ServiceCard = ({ title, description, icon,index }) => {
     const rotateX = (-deltaY / centerY) * 8;
     const rotateY = (deltaX / centerX) * 8;
 
-    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+    setTransform(
+      `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+    );
   };
 
   const handleMouseLeave = () => {
-    setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg)');
+    setTransform("perspective(1000px) rotateX(0deg) rotateY(0deg)");
   };
 
   return (
     <div
-     
-
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="group relative rounded-2xl p-6 overflow-hidden border border-gray-700 bg-[#1a1a1a] shadow-md transition-transform duration-300"
       style={{
         transform,
-        transition: 'transform 1s ease-out',
+        transition: "transform 1s ease-out",
       }}
     >
-
       <div
         className="absolute inset-0 z-0 pointer-events-none transition-all duration-700 ease-out"
         style={{
@@ -68,12 +66,12 @@ const ServiceCard = ({ title, description, icon,index }) => {
 
       {/* Content */}
       <div
-   
-  data-aos="zoom-in"
-  data-aos-delay="200"
-  data-aos-duration="800"
-  data-aos-easing="ease-in-out"
-  className="relative z-10">
+        data-aos="zoom-in"
+        data-aos-delay="200"
+        data-aos-duration="800"
+        data-aos-easing="ease-in-out"
+        className="relative z-10"
+      >
         <div ref={iconRef} className="mb-4">
           {icon}
         </div>

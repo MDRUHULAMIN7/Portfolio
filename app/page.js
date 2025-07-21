@@ -9,6 +9,7 @@ import Services from "./services/page";
 const Home = async () => {
   const avatarData = await getAvatar();
 
+
   return (
     <>
       {/* Hero Section */}

@@ -2,10 +2,7 @@
 
 import ServiceCard from "./_components/ServiceCard";
 
-
-
 import {
-
   FaLaptopCode,
   FaPaintBrush,
   FaChartLine,
@@ -26,7 +23,8 @@ const services = [
     type: "design",
     title: "UI's Design",
     icon: <FaPaintBrush className="text-cyan-400 text-7xl mb-4" />,
-    description: "Creating beautiful and user-friendly interfaces with ReactJS and NextJS, ensuring responsiveness and smooth user interactions",
+    description:
+      "Creating beautiful and user-friendly interfaces with ReactJS and NextJS, ensuring responsiveness and smooth user interactions",
   },
   {
     type: "auth",
@@ -58,20 +56,20 @@ const services = [
   },
 ];
 
-
-
 const Services = () => {
-  
   return (
-    <section id="services" className="min-h-screen relative z-10 scroll-mt-20 px-4 py-20">
-<div className="text-center text-white mb-12">
-  <p className="text-sm text-cyan-400 tracking-widest uppercase mb-2">Latest Service</p>
-  <h2 className="text-4xl md:text-5xl font-abold leading-snug">
-    Services I Provide
-  </h2>
-
-</div>
-
+    <section
+      id="services"
+      className="min-h-screen relative z-10 scroll-mt-20 px-4 py-20"
+    >
+      <div className="text-center text-white mb-12">
+        <p className="text-sm text-cyan-400 tracking-widest uppercase mb-2">
+          Latest Service
+        </p>
+        <h2 className="text-4xl md:text-5xl font-abold leading-snug">
+          Services I Provide
+        </h2>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-9">
         {services.map((service, idx) => (
