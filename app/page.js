@@ -42,7 +42,7 @@ const Home = async () => {
       {/* Projects Section */}
       <SectionWrapper>
         <section id="projects">
-          <h1 className="text-3xl">Project</h1>
+          <h1 className="text-3xl">Project project</h1>
         </section>
       </SectionWrapper>
     </>
