@@ -1,11 +1,11 @@
 
 import Navs from '../Navs/Navs'
 import Socials from '../Socials/Socials'
-import { HiOutlineX } from "react-icons/hi";
+
 import Logo from '../Logo/Logo';
 import Description from '../leftSection/Description';
 
-function Sidebar({animateSidebar,toggleSidebar, avatarData,links,session}) {
+function Sidebar({animateSidebar, avatarData,links,session}) {
 
 
   return (
@@ -17,12 +17,7 @@ function Sidebar({animateSidebar,toggleSidebar, avatarData,links,session}) {
           >
          <div className='flex justify-between'>
             <Logo></Logo>
-             {/* <button
-              onClick={toggleSidebar}
-              className="text-cyan-400 text-3xl ml-auto cursor-pointer transition-transform duration-300 "
-            >
-              <HiOutlineX />
-            </button> */}
+         
          </div>
 
          <Description avatarData={ avatarData}  mobile={true}></Description>
