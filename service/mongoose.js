@@ -11,7 +11,7 @@ export async function dbConnect() {
 
   // If no connection is found, establish a new connection
   try {
-    const conn = await mongoose.connect(String(process.env.MONGODB_CONNECTION_URI), {
+    const conn = await mongoose?.connect(String(process.env.MONGODB_CONNECTION_URI), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

@@ -5,6 +5,7 @@ import { getAvatar } from "@/queries/avatar";
 import About from "./about/page";
 import SectionWrapper from "@/components/sectionWrapper/SectionWrapper";
 import Services from "./services/page";
+import { Projects } from "./projects/page";
 
 const Home = async () => {
   const avatarData = await getAvatar();
@@ -42,7 +43,7 @@ const Home = async () => {
       {/* Projects Section */}
       <SectionWrapper>
         <section id="projects">
-          <h1 className="text-3xl">Project project</h1>
+          <Projects/>
         </section>
       </SectionWrapper>
     </>

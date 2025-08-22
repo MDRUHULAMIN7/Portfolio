@@ -4,11 +4,6 @@ import Education from './_components/Education';
 import Course from './_components/Course';
 
 
-
-
-
-
-
 const About = async() => {
 
   return (
