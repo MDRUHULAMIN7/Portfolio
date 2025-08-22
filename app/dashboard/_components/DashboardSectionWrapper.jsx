@@ -1,8 +1,6 @@
-
-
-const SectionWrapper = ({ children }) => {
+const DashboardSectionWrapper = ({ children }) => {
   return (
-    <div className="relative min-h-screen w-full  ">
+    <div className="relative min-h-screen w-full  pt-10">
   
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
@@ -19,4 +17,4 @@ const SectionWrapper = ({ children }) => {
   );
 };
 
-export default SectionWrapper;
+export default DashboardSectionWrapper;

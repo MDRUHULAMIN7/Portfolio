@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Luckiest_Guy } from "next/font/google";
 import { SidebarWrapper } from "./_components/SidebarWrapper";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -36,7 +37,7 @@ export default async function DashboardLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased `}
       >
        <SidebarWrapper>
         <DelayedContent>

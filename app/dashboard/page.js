@@ -3,6 +3,8 @@ import SectionWrapper from "@/components/sectionWrapper/SectionWrapper";
 // import { redirect } from "next/navigation";
 import Services from "../services/page";
 import Overviewpage from "./overview/page";
+import { Divide } from "lucide-react";
+import DashboardSectionWrapper from "./_components/DashboardSectionWrapper";
 // import { dbConnect } from "@/service/mongoose";
 
 
@@ -30,13 +32,13 @@ console.log(data);
 // }
   return (
 
-    <SectionWrapper>
-    <div>
+<div className=" ">   
+    <div className=" ">
 
       <Overviewpage></Overviewpage>
     </div>
     <Services></Services>
-    </SectionWrapper>
+  </div>
   )
 }
 

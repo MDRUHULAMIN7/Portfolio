@@ -1,15 +1,12 @@
-'use client';
-import { useEffect } from "react";
 
-function Overviewpage() {
-      useEffect(() => {
-    fetch("/api/visitor", {
-      method: "POST"
-    });
-  }, []);
+
+
+export default function OverviewPage() {
   return (
-    <div>Overviewpage</div>
+    <div>
+       
+      <h1>Overview page</h1>
+  
+    </div>
   )
 }
-
-export default Overviewpage
