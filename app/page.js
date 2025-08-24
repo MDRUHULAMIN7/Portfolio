@@ -5,7 +5,8 @@ import { getAvatar } from "@/queries/avatar";
 import About from "./about/page";
 import SectionWrapper from "@/components/sectionWrapper/SectionWrapper";
 import Services from "./services/page";
-import { Projects } from "./projects/page";
+import Projects from "./projects/page";
+
 
 const Home = async () => {
   const avatarData = await getAvatar();

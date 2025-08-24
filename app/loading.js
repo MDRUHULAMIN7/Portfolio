@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-function Loading() {
+  export function Loading() {
   return (
     <div className="z-50 flex items-center justify-center bg-[#0d1622] h-screen">
       <div className="flex gap-6">
