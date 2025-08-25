@@ -6,7 +6,7 @@ import { getProjects } from "@/queries/project";
 export default async function Projects() {
 
   const projectsData = await getProjects();
-  console.log(projectsData)
+  // console.log(projectsData)
 
 
   return (

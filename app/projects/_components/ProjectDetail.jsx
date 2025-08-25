@@ -1,27 +1,19 @@
-"use client";
+// "use client";
 
-import {
-  FaShoppingCart,
-  FaUsers,
-  FaDatabase,
-  FaLock,
-  FaEnvelope,
-  FaBox,
-  FaChartBar,
-} from "react-icons/fa";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper/modules";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import { Navigation, Autoplay } from "swiper/modules";
 
-export default function ProjectDetyails({ project }) {
+export default function ProjectDetails({ project }) {
+  console.log(project,"from here")
   return (
     <div className="p-6 max-w-5xl mx-auto bg-[#1a1a1a] text-gray-300 border border-gray-700 shadow-lg rounded-2xl space-y-6">
       {/* 🔹 Top Section (Slider + Info) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         {/* Left - Slider */}
-        <div className="bg-gray-800 p-4 rounded-lg">
+        {/* <div className="bg-gray-800 p-4 rounded-lg">
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={20}
@@ -40,7 +32,7 @@ export default function ProjectDetyails({ project }) {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </div> */}
 
         {/* Right - Meta Info */}
         <div className="space-y-3">
@@ -75,7 +67,7 @@ export default function ProjectDetyails({ project }) {
             <div>
               <h3 className="text-xl font-semibold mb-2">For Customers:</h3>
               <ul className="space-y-2">
-                {project.features.customers.map((item, i) => (
+                {project?.features?.customers?.map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <span className="text-lg">{item.icon}</span>
                     <span>{item.text}</span>
@@ -83,33 +75,13 @@ export default function ProjectDetyails({ project }) {
                 ))}
               </ul>
             </div>
-            {/* Sellers */}
-            <div>
-              <h3 className="text-xl font-semibold mb-2">For Sellers:</h3>
-              <ul className="space-y-2">
-                {project.features.sellers.map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <span className="text-lg">{item.icon}</span>
-                    <span>{item.text}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          
           </div>
         </div>
 
-        {/* Tech Stack */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3">Tech Stack</h2>
-          <ul className="list-disc ml-6 space-y-1">
-            {Object.entries(project.techStack).map(([key, value], i) => (
-              <li key={i}>
-                <strong className="capitalize">{key}:</strong> {value}
-              </li>
-            ))}
-          </ul>
-        </div>
+        
       </div>
     </div>
+
   );
 }
