@@ -1,22 +1,23 @@
-"use client";
+'use client';
+import CardWrapper from '@/components/CardWrapper';
+import { Heart } from 'lucide-react';
+import Link from 'next/link';
 
-import { Heart } from "lucide-react";
-import Link from "next/link";
 
 export default function ProjectCard({ project }) {
   return (
     <Link href={`/projects/${project?.id}`} className="block no-underline">
-      <div className="bg-[#1a1a1a]/95 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-800 hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-300 flex flex-col cursor-pointer group">
-        
+      <CardWrapper hoverGradient="rgba(59,130,246,0.2)" className="p-4">
+
         {/* Image */}
-        <div className="relative w-full h-56 overflow-hidden">
+        <div className="relative w-full h-56 overflow-hidden rounded-2xl">
           <img
             src={project.images[0]}
             alt={project.title}
             className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
           />
           {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-2xl" />
         </div>
 
         {/* Content */}
@@ -36,18 +37,15 @@ export default function ProjectCard({ project }) {
             {project?.description}
           </p>
 
-          {/* Divider */}
-          <div className="border-t border-gray-700/50 my-3" />
-
-      
+          {/* Dates */}
           <div className="flex flex-wrap gap-2 text-xs text-gray-300">
-            <p className="px-3 py-1  font-semibold  text-[#1a1a1a] rounded-2xl border bg-cyan-400">
-              {new Date(project?.meta?.startDate).toLocaleDateString()} -{" "}
+            <p className="px-3 py-1 font-semibold text-[#1a1a1a] rounded-2xl border bg-cyan-400">
+              {new Date(project?.meta?.startDate).toLocaleDateString()} -{' '}
               {new Date(project.meta.endDate).toLocaleDateString()}
             </p>
           </div>
 
-       
+          {/* Hashtags */}
           {project?.hashtags?.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-3">
               {project?.hashtags?.map((tag, idx) => (
@@ -61,9 +59,9 @@ export default function ProjectCard({ project }) {
             </div>
           )}
 
-        
+          {/* Likes */}
           <div className="mt-6 flex items-center justify-between">
-            <span className="flex items-center gap-2 text-cyan-400  transition">
+            <span className="flex items-center gap-2 text-cyan-400 transition">
               <Heart className="w-5 h-5 group-hover:scale-110 transition" />
               <span className="font-medium">{project?.meta?.likes}</span>
             </span>
@@ -72,7 +70,7 @@ export default function ProjectCard({ project }) {
             </span>
           </div>
         </div>
-      </div>
+      </CardWrapper>
     </Link>
   );
 }
