@@ -1,6 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import { Luckiest_Guy } from "next/font/google";
-import "./globals.css";
+
 
 import { dbConnect } from "@/service/mongoose";
 
@@ -10,29 +8,15 @@ import { getSocialLinks } from "@/queries/social";
 import { auth } from "@/auth";
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const luckiestGuy = Luckiest_Guy({
-  weight: "400",
-  variable: "--font-luckiest-guy",
-  subsets: ["latin"],
-});
 
 export const metadata = {
-  title: "Ruhul Amin | Frontend Developer",
+  title: "Ruhul Amin | Project Details",
+
   keywords: "Ruhul Amin, Portfolio, Web Developer, Software Engineer, Full Stack Developer, Next.js, React.js, MongoDB, Express.js, Node.js",
   description: " Iam a passionate web developer skilled in JavaScript, React, and Next.js. I love crafting responsive, user-friendly interfaces with clean design and strong functionality. Let’s build something great together!",
 };
 
-export default async function RootLayout({ children }) {
+export default async function ProjectDetailLayout({ children }) {
   await dbConnect();
    const avatarData = await getAvatar();
    const links =await getSocialLinks()
@@ -46,9 +30,9 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased`}
+        className={` antialiased`}
       >
-        <Navbar nav={true} links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
+        <Navbar nav={false} links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
        
  {children}
 

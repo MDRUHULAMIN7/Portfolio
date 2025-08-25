@@ -8,7 +8,7 @@ import Navs from "../Navs/Navs";
 import Socials from "../Socials/Socials";
 import Sidebar from "../Sidebar/Sidebar";
 
-function Navbar({ avatarData, links, session }) {
+function Navbar({ avatarData, links, session,nav }) {
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animateSidebar, setAnimateSidebar] = useState(false);
@@ -58,9 +58,9 @@ function Navbar({ avatarData, links, session }) {
         <div className="relative flex justify-between items-center h-full ">
           <Logo />
 
-          <div className="hidden xl:flex">
+         {nav && <div className="hidden xl:flex">
             <Navs />
-          </div>
+          </div>}
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex">
@@ -96,6 +96,8 @@ function Navbar({ avatarData, links, session }) {
           ></div>
 
           <Sidebar
+            nav={nav}
+
             links={links}
             session={session}
             avatarData={avatarData}

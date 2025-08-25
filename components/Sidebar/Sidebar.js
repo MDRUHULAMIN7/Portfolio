@@ -5,7 +5,7 @@ import Socials from '../Socials/Socials'
 import Logo from '../Logo/Logo';
 import Description from '../leftSection/Description';
 
-function Sidebar({animateSidebar, avatarData,links,session}) {
+function Sidebar({animateSidebar, avatarData,links,session,navs}) {
 
 
   return (
@@ -24,9 +24,9 @@ function Sidebar({animateSidebar, avatarData,links,session}) {
            
 
             {/* Sidebar navs */}
-            <div className="flex flex-col space-y-4">
+            {navs && <div className="flex flex-col space-y-4">
               <Navs />
-            </div>
+            </div>}
 
             {/* Socials at bottom */}
             <div className="mt-auto sm:hidden">

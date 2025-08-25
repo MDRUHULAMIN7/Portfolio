@@ -1,4 +1,5 @@
 'use client';
+import AccentData from '@/components/buttons/AccentData';
 import CardWrapper from '@/components/CardWrapper';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -15,9 +16,8 @@ const EducationCard = ({ edu }) => {
       <div data-aos="fade-up">
         <div className="flex justify-between items-center mb-3">
           <h3 className="text-lg md:text-3xl font-bold text-gray-200">{edu.title}</h3>
-          <span className="text-sm px-3 py-2 rounded-full bg-cyan-700 text-gray-200 shadow">
-            {edu.result}
-          </span>
+       <AccentData> {edu.result}</AccentData>
+        
         </div>
         <p className="text-lg text-gray-300 mb-3">
           {edu.Institute} <span className="text-white">({edu.stage})</span>

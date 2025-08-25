@@ -1,26 +1,8 @@
 
 import { dbConnect } from "@/service/mongoose";
-import DelayedContent from "../loading";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Luckiest_Guy } from "next/font/google";
+
 import { SidebarWrapper } from "./_components/SidebarWrapper";
 
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const luckiestGuy = Luckiest_Guy({
-  weight: "400",
-  variable: "--font-luckiest-guy",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Dashboard | Ruhul Amin",
@@ -35,17 +17,17 @@ export default async function DashboardLayout({ children }) {
 
 
   return (
-    <html lang="en">
+   
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased `}
+        className={` antialiased `}
       >
        <SidebarWrapper>
-        <DelayedContent>
+        
  {children}
 
-        </DelayedContent>
+       
        </SidebarWrapper>
       </body>
-    </html>
+   
   );
 }

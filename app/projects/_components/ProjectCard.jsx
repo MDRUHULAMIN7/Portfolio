@@ -1,4 +1,5 @@
 'use client';
+import AccentData from '@/components/buttons/AccentData';
 import CardWrapper from '@/components/CardWrapper';
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
@@ -24,12 +25,12 @@ export default function ProjectCard({ project }) {
         <div className="flex flex-col flex-grow p-5">
           {/* Title + Type */}
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-2xl font-bold text-white tracking-wide group-hover:text-cyan-400 transition">
+            <h2 className="text-2xl font-bold text-white tracking-wide  transition">
               {project?.title}
             </h2>
-            <p className="px-3 py-1 bg-cyan-400 text-[#1a1a1a] font-semibold text-xs rounded-full shadow-sm">
+          <AccentData>
               {project.meta.type}
-            </p>
+            </AccentData>
           </div>
 
           {/* Description */}
@@ -39,10 +40,10 @@ export default function ProjectCard({ project }) {
 
           {/* Dates */}
           <div className="flex flex-wrap gap-2 text-xs text-gray-300">
-            <p className="px-3 py-1 font-semibold text-[#1a1a1a] rounded-2xl border bg-cyan-400">
+             <AccentData>
               {new Date(project?.meta?.startDate).toLocaleDateString()} -{' '}
               {new Date(project.meta.endDate).toLocaleDateString()}
-            </p>
+              </AccentData>
           </div>
 
           {/* Hashtags */}
@@ -51,9 +52,11 @@ export default function ProjectCard({ project }) {
               {project?.hashtags?.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1 text-xs bg-cyan-400 text-[#1a1a1a] font-medium rounded-full shadow-sm hover:scale-105 transition"
+                  className=" hover:scale-105 transition"
                 >
-                  #{tag}
+                  <AccentData>
+                    #{tag}
+                  </AccentData>
                 </span>
               ))}
             </div>
@@ -63,7 +66,7 @@ export default function ProjectCard({ project }) {
           <div className="mt-6 flex items-center justify-between">
             <span className="flex items-center gap-2 text-cyan-400 transition">
               <Heart className="w-5 h-5 group-hover:scale-110 transition" />
-              <span className="font-medium">{project?.meta?.likes}</span>
+              <span className="font-medium">{project?.meta?.loves}</span>
             </span>
             <span className="text-xs text-cyan-500 italic">
               Click card for details →
