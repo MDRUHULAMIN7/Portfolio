@@ -53,9 +53,9 @@ function MovingDots() {
 
 function Avatar({ avatarData }) {
   return (
-    <div className="relative w-full h-[80vh] sm:h-[100vh] pt-10 sm:pt-0 overflow-hidden">
+    <div className="relative w-full h-[80vh] sm:h-[100vh] pt-10 2xl:pt-0 sm:pt-0 overflow-hidden">
       <div
-        className="absolute top-0 w-full  -right-6 md:-right-4"
+        className="absolute top-0  w-full  -right-6 md:-right-4"
         style={{ zIndex: -1, transform: "scaleX(-1)" }}
       >
         <Image
@@ -102,11 +102,11 @@ function Avatar({ avatarData }) {
         </Canvas>
       </div>
 
-      <h2 className="absolute top-60 md:top-72 lg:top-78 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-[65px] lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold text-white z-10 bounce-slow">
+      <h2 className="absolute top-60 md:top-72 lg:top-78 2xl:top-55 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-[65px] lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold text-white z-10 bounce-slow">
         {avatarData[0]?.title2}
       </h2>
 
-      <div className="relative z-20 flex justify-center items-center h-full md:mt-20 pt-2">
+      <div className="relative z-20 flex justify-center items-center h-full md:mt-20 2xl:mt-0 pt-2">
         <div className="relative fade-mask">
           <Image
             src={avatarData[0]?.photo}
@@ -117,7 +117,7 @@ function Avatar({ avatarData }) {
           />
         </div>
       </div>
-      <h2 className="absolute bottom-16 sm:bottom-12 md:-bottom-2 lg:bottom-4 xl:bottom-0 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-[62px] lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold stroke-text bounce-slow z-20">
+      <h2 className="absolute bottom-16 sm:bottom-12 md:-bottom-2 lg:bottom-4 xl:bottom-0 2xl:bottom-40 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-[62px] lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold stroke-text bounce-slow z-20">
         {avatarData[0]?.title1}
       </h2>
     </div>

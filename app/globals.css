@@ -62,3 +62,13 @@ button{
   background-color: #06b6d4
 ; 
 }
+
+@keyframes fadeout {
+  0%, 80% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+.loading-overlay {
+
+  animation: fadeout 3s forwards; /* 3s = delay before it disappears */
+}

@@ -45,10 +45,10 @@ export default async function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased`}
       >
         <Navbar links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
-        <DelayedContent>
+       
  {children}
 
-        </DelayedContent>
+       
        
       </body>
     </html>

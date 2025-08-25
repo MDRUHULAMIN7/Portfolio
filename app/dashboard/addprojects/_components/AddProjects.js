@@ -1,7 +1,7 @@
 "use client";
 import { useForm, useFieldArray } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { Loading } from "@/app/loading";
+
 
 export const AddProjects = () => {
   const {
@@ -124,7 +124,7 @@ export const AddProjects = () => {
 
   return (
     <>
-      {isLoading && <Loading />}
+      {isLoading && <h1>Loading...</h1>}
 
       <form
         onSubmit={handleSubmit(onSubmit)}
