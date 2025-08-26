@@ -22,17 +22,18 @@ export default function ProjectCard({ project }) {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col flex-grow p-5">
+        <div className="flex flex-col flex-grow p-4">
           {/* Title + Type */}
+       
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-2xl font-bold text-white tracking-wide  transition">
+            <h2 className="text-xl font-bold text-white  transition">
               {project?.title}
             </h2>
-          <AccentData>
+              <AccentData>
               {project.meta.type}
             </AccentData>
           </div>
-
+   
           {/* Description */}
           <p className="text-gray-400 text-sm mb-4 line-clamp-4 leading-relaxed">
             {project?.description}
@@ -66,7 +67,8 @@ export default function ProjectCard({ project }) {
           <div className="mt-6 flex items-center justify-between">
             <span className="flex items-center gap-2 text-cyan-400 transition">
               <Heart className="w-5 h-5 group-hover:scale-110 transition" />
-              <span className="font-medium">{project?.meta?.loves}</span>
+              <span className="font-medium">{project?.meta?.loves || 0}</span>
+
             </span>
             <span className="text-xs text-cyan-500 italic">
               Click card for details →

@@ -8,6 +8,7 @@ import Navbar from "@/components/navbar/Navbar";
 import { getAvatar } from "@/queries/avatar";
 import { getSocialLinks } from "@/queries/social";
 import { auth } from "@/auth";
+import { Loader2 } from "lucide-react";
 
 
 const geistSans = Geist({
@@ -39,6 +40,7 @@ export default async function RootLayout({ children }) {
       const session = await auth();
 
 
+ if (!links || !avatarData) return <Loader2 />;
 
   
 

@@ -1,5 +1,6 @@
-import { Heart } from "lucide-react";
+import { ExternalLink, Github, Heart } from "lucide-react";
 import Link from "next/link";
+import StarButton from "./StarButton";
 
 
 export default function MetaDatas({ meta, links }) {
@@ -28,33 +29,42 @@ export default function MetaDatas({ meta, links }) {
       {/* Action buttons */}
      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
   {/* Love Button */}
-  <button className="glow-button flex  group  items-center gap-x-2 btn-accent">
-    <Heart className="w-5 h-5 text-cyan-400 group-hover:text-white  group-hover:animate-pulse" />
-    <span className="relative z-10 ">Love</span>
-   
-  </button>
+
+
+    <StarButton>
+        <button className="flex items-center justify-center mx-auto gap-2">
+
+    <Heart className="w-5 h-5  hover:animate-pulse" />
+    <span className="relative z-10 ">Love</span> 
+    </button>
+   </StarButton>
+ 
 
   {/* Live Project Button */}
   {links?.[0]?.live && (
+      <StarButton>
     <Link
       href={links[0].live}
-    
-    
-      className="btn-primary"
+      className="flex items-center justify-center mx-auto gap-2"
     >
-      View Project
+     <ExternalLink  className="w-5 h-5  hover:animate-pulse" />
+    <span className="relative z-10 ">Live</span> 
     </Link>
+    </StarButton>
   )}
 
   {/* Repo Button */}
   {links?.[0]?.repo && (
+      <StarButton>
     <Link
       href={links[0].repo}
-
-      className="btn-secondary"
+   className="flex items-center justify-center mx-auto gap-2"
     >
-      View Repo
+     <Github className="w-5 h-5  hover:animate-pulse" />
+
+    <span className="relative z-10 ">Repo</span> 
     </Link>
+    </StarButton>
   )}
 </div>
 

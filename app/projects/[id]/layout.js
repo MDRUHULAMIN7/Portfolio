@@ -32,7 +32,7 @@ export default async function ProjectDetailLayout({ children }) {
       <body
         className={` antialiased`}
       >
-        <Navbar nav={false} links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
+        <Navbar links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
        
  {children}
 

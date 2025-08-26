@@ -174,17 +174,11 @@ export const AddProjects = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 backdrop-blur-md px-6 py-3 rounded-full border border-gray-700 mb-6">
+           <div className="inline-flex items-center gap-3 backdrop-blur-md px-6 py-3 rounded-full border border-gray-700 mb-6">
             <Layers className="w-6 h-6 text-cyan-400" />
             <span className="text-white font-semibold">Project Creator</span>
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">
-            Add New Project
-          </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Create and showcase your amazing projects with detailed information
-            and stunning visuals
-          </p>
+       
         </div>
 
         <div className="space-y-8 bg-[#1f2937]">

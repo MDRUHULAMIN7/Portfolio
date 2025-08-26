@@ -8,7 +8,7 @@ import Navs from "../Navs/Navs";
 import Socials from "../Socials/Socials";
 import Sidebar from "../Sidebar/Sidebar";
 
-function Navbar({ avatarData, links, session,nav }) {
+function Navbar({ avatarData = {}, links = {}, session = null, nav }) {
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animateSidebar, setAnimateSidebar] = useState(false);
@@ -21,7 +21,6 @@ function Navbar({ avatarData, links, session,nav }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  console.log(session, "session in navbar");
 
   useEffect(() => {
     if (sidebarOpen) {
@@ -44,6 +43,25 @@ function Navbar({ avatarData, links, session,nav }) {
     }
   };
 
+  // Don't render if essential data is missing and we're expecting it
+  const isLoading = !avatarData && !links && !session;
+  
+  if (isLoading) {
+    return (
+      <div className="fixed top-0 left-0 px-10 xl:px-16 w-full h-16 z-50">
+        <div className="relative flex justify-between items-center h-full">
+          <div className="animate-pulse bg-gray-300 h-8 w-32 rounded"></div>
+          <div className="hidden xl:flex gap-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="animate-pulse bg-gray-300 h-6 w-16 rounded"></div>
+            ))}
+          </div>
+          <div className="animate-pulse bg-gray-300 h-8 w-8 rounded"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="fixed top-0 left-0 px-10 xl:px-16 w-full h-16 z-50">
@@ -55,12 +73,12 @@ function Navbar({ avatarData, links, session,nav }) {
           }`}
         />
 
-        <div className="relative flex justify-between items-center h-full ">
+        <div className="relative flex justify-between items-center h-full">
           <Logo />
 
-         {nav && <div className="hidden xl:flex">
-            <Navs />
-          </div>}
+          <div className="hidden xl:flex">
+            {nav && <Navs />}
+          </div>
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex">
@@ -89,21 +107,20 @@ function Navbar({ avatarData, links, session,nav }) {
       {sidebarOpen && (
         <>
           <div
-            className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-md transition-opacity duration-500  ${
+            className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-md transition-opacity duration-500 ${
               animateSidebar ? "opacity-100" : "opacity-0"
             }`}
             onClick={toggleSidebar}
           ></div>
 
           <Sidebar
-            nav={nav}
-
+            navs={nav}
             links={links}
             session={session}
             avatarData={avatarData}
             toggleSidebar={toggleSidebar}
             animateSidebar={animateSidebar}
-          ></Sidebar>
+          />
         </>
       )}
     </>
