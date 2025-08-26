@@ -6,6 +6,11 @@ const projectSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+     status: {
+      type: String,
+      required: true,
+      default: "unpublish",
+    },
   description: {
     type: String,
     required: true,
@@ -28,6 +33,8 @@ const projectSchema = new mongoose.Schema({
       default: 0,
 
     },
+ 
+
     startDate: {
       type: Date,
       required: true,

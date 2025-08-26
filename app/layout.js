@@ -9,6 +9,7 @@ import { getAvatar } from "@/queries/avatar";
 import { getSocialLinks } from "@/queries/social";
 import { auth } from "@/auth";
 import { Loader2 } from "lucide-react";
+import { Toaster } from "react-hot-toast";
 
 
 const geistSans = Geist({
@@ -54,7 +55,17 @@ export default async function RootLayout({ children }) {
        
  {children}
 
-       
+         <Toaster 
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              fontFamily: 'inherit',
+              borderRadius: '8px',
+              padding: '12px 16px',
+            },
+          }}
+        />
        
       </body>
     </html>

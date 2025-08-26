@@ -29,6 +29,7 @@ export const AddProjects = () => {
   } = useForm({
     defaultValues: {
       title: "",
+      status: "unpublish",
       description: "",
       meta: {
         type: "",

@@ -3,8 +3,9 @@ const DashboardSectionWrapper = ({ children }) => {
     <div className="relative min-h-screen w-full  py-10">
   
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{ backgroundImage: "url('/theme_frame.jpeg')" }}
+        className="absolute inset-0 bg-[#203550] z-0"
+        // className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        // style={{ backgroundImage: "url('/theme_frame.jpeg')" }}
       ></div>
 
       <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
