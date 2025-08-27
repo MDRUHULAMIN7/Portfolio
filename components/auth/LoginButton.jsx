@@ -29,7 +29,9 @@ function LoginButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
 
-  const isAdmin = loggedInUser?.email === "ruhulthisis@gmail.com";
+  const isAdmin = loggedInUser?.role === "admin";
+  console.log(isAdmin,loggedInUser?.email)
+
   const loginPermission = true;
 
   useEffect(() => {

@@ -7,11 +7,13 @@ import { dbConnect } from "@/service/mongoose";
 
 import { NextResponse } from "next/server";
 
+
 export const GET = async (request) => {
     const session = await auth();
 
 
     if (!session?.user) {
+  
         return new NextResponse(`You are not authenticated!`, {
             status: 401,
           });
@@ -22,12 +24,15 @@ export const GET = async (request) => {
     try {
         const user = await getUserByEmail(session?.user?.email);
         console.log(user)
+          
 
         return new NextResponse(JSON.stringify(user), {
             status: 200, 
+        
         });
 
     } catch (err) {
+          
         return new NextResponse(err.message, {
             status: 500,
           });

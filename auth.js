@@ -34,6 +34,7 @@ export const {
                         
                         if(isMatch) {
                             return user;
+                            
                         } else {
                             throw new Error('Email or password mismatch');
                         }
