@@ -60,7 +60,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="min-h-screen relative z-10 scroll-mt-20 px-4 py-20"
+      className="min-h-screen relative z-10  px-4  "
     >
       <div className="text-center text-white mb-12">
         <p className="text-sm text-cyan-400 tracking-widest uppercase mb-2">

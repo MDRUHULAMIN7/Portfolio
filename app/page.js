@@ -18,7 +18,7 @@ const Home = async () => {
       <SectionWrapper>
         <div
           id="home"
-          className="flex flex-col-reverse lg:flex-row items-center md:items-end w-full xl:gap-10 "
+          className="flex flex-col-reverse lg:flex-row items-center md:items-end w-full xl:gap-10"
         >
        
           

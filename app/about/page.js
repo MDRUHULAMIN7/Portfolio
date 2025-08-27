@@ -7,7 +7,7 @@ import Course from './_components/Course';
 const About = async() => {
 
   return (
-<div className="min-h-screen bg-primary/30 py-12 px-4 text-center xl:text-left">
+<div className="min-h-screen bg-primary/30 py-2 xl:py-12 px-4 text-center xl:text-left">
 <SkillCard></SkillCard>
 
 <Education ></Education>
