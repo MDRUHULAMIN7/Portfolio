@@ -30,7 +30,7 @@ function LoginButton() {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   const isAdmin = loggedInUser?.email === "ruhulthisis@gmail.com";
-  const loginPermission = false;
+  const loginPermission = true;
 
   useEffect(() => {
     fetchLoggedInUser(setLoggedInUser);
