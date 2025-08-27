@@ -1,23 +1,9 @@
+
+
 import { Project } from "@/model/project-model";
 import { dbConnect } from "@/service/mongoose";
 import { NextResponse } from "next/server";
 
-
-
-export async function POST(req) {
-  try {
-    const projectData = await req.json();
-    await dbConnect();
-
-    const newProject = new Project(projectData);
-    const savedProject = await newProject.save();
-
-    return NextResponse.json({ success: true, project: savedProject });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-  }
-}
 export async function DELETE(req, { params }) {
   try {
     const { id } = params;
@@ -33,7 +19,9 @@ export async function DELETE(req, { params }) {
       );
     }
 
-    return NextResponse.json({ success: true, message: "Project deleted successfully" });
+    return NextResponse.json(
+      { success: true, message: "Project deleted successfully" }
+    );
   } catch (error) {
     console.error("Error deleting project:", error);
     return NextResponse.json(
