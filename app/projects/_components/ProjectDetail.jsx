@@ -24,7 +24,7 @@ export default function ProjectDetails({ project }) {
 
       {/* Title + Description */}
       <div className="space-y-8">
-        {/* Project Title */}
+     
         <div className="border-b border-gray-700 pb-6">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
             {project.title}
