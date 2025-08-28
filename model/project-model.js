@@ -43,7 +43,7 @@ const projectSchema = new mongoose.Schema({
       type: Date,
       required: true,
     },
-    likes: {
+    loves: {
       type: Number,
       default: 0,
     },

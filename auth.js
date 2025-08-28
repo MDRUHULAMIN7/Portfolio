@@ -1,54 +1,75 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-// import { MongoDBAdapter } from "@auth/mongodb-adapter";
-// import mongoClientPromise from "./database/mongoClientPromise";
-
 import { User } from "./model/user-model";
 
 export const {
-    handlers: { GET, POST },
-    auth,
-    signIn,
-    signOut,
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
 } = NextAuth({
-    
-    session: {
-        strategy: 'jwt',
+  session: {
+    strategy: "jwt",
+  },
+  providers: [
+    CredentialsProvider({
+      credentials: {
+        email: {},
+        password: {},
+      },
+      async authorize(credentials) {
+        if (!credentials) return null;
+
+        try {
+          const user = await User.findOne({ email: credentials.email });
+          if (!user) throw new Error("User not found");
+
+          const isMatch = credentials.password === user.password;
+          if (!isMatch) throw new Error("Invalid credentials");
+
+          const now = new Date();
+          user.loginTime = now;
+          user.lastAccess = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+
+          await user.save();
+
+          return {
+            id: user._id.toString(),
+            email: user.email,
+            name: user.name,
+            role: user.role,
+
+          };
+        } catch (error) {
+          throw new Error(error);
+        }
+      },
+    }),
+
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+      }
+      return token;
     },
-    providers: [
-        CredentialsProvider({
-            credentials: {
-                email: {},
-                password: {},
-            },
+    async session({ session, token }) {
+      session.user.id = token.id;
+      session.user.email = token.email;
 
-            async authorize(credentials) {
-                if (credentials == null) return null;
+      if (token?.id) {
+        await User.findByIdAndUpdate(token.id, { lastAccess: new Date() });
+      }
 
-                try {
-                    const user = await User.findOne({email: credentials?.email});
-                    console.log({user, credentials}, "user and credentials in auth.js");
-                    if (user) {
-                        const isMatch = credentials.password ===  user?.password;
-                        
-                        if(isMatch) {
-                            return user;
-                            
-                        } else {
-                            throw new Error('Email or password mismatch');
-                        }
-                    } else {
-                        throw new Error('User not found');
-                    }
-                } catch(error) {
-                    throw new Error(error);
-                }
-            }
-        }),
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-          }),
-    ]
-})
+      return session;
+    },
+  },
+});

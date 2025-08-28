@@ -30,7 +30,7 @@ function LoginButton() {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   const isAdmin = loggedInUser?.role === "admin";
-  console.log(isAdmin,loggedInUser?.email)
+  // console.log(isAdmin,loggedInUser?.email)
 
   const loginPermission = true;
 

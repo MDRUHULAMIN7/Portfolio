@@ -119,10 +119,69 @@ export default function ProjectsTable({ projects: initialProjects }) {
         </div>
 
         {/* Mobile Cards */}
-        <div className="xl:hidden">
+         <div className="xl:hidden">
           {projects.map((project) => (
             <div key={project.id} className="p-6 border-b border-gray-700 last:border-b-0">
-              {/* ...same mobile layout... */}
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="text-lg font-medium text-white truncate flex-1 mr-4">
+                  {project.title}
+                </h3>
+                <StatusToggle 
+                  projectId={project.id}
+                  currentStatus={project.status}
+                />
+              </div>
+              
+             
+              
+              <div className="flex justify-between items-center mb-4">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-900 text-cyan-400">
+                  {project.meta.type}
+                </span>
+                <span className="text-xs text-gray-400">
+                  {formatDate(project.createdAt)}
+                </span>
+              </div>
+              
+              <div className="flex items-center justify-between gap-x-3">
+                <div className="flex items-center space-x-2">
+                  <Link 
+                    href={`/projects/${project?.id}`}
+                    className="flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-sm"
+                  >
+                    <Eye className="h-4 w-4 mr-1" />
+                    Details
+                  </Link>
+                  <Link 
+                    href={`/dashboard/projects/edit/${project?.id}`}
+                    className="flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-200 text-sm"
+                  >
+                    <Edit className="h-4 w-4 mr-1" />
+                    Edit
+                  </Link>
+                </div>
+                
+                <div className="flex items-center space-x-2">
+                  {project?.links?.[0]?.live && (
+                    <a 
+                      href={project?.links[0]?.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-green-400 hover:text-green-300 transition-colors duration-200 text-sm"
+                    >
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      Live
+                    </a>
+                  )}
+                  <button
+                    onClick={() => handleDeleteClick(project)}
+                    className="flex items-center text-red-400 hover:text-red-300 transition-colors duration-200 text-sm"
+                  >
+                    <Trash2 className="h-4 w-4 mr-1" />
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>

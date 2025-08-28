@@ -20,7 +20,9 @@ const userSchema = new Schema({
   role: {
     required: false,
     type: String
-  }
+  },
+    loginTime: { type: Date, default: null },
+  lastAccess: { type: Date, default: null }
 });
 
 

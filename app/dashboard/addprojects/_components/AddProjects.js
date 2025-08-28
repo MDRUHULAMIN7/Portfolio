@@ -473,7 +473,7 @@ export const AddProjects = () => {
 
           {/* Tech Stack Card */}
           <div className="">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-x-3 mb-6">
               <div className="w-10 h-10 bg-cyan-400 rounded-2xl flex items-center justify-center">
                 <Code className="w-5 h-5 text-black" />
               </div>
@@ -489,7 +489,7 @@ export const AddProjects = () => {
               {techFields.map((field, index) => (
                 <div
                   key={field.id}
-                  className="grid grid-cols-2 gap-3 p-4 rounded-2xl border border-gray-700"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-3 p-4 rounded-2xl border border-gray-700"
                 >
                   <input
                     {...register(`techStack.${index}.name`)}
@@ -572,7 +572,7 @@ export const AddProjects = () => {
           </div>
 
           {/* Submit Section */}
-          <div className="bg-gray-800 p-8">
+          <div className="bg-gray-800 ">
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 type="submit"

@@ -66,7 +66,7 @@ export const EditProject = ({ projectData, projectId }) => {
     }
   }, [watchAllFields, defaultValues]);
 
-  // Reset form if projectData changes
+
   useEffect(() => {
     if (projectData) reset(defaultValues);
   }, [projectData, reset]);
@@ -77,7 +77,7 @@ export const EditProject = ({ projectData, projectId }) => {
   const { fields: linkFields, append: addLink, remove: removeLink } = useFieldArray({ control, name: "links" });
   const { fields: hashtagFields, append: appendHashtag, remove: removeHashtag } = useFieldArray({ control, name: "hashtags" });
 
-  // Submit
+  
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
@@ -125,7 +125,7 @@ export const EditProject = ({ projectData, projectId }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-6xl bg-[#1f2937] rounded-lg shadow-md mx-auto p-6 space-y-8">
-      {/* Header */}
+     
       <Heading title1={"Update Project" } title2={'Edit & Update Project'}></Heading>
   
 
@@ -174,7 +174,7 @@ export const EditProject = ({ projectData, projectId }) => {
       <div>
         <label className="label mb-2">Links</label>
         {linkFields.map((field, idx) => (
-          <div key={field.id} className="grid grid-cols-2 gap-3 mb-2">
+          <div key={field.id} className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-2">
             <input {...register(`links.${idx}.live`)} className="input-field" placeholder="Live URL" />
             <input {...register(`links.${idx}.repo`)} className="input-field" placeholder="Repo URL" />
           </div>
@@ -215,7 +215,7 @@ export const EditProject = ({ projectData, projectId }) => {
       <div>
         <label className="label mb-2">Tech Stack (min 4)</label>
         {techFields.map((field, idx) => (
-          <div key={field.id} className="grid grid-cols-2 gap-3 mb-2">
+          <div key={field.id} className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-2">
             <input {...register(`techStack.${idx}.name`)} placeholder="Tech Name" className="input-field" />
             <input {...register(`techStack.${idx}.value`)} placeholder="Value" className="input-field" />
           </div>
