@@ -151,9 +151,10 @@ export default function ProjectsTable({ projects: initialProjects }) {
                 </span>
               </div>
               
-              <div className="flex items-center justify-start gap-x-5">
+              <div className="flex items-center justify-start gap-x-2 sm:gap-x-5">
 
-                <div className="flex items-center space-x-5">
+                <div className="flex items-center gap-x-2 sm:gap-x-5">
+
                   <Link 
                     href={`/projects/${project?.id}`}
                     className="flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-sm"
@@ -170,7 +171,7 @@ export default function ProjectsTable({ projects: initialProjects }) {
                   </Link>
                 </div>
                 
-                <div className="flex items-center space-x-5">
+                <div className="flex items-center gap-x-2 sm:gap-x-5">
                   {project?.links?.[0]?.live && (
                     <a 
                       href={project?.links[0]?.live}

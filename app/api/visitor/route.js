@@ -12,14 +12,28 @@ export async function POST(req) {
       );
     }
 
-    const body = await req.json(); // Will succeed only if the body is valid JSON
+    const body = await req.json();
     const { ip, userAgent } = body;
 
     await dbConnect();
-    await Visitor
-    .create({ ip, userAgent });
 
-    return NextResponse.json({ success: true });
+  
+const existingVisitor = await Visitor.findOne({ $or: [{ ip }, { userAgent }] });
+
+
+    if (existingVisitor) {
+
+      return NextResponse.json({ success: true, message: "Alredy Visited" });
+    }else{
+    
+
+    // Otherwise create new record
+    await Visitor.create({ ip, userAgent });
+
+    return NextResponse.json({ success: true, message: "Visitor logged" });
+    }
+
+
   } catch (error) {
     console.error("Error saving visitor:", error);
     return NextResponse.json(

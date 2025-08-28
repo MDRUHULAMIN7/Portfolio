@@ -1,13 +1,17 @@
-import { ExternalLink, Github, Heart } from "lucide-react";
+"use client";
+
+import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import StarButton from "./StarButton";
+import LoveButton from "./LoveButton";
+import { useState } from "react";
 
 
-export default function MetaDatas({ meta, links }) {
-  
+export default function MetaDatas({ meta, links,projectId }) {
+    const [loves, setLoves] = useState(meta.loves || 0);
   return (
     <div className="space-y-3">
-      {/* Explicit meta fields */}
+  
       <p>
         <strong>Type:</strong> {meta.type ?? "N/A"}
       </p>
@@ -24,24 +28,21 @@ export default function MetaDatas({ meta, links }) {
         <strong>End Date:</strong> {meta.endDate ? new Date(meta.endDate).toLocaleDateString() : "N/A"}
       </p>
       <p>
-        <strong>Loves:</strong> {meta.loves ?? 0}
+        <strong>Loves:</strong> {loves ?? 0}
       </p>
 
       {/* Action buttons */}
      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
-  {/* Love Button */}
+  
 
 
     <StarButton>
-        <button className="flex items-center justify-center mx-auto gap-2">
+     <LoveButton projectId={projectId} loves={loves} setLoves={setLoves} />
 
-    <Heart className="w-5 h-5  hover:animate-pulse" />
-    <span className="relative z-10 ">Love</span> 
-    </button>
+
    </StarButton>
  
 
-  {/* Live Project Button */}
   {links?.[0]?.live && (
       <StarButton>
     <Link
@@ -54,7 +55,7 @@ export default function MetaDatas({ meta, links }) {
     </StarButton>
   )}
 
-  {/* Repo Button */}
+
   {links?.[0]?.repo && (
       <StarButton>
     <Link

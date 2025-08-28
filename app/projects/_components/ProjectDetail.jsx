@@ -18,7 +18,8 @@ export default function ProjectDetails({ project }) {
 
 
         {/* Meta Info */}
-<MetaDatas meta={project.meta} links={project.links} />
+<MetaDatas meta={project.meta} links={project.links} projectId={project.id} />
+
 
       </div>
 

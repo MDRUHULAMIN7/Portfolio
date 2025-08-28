@@ -7,7 +7,7 @@ export default async function ProjectsPage() {
   const projects = await getAllProjects();
   
   return (
-    <div className="min-h-screen bg-[#1f2937] p-8  rounded-lg">
+    <div className="min-h-screen bg-[#1f2937] p-4 md:p-8  rounded-lg">
 
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
