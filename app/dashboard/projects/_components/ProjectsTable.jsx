@@ -119,7 +119,7 @@ export default function ProjectsTable({ projects: initialProjects }) {
         </div>
 
         {/* Mobile Cards */}
-         <div className="xl:hidden">
+         <div className="block xl:hidden">
           {projects.map((project) => (
             <div key={project.id} className="p-6 border-b border-gray-700 last:border-b-0">
               <div className="flex justify-between items-start mb-3">
