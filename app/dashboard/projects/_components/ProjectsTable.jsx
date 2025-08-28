@@ -1,13 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Edit, Trash2, ExternalLink, Eye } from "lucide-react";
+import { Edit, Trash2, ExternalLink, Eye, TriangleAlert } from "lucide-react";
 import Link from "next/link";
 import StatusToggle from "./StatusToggle";
 import DeleteConfirmModal from "./DeleteConfirmModal";
+import { GoProject } from "react-icons/go";
 
 export default function ProjectsTable({ projects: initialProjects }) {
   const [projects, setProjects] = useState(initialProjects); // <-- manage state here
+ 
+
   const [deleteModal, setDeleteModal] = useState({ open: false, project: null });
 
   const handleDeleteClick = (project) => {
@@ -26,6 +29,11 @@ export default function ProjectsTable({ projects: initialProjects }) {
       day: 'numeric'
     });
   };
+
+  if(!projects){
+    return <h1 className="text-2xl font-bold text-white flex justify-center items-center gap-x-2"> <TriangleAlert /> No Projects Found</h1>
+
+  }
 
   return (
     <>
@@ -53,7 +61,7 @@ export default function ProjectsTable({ projects: initialProjects }) {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-700">
-              {projects.map((project) => (
+              {projects?.map((project) => (
                 <tr key={project.id} className="hover:bg-gray-800 transition-colors duration-200">
                   <td className="px-6 py-4">
                     <div>
@@ -143,8 +151,9 @@ export default function ProjectsTable({ projects: initialProjects }) {
                 </span>
               </div>
               
-              <div className="flex items-center justify-between gap-x-3">
-                <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-start gap-x-5">
+
+                <div className="flex items-center space-x-5">
                   <Link 
                     href={`/projects/${project?.id}`}
                     className="flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-sm"
@@ -161,7 +170,7 @@ export default function ProjectsTable({ projects: initialProjects }) {
                   </Link>
                 </div>
                 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-5">
                   {project?.links?.[0]?.live && (
                     <a 
                       href={project?.links[0]?.live}
