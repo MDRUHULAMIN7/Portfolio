@@ -20,7 +20,6 @@ export const GET = async (request) => {
     const cookieStore = cookies();
     const allCookies = cookieStore.getAll();
 
-    // ✅ Convert lastAccess & loginTime to local time
     const lastAccessLocal = user?.lastAccess ;
     const loginTimeLocal = user?.loginTime ;
 
