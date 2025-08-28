@@ -33,7 +33,6 @@ export async function middleware(req) {
     console.log("Path:", pathname);
 
 
- const AdminEmail = session?.user?.email == "ruhulthisis@gmail.com";
 console.log(session,"from here")
   const protectedRoutes = ["/dashboard"];
   const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
@@ -43,7 +42,7 @@ console.log("Is Protected Route:", isProtectedRoute);
   const token = req.cookies.get("authjs.session-token")?.value;
   console.log("Token:", token);
 
-  if (isProtectedRoute && !token && !AdminEmail) {
+  if (isProtectedRoute && !token) {
 
     const redirectUrl = new URL("/login", req.url);
     redirectUrl.searchParams.set("callbackUrl", pathname);
