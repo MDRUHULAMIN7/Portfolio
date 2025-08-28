@@ -35,7 +35,9 @@ export async function middleware(req) {
 console.log("Is Protected Route:", isProtectedRoute);
 
   
-  const token = req.cookies.get("authjs.session-token")?.value;
+  const token =
+    req.cookies.get("authjs.session-token")?.value ||
+    req.cookies.get("__Secure-authjs.session-token")?.value;
   console.log("Token:", token);
 
   if (isProtectedRoute && !token) {
