@@ -1,6 +1,6 @@
 const DashboardSectionWrapper = ({ children }) => {
   return (
-    <div className="relative min-h-screen w-full  py-10">
+    <div className="relative min-h-screen w-full py-16">
   
       <div
         className="absolute inset-0 bg-[#203550] z-0"
