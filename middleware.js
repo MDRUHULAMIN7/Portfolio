@@ -1,7 +1,4 @@
 import { NextResponse } from "next/server";
-
-
-
 export async function middleware(req) {
   const cookies = req.cookies;
   const user = cookies.token || null;
@@ -33,7 +30,6 @@ export async function middleware(req) {
     console.log("Path:", pathname);
 
 
-console.log(session,"from here")
   const protectedRoutes = ["/dashboard"];
   const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
 console.log("Is Protected Route:", isProtectedRoute);

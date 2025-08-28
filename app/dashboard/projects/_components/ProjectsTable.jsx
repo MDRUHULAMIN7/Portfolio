@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Edit, Trash2, ExternalLink, Eye, TriangleAlert } from "lucide-react";
 import Link from "next/link";
 import StatusToggle from "./StatusToggle";
 import DeleteConfirmModal from "./DeleteConfirmModal";
-import { GoProject } from "react-icons/go";
+
 
 export default function ProjectsTable({ projects: initialProjects }) {
   const [projects, setProjects] = useState(initialProjects); // <-- manage state here

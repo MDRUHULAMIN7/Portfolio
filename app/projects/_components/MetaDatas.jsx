@@ -4,6 +4,7 @@ import StarButton from "./StarButton";
 
 
 export default function MetaDatas({ meta, links }) {
+  
   return (
     <div className="space-y-3">
       {/* Explicit meta fields */}
