@@ -48,7 +48,8 @@ export const GET = async (request) => {
     
 
 
-    return new NextResponse(JSON.stringify(user), { status: 200 });
+
+    return new NextResponse(JSON.stringify(user), { status: 200 })
 
   } catch (err) {
     return new NextResponse(err.message, { status: 500 });
