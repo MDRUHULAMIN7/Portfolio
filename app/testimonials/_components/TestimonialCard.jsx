@@ -54,7 +54,7 @@ const TestimonialCard = ({ testimonials }) => {
 
 
       {/* Right Side Testimonial Slider */}
-      <div className="w-full md:w-1/2 mt-6 md:mt-0  p-2 sm:p-4">
+      <div className="w-full md:w-1/2 mt-6 md:mt-0  ">
         <h2 className="text-3xl font-bold mb-6 text-start">What People Say</h2>
 
         <Swiper
@@ -111,7 +111,7 @@ const TestimonialCard = ({ testimonials }) => {
                   </motion.div>
 
                   {/* Custom Navigation */}
-                  <div className="flex gap-4 lg:mt-4">
+                  <div className="flex gap-4 lg:mt-4  p-2 sm:p-4 ">
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}

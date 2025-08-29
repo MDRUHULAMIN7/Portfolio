@@ -1,6 +1,7 @@
 import TestimonialCard from "./TestimonialCard";
 
 
+
 const testimonials = [
   {
     name: "Raul van Sutoyo",
@@ -31,10 +32,10 @@ const testimonials = [
 ];
 
 export default function TestimonialList() {
-  const [activeIndex, setActiveIndex] = useState(0);
+
 
   return (
-   <div>
+   <div className="">
     <TestimonialCard testimonials={testimonials} />
 
    </div>
