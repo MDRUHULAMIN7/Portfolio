@@ -19,8 +19,10 @@ const projectsData = await getProjectById(id);
   return (
     <div>
       <SectionWrapper>
-      <Heading title1="Project Details" title2={project.title} />
+<div className="pt-16">
+        <Heading title1="Project Details" title2={project.title} />
         <ProjectDetails project={project}></ProjectDetails>
+</div>
 
       </SectionWrapper>
     </div>

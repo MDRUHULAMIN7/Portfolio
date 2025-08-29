@@ -1,14 +1,13 @@
 
 import MetaDatas from "./MetaDatas";
 import ProjectSlide from "./ProjectSlide";
-import StarButton from "./StarButton";
 
 export default function ProjectDetails({ project }) {
   if (!project) return null;
 
   return (
 
-    <div className="p-6 max-w-5xl mx-auto bg-[#1a1a1a] text-gray-300 border border-gray-700 shadow-lg rounded-2xl space-y-6">
+    <div className="p-6 max-w-7xl mx-auto bg-[#1a1a1a] text-gray-300 border border-gray-700 shadow-lg rounded-2xl space-y-6">
    
 
 
