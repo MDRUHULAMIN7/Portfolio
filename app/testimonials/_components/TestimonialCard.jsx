@@ -7,27 +7,26 @@ import Image from "next/image";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import { AiFillStar } from "react-icons/ai";
+import CardWrapper from "@/components/CardWrapper";
 
 const TestimonialCard = ({ testimonials }) => {
-      const [activeIndex, setActiveIndex] = useState(0);
-    
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
- <div className="flex flex-col md:flex-row items-center justify-center space-y-12 md:space-y-0 md:space-x-12 px-2 md:px-12">
-      {/* Left Side Image */}
+    <div className="flex flex-col md:flex-row items-center justify-center space-y-12 md:space-y-0 space-x-6 lg:space-x-2 px-2 md:px-6 lg:px-12 py-8">
    
-<div className="w-full md:w-1/2 relative flex justify-center items-center">
+<div className="w-full md:w-1/2 xl:mt-14 relative flex justify-center items-center">
  
   <motion.div
-    className="absolute h-100 w-82 lg:w-100 rounded-xl bg-cyan-400 backdrop-blur-md shadow-xl"
+    className="absolute h-98 w-72 md:w-100 rounded-xl bg-cyan-400 backdrop-blur-md shadow-xl"
     animate={{ rotate: [0, 2, -2, 0], scale: [1, 1.02, 0.98, 1] }}
     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
   />
 
  
   <motion.div
-    className="relative h-86 w-72 lg:w-84 z-30 overflow-hidden rounded-xl cursor-pointer"
+    className="relative h-80 w-60 md:w-84 z-30 overflow-hidden rounded-xl cursor-pointer"
     whileHover={{ scale: 1.05, rotateY: 5 }}
     animate={{ y: [0, -5, 0, 5, 0] }}
     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -53,9 +52,20 @@ const TestimonialCard = ({ testimonials }) => {
 </div>
 
 
+
+
+
+
       {/* Right Side Testimonial Slider */}
-      <div className="w-full md:w-1/2 mt-6 md:mt-0  ">
-        <h2 className="text-3xl font-bold mb-6 text-start">What People Say</h2>
+      <div className="w-full md:w-1/2 mt-6 md:mt-0">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl pl-6 font-bold mb-8 text-start text-cyan-400 bg-clip-tex"
+        >
+          What People Say
+        </motion.h2>
 
         <Swiper
           modules={[Navigation]}
@@ -71,70 +81,83 @@ const TestimonialCard = ({ testimonials }) => {
           {testimonials?.map((testimonial, idx) => (
             <SwiperSlide key={idx}>
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={testimonial.text}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="flex flex-col gap-6"
-                >
+                 <div className="p-4 px-4">
+                <CardWrapper>
+            <div className="p-4 px-4">
+                  {/* Testimonial Text */}
                   <motion.p
-                    className="text-gray-400 italic text-lg leading-relaxed"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-gray-200 italic text-lg leading-relaxed"
                   >
                     “{testimonial.text}”
                   </motion.p>
 
+                  {/* User Info */}
                   <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
                     className="flex items-start gap-4"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
                   >
-                  
                     <div className="flex flex-col items-start gap-y-1">
+                      <p className="font-semibold text-cyan-400 text-lg">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-gray-300 flex gap-x-2 items-center">
+                        {testimonial.role} at
+                        <span className="text-gray-100 font-semibold">
+                          {testimonial.company}
+                        </span>
+                      </p>
 
-                      <p className="font-semibold text-cyan-400">{testimonial.name}</p>
-                      <p className=" text-gray-300 flex justify-center gap-x-2 items-center">{testimonial.role} at   <p className=" text-gray-100 font-semibold"> {testimonial.company}</p></p>
-                    
-                      <div className="flex text-yellow-400">
+                      {/* Animated Stars */}
+                      <div className="flex text-yellow-400 mt-2">
                         {Array.from({ length: testimonial.rating }).map((_, i) => (
-                          <span key={i}><AiFillStar size={20} /></span>
-
-
+                          <motion.span
+                            key={i}
+                            animate={{ opacity: [0.6, 1, 0.6] }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: i * 0.3,
+                            }}
+                          >
+                            <AiFillStar size={22} />
+                          </motion.span>
                         ))}
                       </div>
                     </div>
                   </motion.div>
 
-                  {/* Custom Navigation */}
-                  <div className="flex gap-4 lg:mt-4  p-2 sm:p-4 ">
+                  {/* Navigation */}
+                  <div className="flex gap-4 mt-6 p-2">
                     <motion.button
-                      whileHover={{ scale: 1.1 }}
+                      whileHover={{ scale: 1.15 }}
                       whileTap={{ scale: 0.95 }}
-                      className="custom-prev w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-100 transition-colors"
+                      className="custom-prev w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/20 shadow-md flex items-center justify-center text-white hover:bg-white/30 transition"
                     >
                       <FaArrowLeft />
                     </motion.button>
                     <motion.button
-                      whileHover={{ scale: 1.1 }}
+                      whileHover={{ scale: 1.15 }}
                       whileTap={{ scale: 0.95 }}
-                      className="custom-next w-12 h-12 rounded-full bg-cyan-400 shadow-md flex items-center justify-center text-white hover:bg-cyan-600 transition-colors"
+                      className="custom-next w-12 h-12 rounded-full bg-cyan-400 shadow-lg flex items-center justify-center text-white hover:opacity-90 transition"
                     >
                       <FaArrowRight />
                     </motion.button>
                   </div>
-                </motion.div>
+            </div>
+                </CardWrapper>
+                </div>
               </AnimatePresence>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TestimonialCard
+export default TestimonialCard;

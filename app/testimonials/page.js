@@ -6,7 +6,7 @@ export default async function Testimonials() {
     return(
           <div className="">
 
-      <Heading title1="Testimonials" title2="Testimonials" />
+      <Heading title1="Testimonials" title2="Reviews That Inspire" />
     
        <TestimonialList/>
     </div>

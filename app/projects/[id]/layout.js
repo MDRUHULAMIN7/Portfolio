@@ -28,8 +28,8 @@ export default async function ProjectDetailLayout({ children }) {
 
 
   return (
-    <html lang="en">
-      <body
+   
+      <div
         className={` antialiased`}
       >
         <Navbar links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
@@ -38,8 +38,8 @@ export default async function ProjectDetailLayout({ children }) {
 
        
        
-      </body>
-    </html>
+      </div>
+ 
   )
 
  
