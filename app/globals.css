@@ -8,6 +8,16 @@ button{
   scroll-margin-top: 80px; 
 }
 
+
+.noscrollbar {
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.noscrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .label {
   display: block;        
   margin-bottom: 0.25rem;

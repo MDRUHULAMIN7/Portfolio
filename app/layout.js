@@ -10,6 +10,7 @@ import { getSocialLinks } from "@/queries/social";
 import { auth } from "@/auth";
 import { Loader2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
+import { getPermissions } from "@/queries/permissions";
 
 
 const geistSans = Geist({
@@ -26,7 +27,7 @@ const luckiestGuy = Luckiest_Guy({
   weight: "400",
   variable: "--font-luckiest-guy",
   subsets: ["latin"],
-});
+}); 
 
 export const metadata = {
   title: "Ruhul Amin | Frontend Developer",
@@ -43,7 +44,7 @@ export default async function RootLayout({ children }) {
 
  if (!links || !avatarData) return <Loader2 />;
 
-  
+   const loginPermission = await getPermissions();
 
 
   return (
@@ -51,7 +52,7 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased`}
       >
-        <Navbar nav={true} links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
+        <Navbar loginPermission={loginPermission} nav={true} links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
        
  {children}
 

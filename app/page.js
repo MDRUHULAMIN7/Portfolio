@@ -7,6 +7,8 @@ import SectionWrapper from "@/components/sectionWrapper/SectionWrapper";
 import Services from "./services/page";
 import Projects from "./projects/page";
 import Testimonials from "./testimonials/page";
+import Contact from "./contact/page";
+import Blog from "./blog/page";
 
 
 const Home = async () => {
@@ -56,6 +58,22 @@ const Home = async () => {
       <SectionWrapper>
         <section id="testimonials">
           <Testimonials/>
+        </section>
+      </SectionWrapper>
+
+      {/* Blog Section */}
+      <SectionWrapper>
+        <section id="blog" className="">
+
+          <Blog/>
+        </section>
+      </SectionWrapper>
+
+      {/* Contact Section */}
+      <SectionWrapper>
+        <section id="contact" className="mt-16">
+
+          <Contact/>
         </section>
       </SectionWrapper>
 

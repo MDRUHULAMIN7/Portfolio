@@ -1,12 +1,11 @@
-
-
 import LoginButton from "@/components/auth/LoginButton";
 import Link from "next/link";
 import { RiFacebookLine, RiGithubLine, RiLinkedinLine } from "react-icons/ri";
 
-function Socials({links}) {
+export default  function Socials({links,loginPermission}) {
 
-  
+    
+
 
 
   const baseClasses =
@@ -15,11 +14,6 @@ function Socials({links}) {
   return (
     <div>
       <div className="flex items-center gap-x-3 text-xl">
-   
-
-
-
-            
           <Link
            
             href={links?.linkedin}
@@ -57,11 +51,11 @@ function Socials({links}) {
             <span className="relative z-10"> <RiFacebookLine /></span>
           </Link>
           
-         <LoginButton />
+      <LoginButton loginPermission={loginPermission} />
+
+
        
       </div>
     </div>
   );
 }
-
-export default Socials;

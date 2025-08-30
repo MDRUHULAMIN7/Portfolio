@@ -1,5 +1,5 @@
 "use client";
-import { Menu, X, LayoutDashboard, PlusSquare, BarChart2, Settings, SquareChartGantt } from "lucide-react";
+import { Menu, X, LayoutDashboard, PlusSquare, BarChart2, Settings, SquareChartGantt, TextQuote, ChevronDown, ChevronUp, ShieldPlus } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,14 +7,21 @@ import Logo from "@/components/Logo/Logo";
 
 export function DashboardSidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false); // dropdown state
   const pathname = usePathname();
 
   const navLinks = [
     { href: "/dashboard/overview", label: "Overview", icon: <LayoutDashboard className="w-5 h-5" /> },
-    { href: "/dashboard/projects", label: " Projects", icon: <SquareChartGantt className="w-5 h-5" /> },
+    { href: "/dashboard/projects", label: "Projects", icon: <SquareChartGantt className="w-5 h-5" /> },
     { href: "/dashboard/addprojects", label: "Add Projects", icon: <PlusSquare className="w-5 h-5" /> },
+    { href: "/dashboard/testimonials", label: "Testimonials", icon: <TextQuote className="w-5 h-5" /> },
     { href: "/dashboard/analytics", label: "Analytics", icon: <BarChart2 className="w-5 h-5" /> },
-    { href: "/dashboard/settings", label: "Settings", icon: <Settings className="w-5 h-5" /> },
+  ];
+
+  const settingsLinks = [
+    { href: "/dashboard/settings/profile", label: "Profile",icon: <ShieldPlus className="w-5 h-5" /> },
+    { href: "/dashboard/settings/security", label: "Security",icon: <ShieldPlus className="w-5 h-5" /> },
+    { href: "/dashboard/settings/permissions", label: "Permissions",icon: <ShieldPlus className="w-5 h-5" />  },
   ];
 
   return (
@@ -47,6 +54,38 @@ export function DashboardSidebar() {
               </Link>
             );
           })}
+
+          {/* Settings Dropdown */}
+          <div className="flex flex-col">
+            <button
+              onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+              className="flex items-center justify-between gap-3 px-4 py-2 rounded-xl hover:bg-cyan-600/40 transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <Settings className="w-5 h-5" />
+                <span>Settings</span>
+              </div>
+              {isSettingsOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </button>
+
+            {isSettingsOpen && (
+              <div className="flex flex-col ml-8 mt-2 gap-2">
+                {settingsLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-cyan-500/40 transition-colors ${
+                      pathname === link.href ? "bg-cyan-400 text-black font-semibold" : "text-gray-300"
+                    }`}
+                  >
+                    {link.icon}
+
+                    <span className="ml-2">{link.label}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
       </aside>
 

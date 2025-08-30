@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
@@ -12,11 +12,14 @@ import CardWrapper from "@/components/CardWrapper";
 
 const TestimonialCard = ({ testimonials }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  if (testimonials.length === 0) {
+    return <div className="text-center text-white">No testimonials available</div>;
+  }
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center space-y-12 md:space-y-0 space-x-6 lg:space-x-2 px-2 md:px-6 lg:px-12 py-8">
+    <div className="flex flex-col md:flex-row items-center justify-center space-y-12 md:space-y-0 space-x-6 lg:space-x-2  md:px-6 lg:px-12 py-8">
    
-<div className="w-full md:w-1/2 xl:mt-14 relative flex justify-center items-center">
+<div className="w-full md:w-1/2 xl:mt-14 relative flex  justify-center  items-center">
  
   <motion.div
     className="absolute h-98 w-72 md:w-100 rounded-xl bg-cyan-400 backdrop-blur-md shadow-xl"
@@ -68,11 +71,12 @@ const TestimonialCard = ({ testimonials }) => {
         </motion.h2>
 
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation,Autoplay]}
           navigation={{
             nextEl: ".custom-next",
             prevEl: ".custom-prev",
           }}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
           spaceBetween={30}
           slidesPerView={1}
           className="pb-12"
@@ -91,7 +95,7 @@ const TestimonialCard = ({ testimonials }) => {
                     transition={{ delay: 0.2 }}
                     className="text-gray-200 italic text-lg leading-relaxed"
                   >
-                    “{testimonial.text}”
+                    “{testimonial.review}”
                   </motion.p>
 
                   {/* User Info */}

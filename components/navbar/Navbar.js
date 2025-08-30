@@ -5,10 +5,13 @@ import { HiOutlineX } from "react-icons/hi";
 import { VscThreeBars } from "react-icons/vsc";
 import Logo from "../Logo/Logo";
 import Navs from "../Navs/Navs";
-import Socials from "../Socials/Socials";
-import Sidebar from "../Sidebar/Sidebar";
 
-function Navbar({ avatarData = {}, links = {}, session = null, nav }) {
+
+import Sidebar from "../Sidebar/Sidebar";
+import Socials from "../Socials/Socials";
+
+
+function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermission }) {
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animateSidebar, setAnimateSidebar] = useState(false);
@@ -82,7 +85,8 @@ function Navbar({ avatarData = {}, links = {}, session = null, nav }) {
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex">
-              <Socials session={session} links={links} />
+              <Socials loginPermission={loginPermission[0]} session={session} links={links} />
+
             </div>
 
             <button
