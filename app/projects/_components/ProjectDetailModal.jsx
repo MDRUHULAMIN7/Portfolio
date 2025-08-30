@@ -2,6 +2,7 @@
 import { X } from "lucide-react";
 import ProjectDetail from "./ProjectDetail";
 import { useEffect } from "react";
+import LoadingUi from "@/components/loadings/LoadingUi";
 
 
 
@@ -34,7 +35,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project }) {
         </button>
 
         <div className="p-6">
-         
+         {!project && <LoadingUi />}
           {project && <ProjectDetail project={project} />}
         </div>
       </div>
