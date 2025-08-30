@@ -19,7 +19,7 @@ export function DashboardSidebar() {
   ];
 
   const settingsLinks = [
-    { href: "/dashboard/settings/profile", label: "Profile",icon: <ShieldPlus className="w-5 h-5" /> },
+    { href: "/dashboard/settings/imageupload", label: "Image Upload",icon: <ShieldPlus className="w-5 h-5" /> },
     { href: "/dashboard/settings/security", label: "Security",icon: <ShieldPlus className="w-5 h-5" /> },
     { href: "/dashboard/settings/permissions", label: "Permissions",icon: <ShieldPlus className="w-5 h-5" />  },
   ];
