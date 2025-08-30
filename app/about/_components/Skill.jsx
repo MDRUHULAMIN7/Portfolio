@@ -7,7 +7,7 @@ const Skills = async () => {
   const data = await getSkills();
 
   return (
-    <div>
+    <div className="pt-6">
       <Heading title1={"My Qualifications"} title2={"Skills & Tools"} />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 ">

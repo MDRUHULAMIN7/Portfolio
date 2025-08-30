@@ -56,14 +56,14 @@ const Home = async () => {
 
       {/* Testimonials Section */}
       <SectionWrapper>
-        <section id="testimonials">
+        <section id="testimonials" className="">
           <Testimonials/>
         </section>
       </SectionWrapper>
 
       {/* Blog Section */}
       <SectionWrapper>
-        <section id="blog" className="">
+        <section id="blog" className="" >
 
           <Blog/>
         </section>
@@ -71,7 +71,7 @@ const Home = async () => {
 
       {/* Contact Section */}
       <SectionWrapper>
-        <section id="contact" className="mt-16">
+        <section id="contact" className="">
 
           <Contact/>
         </section>

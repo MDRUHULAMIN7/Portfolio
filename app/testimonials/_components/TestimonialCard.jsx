@@ -17,7 +17,7 @@ const TestimonialCard = ({ testimonials }) => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center space-y-12 md:space-y-0 space-x-6 lg:space-x-2  md:px-6 lg:px-12 py-8">
+    <div className="flex flex-col md:flex-row items-center justify-center space-y-12 md:space-y-0 space-x-6 lg:space-x-2  md:px-6 lg:px-12 py-4">
    
 <div className="w-full md:w-1/2 xl:mt-14 relative flex  justify-center  items-center">
  

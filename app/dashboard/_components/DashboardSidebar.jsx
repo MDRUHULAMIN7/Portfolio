@@ -15,7 +15,9 @@ export function DashboardSidebar() {
     { href: "/dashboard/projects", label: "Projects", icon: <SquareChartGantt className="w-5 h-5" /> },
     { href: "/dashboard/addprojects", label: "Add Projects", icon: <PlusSquare className="w-5 h-5" /> },
     { href: "/dashboard/testimonials", label: "Testimonials", icon: <TextQuote className="w-5 h-5" /> },
+    { href: "/dashboard/addexperience", label: "Add Experience", icon: <BarChart2 className="w-5 h-5" /> },
     { href: "/dashboard/analytics", label: "Analytics", icon: <BarChart2 className="w-5 h-5" /> },
+
   ];
 
   const settingsLinks = [
@@ -27,11 +29,13 @@ export function DashboardSidebar() {
   return (
     <>
       {/* Sidebar */}
-      <aside
-        className={`fixed top-0 left-0 z-50 h-full w-[280px] bg-[#0d1622] shadow-2xl px-6 py-6 flex flex-col gap-8 text-white
-          transform transition-transform duration-300 ease-in-out
-          ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
-      >
+     <aside
+  className={`fixed top-0 left-0 z-50 h-full w-[280px] bg-[#0d1622] shadow-2xl px-6 py-6 flex flex-col gap-8 text-white
+    transform transition-transform duration-300 ease-in-out
+    ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+    overflow-x-auto overflow-y-auto noscrollbar`}
+>
+
         <div className="flex flex-col gap-2">
           <Logo />
           <h2 className="text-2xl font-semibold">Admin Dashboard</h2>
