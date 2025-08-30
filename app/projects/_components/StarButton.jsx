@@ -2,7 +2,7 @@
 
 const StarButton = ({ children }) => {
   return (
-    <button className="star-btn">
+    <div className="star-btn">
       {children}
       <div className="star star-1">
         <svg
@@ -79,7 +79,7 @@ const StarButton = ({ children }) => {
           />
         </svg>
       </div>
-    </button>
+    </div>
   );
 };
 

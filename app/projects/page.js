@@ -1,11 +1,11 @@
 import Heading from "@/components/Heading";
 import ProjectCard from "./_components/ProjectCard";
-import { getProjects } from "@/queries/project";
+import { getAllProjects } from "@/queries/project";
 
 
 export default async function Projects() {
 
-  const projectsData = await getProjects();
+  const projectsData = await getAllProjects();
   // console.log(projectsData)
 
 

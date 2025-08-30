@@ -3,12 +3,6 @@ import { getProjectById } from "@/queries/project";
 import ProjectDetails from "../_components/ProjectDetail";
 import Heading from "@/components/Heading";
 
-
-
-
-
-
-
 export default async function ProjectDetailsPage({params}) {
 
 const { id } = params;

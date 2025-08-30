@@ -133,7 +133,7 @@ export const AddProjects = () => {
     watchTech.some((t) => !t.name || !t.value) ||
     watchFeatures.reduce((sum, g) => sum + g.items.length, 0) < 4 ||
     watchFeatures.some((g) => g.items.some((f) => !f.text)) ||
-    watchLinks.some((l) => !l.live && !l.repo);
+    watchLinks.some((l) => !l.live );
 
   const onSubmit = async (data) => {
     console.log(data, "Submitting...");

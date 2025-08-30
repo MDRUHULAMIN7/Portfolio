@@ -5,10 +5,19 @@ import { Edit, Trash2, ExternalLink, Eye, TriangleAlert } from "lucide-react";
 import Link from "next/link";
 import StatusToggle from "./StatusToggle";
 import DeleteConfirmModal from "./DeleteConfirmModal";
+import ModalButton from "./ModalButton";
+
+
+const normalizeProjects = (data) =>
+  data.map((p) => ({
+    ...p,
+    id: p._id?.toString() ?? p.id,
+    _id: undefined, 
+  }));
 
 
 export default function ProjectsTable({ projects: initialProjects }) {
-  const [projects, setProjects] = useState(initialProjects); // <-- manage state here
+const [projects, setProjects] = useState(normalizeProjects(initialProjects));
  
 
   const [deleteModal, setDeleteModal] = useState({ open: false, project: null });
@@ -86,13 +95,8 @@ export default function ProjectsTable({ projects: initialProjects }) {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-3">
-                      <Link 
-                        href={`/projects/${project.id}`}
-                        className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                        title="View Details"
-                      >
-                        <Eye className="h-4 w-4" />
-                      </Link>
+                      <ModalButton project={project} />
+
                       <Link 
                         href={`/dashboard/projects/edit/${project.id}`}
                         className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
@@ -142,7 +146,7 @@ export default function ProjectsTable({ projects: initialProjects }) {
               
              
               
-              <div className="flex justify-between items-center mb-4">
+              <div className="flex justify-between items-center mb-4 ">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-900 text-cyan-400">
                   {project.meta.type}
                 </span>
@@ -155,13 +159,7 @@ export default function ProjectsTable({ projects: initialProjects }) {
 
                 <div className="flex items-center gap-x-2 sm:gap-x-5">
 
-                  <Link 
-                    href={`/projects/${project?.id}`}
-                    className="flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-200 text-sm"
-                  >
-                    <Eye className="h-4 w-4 mr-1" />
-                    Details
-                  </Link>
+                   <ModalButton project={project} />
                   <Link 
                     href={`/dashboard/projects/edit/${project?.id}`}
                     className="flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-200 text-sm"
@@ -209,7 +207,7 @@ export default function ProjectsTable({ projects: initialProjects }) {
         isOpen={deleteModal.open}
         project={deleteModal.project}
         onClose={() => setDeleteModal({ open: false, project: null })}
-        onDelete={handleDelete} // <-- update state here
+        onDelete={handleDelete} 
       />
     </>
   );

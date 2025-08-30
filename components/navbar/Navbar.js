@@ -15,6 +15,7 @@ function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermissi
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animateSidebar, setAnimateSidebar] = useState(false);
+  console.log(loginPermission)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,7 +86,7 @@ function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermissi
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex">
-              <Socials loginPermission={loginPermission[0]} session={session} links={links} />
+              <Socials loginPermission={loginPermission} session={session} links={links} />
 
             </div>
 
@@ -119,6 +120,8 @@ function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermissi
 
           <Sidebar
             navs={nav}
+            loginPermission={loginPermission}
+
             links={links}
             session={session}
             avatarData={avatarData}

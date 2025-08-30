@@ -5,7 +5,8 @@ import Socials from '../Socials/Socials'
 import Logo from '../Logo/Logo';
 import Description from '../leftSection/Description';
 
-function Sidebar({animateSidebar, avatarData,links,session,navs}) {
+function Sidebar({animateSidebar, avatarData,links,session,navs,loginPermission}) {
+
 
 
   return (
@@ -30,7 +31,8 @@ function Sidebar({animateSidebar, avatarData,links,session,navs}) {
 
             {/* Socials at bottom */}
             <div className="mt-auto sm:hidden">
-              <Socials links={links} session={session} />
+              <Socials loginPermission={loginPermission} links={links} session={session} />
+
             </div>
           </div>
   )

@@ -62,7 +62,7 @@ const projectSchema = new mongoose.Schema({
   links: [
     {
       live: { type: String, required: true },
-      repo: { type: String, required: true },
+      repo: { type: String, required: false },
     },
   ],
   hashtags: {

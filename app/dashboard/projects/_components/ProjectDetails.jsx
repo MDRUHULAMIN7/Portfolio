@@ -1,17 +1,13 @@
+import MetaDatas from "@/app/projects/_components/MetaDatas"
+import ProjectSlide from "@/app/projects/_components/ProjectSlide"
 
-import MetaDatas from "./MetaDatas";
-import ProjectSlide from "./ProjectSlide";
 
-export default function ProjectDetail({ project }) {
-  if (!project) return null;
+
+const ProjectDetails = ({ project }) => {
 
   return (
-
-    <div className="sm:p-6 p-4 max-w-7xl mx-auto  text-gray-300  rounded-2xl space-y-6 ">
-   
-
-
-      <div className="flex flex-col md:flex-row gap-6 md:items-center">
+    <div>
+           <div className="flex flex-col md:flex-row gap-6 md:items-center py-6">
         {/* Slider */}
        <ProjectSlide images={project?.images} />
 
@@ -110,5 +106,7 @@ export default function ProjectDetail({ project }) {
         )}
       </div>
     </div>
-  );
+  )
 }
+
+export default ProjectDetails
