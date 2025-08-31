@@ -8,17 +8,17 @@ const ProjectDetails = ({ project }) => {
   return (
     <div>
            <div className="flex flex-col md:flex-row gap-6 md:items-center py-6">
-        {/* Slider */}
+       
        <ProjectSlide images={project?.images} />
 
 
-        {/* Meta Info */}
+       
 <MetaDatas meta={project.meta} links={project.links} projectId={project.id} />
 
 
       </div>
 
-      {/* Title + Description */}
+  
       <div className="space-y-8">
      
         <div className="border-b border-gray-700 pb-6">
@@ -30,7 +30,7 @@ const ProjectDetails = ({ project }) => {
           </p>
         </div>
 
-        {/* Hashtags */}
+       
         {project.hashtags?.length > 0 && (
           <div className="space-y-3">
             <h3 className="text-xl font-semibold text-white">Tags</h3>
@@ -47,7 +47,7 @@ const ProjectDetails = ({ project }) => {
           </div>
         )}
 
-        {/* Features */}
+     
           <h2 className="text-3xl font-bold text-white border-b border-gray-700 pb-3">
               Features & Highlights
             </h2>
@@ -75,7 +75,7 @@ const ProjectDetails = ({ project }) => {
           </div>
         )}
 
-        {/* Tech Stack */}
+    
         {project.techStack?.length > 0 && (
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-white border-b border-gray-700 pb-3">

@@ -24,8 +24,8 @@ export default function ProjectDetailModal({ isOpen, onClose, project }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50  bg-black/80 flex justify-center items-center p-4 mt-14 backdrop-blur-sm">
-      <div className=" rounded-xl bg-gray-900   w-full max-w-xl lg:max-w-5xl 2xl:max-w-7xl max-h-[88vh]   noscrollbar  overflow-y-auto relative border-gray-700 border shadow-lg">
+    <div className="fixed inset-0 z-50 bg-black/80 flex justify-center items-center p-4 mt-14 backdrop-blur-sm ">
+      <div className=" rounded-xl bg-gray-900  w-full max-w-xl lg:max-w-5xl 2xl:max-w-7xl max-h-[88vh]   noscrollbar  overflow-y-auto relative border-gray-700 border shadow-lg">
    
         <button
           onClick={onClose}
@@ -34,7 +34,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project }) {
           <X className="h-6 w-6" />
         </button>
 
-        <div className="p-6">
+        <div className="p-6  ">
          {!project && <LoadingUi />}
           {project && <ProjectDetail project={project} />}
         </div>

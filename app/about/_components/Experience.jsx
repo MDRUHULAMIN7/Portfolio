@@ -7,9 +7,9 @@ const Experience = async () => {
   const experiences = await getExperiences();
 
   return (
-    <div className="pt-6 px-4 md:px-12">
+    <div className=" px-4 md:px-12">
       <Heading title1={"My Experience"} title2={"Work Experience"} />
-      <div className="mt-6">
+      <div className="">
         <ExperienceCard experiences={experiences} />
       </div>
     </div>

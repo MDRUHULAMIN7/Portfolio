@@ -33,7 +33,7 @@ export default function ProjectDetailsModal({ isOpen, onClose, project }) {
           <X className="h-6 w-6" />
         </button>
 
-        <div className="p-6">
+        <div className="sm:p-6 p-2">
          {!project && <LoadingUi />}
           {project && <ProjectDetails project={project} />}
           

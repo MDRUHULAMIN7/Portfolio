@@ -9,7 +9,7 @@ export default async function Testimonials() {
  const permission = await getPermissions()
 
     return(
-          <div className="">
+          <div className="z-10 pt-16">
 <div className="flex  items-center 
      justify-center md:justify-between px-2 md:px-6 lg:px-12  gap-2">
 

@@ -1,5 +1,5 @@
 "use client";
-import { Menu, X, LayoutDashboard, PlusSquare, BarChart2, Settings, SquareChartGantt, TextQuote, ChevronDown, ChevronUp, ShieldPlus } from "lucide-react";
+import { Menu, X, LayoutDashboard, PlusSquare, BarChart2, Settings, SquareChartGantt, TextQuote, ChevronDown, ChevronUp, ShieldPlus, ImageUp, ImageUpIcon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,7 +21,7 @@ export function DashboardSidebar() {
   ];
 
   const settingsLinks = [
-    { href: "/dashboard/settings/imageupload", label: "Image Upload",icon: <ShieldPlus className="w-5 h-5" /> },
+    { href: "/dashboard/settings/imageupload", label: "Image Upload",icon: <ImageUpIcon  className="w-5 h-5" /> },
     { href: "/dashboard/settings/security", label: "Security",icon: <ShieldPlus className="w-5 h-5" /> },
     { href: "/dashboard/settings/permissions", label: "Permissions",icon: <ShieldPlus className="w-5 h-5" />  },
   ];

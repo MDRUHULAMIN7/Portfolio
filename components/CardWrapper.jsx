@@ -18,8 +18,8 @@ export default function CardWrapper({ children, hoverGradient = 'rgba(59,130,246
     const deltaX = e.clientX - rect.left - centerX;
     const deltaY = e.clientY - rect.top - centerY;
 
-    const rotateX = (-deltaY / centerY) * 8;
-    const rotateY = (deltaX / centerX) * 8;
+    const rotateX = (-deltaY / centerY) * 4;
+    const rotateY = (deltaX / centerX) * 4;
 
     setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
   };

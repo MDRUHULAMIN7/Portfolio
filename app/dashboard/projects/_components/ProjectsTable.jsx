@@ -27,7 +27,7 @@ const [projects, setProjects] = useState(normalizeProjects(initialProjects));
   };
 
   const handleDelete = (deletedProject) => {
-    // Remove project from state immediately
+ 
     setProjects((prev) => prev.filter((p) => p.id !== deletedProject.id));
   };
 

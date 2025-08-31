@@ -13,7 +13,7 @@ export default function ProjectSlide({ images }) {
   const nextRef = useRef(null);
 
   return (
-    <div className="relative border border-gray-700 w-full md:w-1/2 h-full rounded-lg overflow-hidden">
+    <div className="relative border border-gray-700  h-full rounded-lg overflow-hidden">
       <Swiper
         modules={[Navigation, Autoplay]}
         spaceBetween={20}

@@ -10,10 +10,10 @@ export default async function Projects() {
 
 
   return (
-    <div className=" bg-primary/30   px-4 text-center xl:text-left pt-16">
+    <div className=" bg-primary/30   px-4 text-center xl:text-left  pt-16">
       <Heading title1="My Projects" title2="Projects & Works" />
 
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-10 md:mt-16 lg:mt-20">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
         {projectsData.map((project, idx) => (
           <ProjectCard project={project} key={idx} />
 

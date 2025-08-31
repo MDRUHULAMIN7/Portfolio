@@ -4,7 +4,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import AddExperienceModal from "./AddExperienceModal";
 import EditExperienceModal from "./EditExperienceModal";
-import { Edit } from "lucide-react";
+
+import { Edit, Trash2 } from "lucide-react";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 export default function ExperienceTable({ experiencesdata }) {
   const [experiences, setExperiences] = useState(experiencesdata);
@@ -12,7 +14,16 @@ export default function ExperienceTable({ experiencesdata }) {
   const [editOpen, setEditOpen] = useState(false);
   const [editingExp, setEditingExp] = useState(null);
 
- 
+  const [deleteModal, setDeleteModal] = useState({ open: false, experience: null });
+
+  const handleDeleteClick = (experience) => {
+    setDeleteModal({ open: true, experience });
+  };
+
+  const handleDelete = async (deletedExp) => {
+    setExperiences((prev) => prev.filter((e) => e.id !== deletedExp.id));
+  };
+
   const handleAdd = async (data) => {
     try {
       data.images = data.images.map((img) => img.url);
@@ -31,22 +42,19 @@ export default function ExperienceTable({ experiencesdata }) {
 
   return (
     <div className="md:p-6 p-3">
-      
-      <div className=" flex justify-end mb-4">
+      <div className="flex justify-end mb-4">
         <button
           onClick={() => setAddOpen(true)}
-          className="px-4 py-2 border-cyan-400 border  text-white rounded-lg bg-cyan-500"
+          className="px-4 py-2 border-cyan-400 border text-white rounded-lg bg-cyan-500"
         >
           + Add Experience
         </button>
       </div>
 
-
       {/* Table for big screens */}
       <div className="hidden xl:block overflow-x-auto rounded-lg border border-gray-700 shadow-lg">
-        
         <table className="min-w-full text-sm bg-gray-900">
-          <thead className=" text-white">
+          <thead className="text-white">
             <tr>
               <th className="p-3 text-left">Designation</th>
               <th className="p-3 text-left">Company</th>
@@ -79,15 +87,22 @@ export default function ExperienceTable({ experiencesdata }) {
                     ? new Date(exp.endDate).toLocaleDateString()
                     : "Present"}
                 </td>
-                <td className="p-3 flex gap-2">
+                <td className="p-3 flex gap-4">
                   <button
                     onClick={() => {
                       setEditingExp(exp);
                       setEditOpen(true);
                     }}
-                    className="px-3 py-1 bg-cyan-400 flex justify-center items-center gap-1 text-white rounded hover:bg-cyan-600"
+                    className=" flex justify-center items-center gap-1 text-cyan-400 hover:text-cyan-300"
                   >
-                    <Edit size={20} /> Edit
+                    <Edit size={20} />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteClick(exp)}
+                    className="text-red-400 hover:text-red-300 transition-colors duration-200"
+                    title="Delete Experience"
+                  >
+                    <Trash2 size={20} />
                   </button>
                 </td>
               </tr>
@@ -130,22 +145,28 @@ export default function ExperienceTable({ experiencesdata }) {
                 ? new Date(exp.endDate).toLocaleDateString()
                 : "Present"}
             </p>
-            <div className="flex justify-end mt-2">
-                <button
-                    onClick={() => {
-                      setEditingExp(exp);
-                      setEditOpen(true);
-                    }}
-                    className="px-3 py-1 bg-cyan-400 flex justify-center items-center gap-1 text-white rounded hover:bg-cyan-600"
-                  >
-                    <Edit size={20} /> Edit
-                  </button>
+            <div className="flex justify-end mt-2 gap-2">
+              <button
+                onClick={() => {
+                  setEditingExp(exp);
+                  setEditOpen(true);
+                }}
+                className=" flex justify-center items-center gap-1 text-cyan-400 hover:text-cyan-300"
+              >
+                <Edit size={20} /> 
+              </button>
+              <button
+                onClick={() => handleDeleteClick(exp)}
+                className="text-red-400 hover:text-red-300 transition-colors duration-200"
+                title="Delete Experience"
+              >
+                <Trash2  size={20} />
+              </button>
             </div>
           </div>
         ))}
       </div>
 
-    
       {/* Add Modal */}
       <AddExperienceModal
         isOpen={addOpen}
@@ -162,6 +183,14 @@ export default function ExperienceTable({ experiencesdata }) {
           setEditingExp(null);
         }}
         experience={editingExp}
+      />
+
+      {/* Delete Modal */}
+      <DeleteConfirmModal
+        isOpen={deleteModal.open}
+        project={deleteModal.experience}
+        onClose={() => setDeleteModal({ open: false, experience: null })}
+        onDelete={handleDelete}
       />
     </div>
   );

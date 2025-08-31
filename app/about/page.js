@@ -8,7 +8,7 @@ import Experience from './_components/Experience';
 const About = async() => {
 
   return (
-<div className=" bg-primary/30 py-2 xl:py-12 px-4 text-center xl:text-left">
+<div className=" bg-primary/30 py-2  pt-16 px-4 text-center xl:text-left">
 <Experience/>
 <SkillCard></SkillCard>
 

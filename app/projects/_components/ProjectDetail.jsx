@@ -7,13 +7,15 @@ export default function ProjectDetail({ project }) {
 
   return (
 
-    <div className="sm:p-6 p-4 max-w-7xl mx-auto  text-gray-300  rounded-2xl space-y-6 ">
+    <div className="sm:p-6 p-2 pt-4 max-w-7xl mx-auto  text-gray-300  rounded-2xl space-y-6 ">
    
 
 
-      <div className="flex flex-col md:flex-row gap-6 md:items-center">
+      <div className="flex flex-col lg:flex-row gap-6 lg:items-center">
         {/* Slider */}
-       <ProjectSlide images={project?.images} />
+        <div className="w-full md:w-1/2">
+          <ProjectSlide images={project?.images} />
+        </div>
 
 
         {/* Meta Info */}
@@ -26,10 +28,10 @@ export default function ProjectDetail({ project }) {
       <div className="space-y-8">
      
         <div className="border-b border-gray-700 pb-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+          <h1 className="text-4xl text-left  md:text-5xl font-bold text-white mb-4 leading-tight">
             {project.title}
           </h1>
-          <p className="text-lg text-gray-300 leading-relaxed max-w-4xl">
+          <p className="text-lg text-left text-gray-300 leading-relaxed max-w-4xl">
             {project.description}
           </p>
         </div>

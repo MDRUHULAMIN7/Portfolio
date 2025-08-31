@@ -14,7 +14,7 @@ export default function ProjectCard({ project }) {
       {/* Card */}
       <div
         onClick={() => setDetailsModal(true)}
-        className="block no-underline cursor-pointer"
+        className="block  cursor-pointer"
       >
         <CardWrapper hoverGradient="rgba(59,130,246,0.2)" className="p-4">
           {/* Image */}

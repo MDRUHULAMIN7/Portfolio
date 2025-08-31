@@ -2,7 +2,7 @@
 
 const SectionWrapper = ({ children }) => {
   return (
-    <div className="relative min-h-screen w-full  ">
+    <div className="relative w-full  ">
   
       <div
         // className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
