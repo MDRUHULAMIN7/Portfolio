@@ -10,7 +10,7 @@ export default function ExperienceCard({ experiences }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 ">
         {experiences.map((exp) => (
           <CardWrapper key={exp.id} className="relative">
           

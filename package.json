@@ -13,6 +13,7 @@
     "@editorjs/header": "^2.8.8",
     "@editorjs/image": "^2.10.3",
     "@editorjs/list": "^2.0.8",
+    "@hookform/resolvers": "^5.2.1",
     "@iconscout/react-unicons": "^2.2.4",
     "@react-three/drei": "^10.0.8",
     "@react-three/fiber": "^9.1.2",
@@ -49,7 +50,8 @@
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.1.7",
     "three": "^0.176.0",
-    "tsparticles": "^3.8.1"
+    "tsparticles": "^3.8.1",
+    "zod": "^4.1.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
