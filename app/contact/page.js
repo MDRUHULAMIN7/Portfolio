@@ -9,7 +9,7 @@ export default async function Contact() {
 
     return(
 
-        <div className="pb-10 md:pb-20">
+        <div className="pb-10 pt-16 md:pb-20">
 
             <Heading title1="Contact" title2="Get in touch" />
             <ContactForm links={links?.[0]} />

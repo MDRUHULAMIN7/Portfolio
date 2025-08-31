@@ -9,6 +9,7 @@ import Projects from "./projects/page";
 import Testimonials from "./testimonials/page";
 import Contact from "./contact/page";
 import Blog from "./blog/page";
+import Footer from "@/components/Footer";
 
 
 const Home = async () => {
@@ -75,6 +76,13 @@ const Home = async () => {
 
           <Contact/>
         </section>
+      </SectionWrapper>
+      <SectionWrapper>
+       
+
+        <Footer/>
+
+        
       </SectionWrapper>
 
     </>

@@ -11,6 +11,7 @@ import { auth } from "@/auth";
 import { Loader2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { getPermissions } from "@/queries/permissions";
+import ScrollToTop from "@/components/ScrollToTop";
 
 
 const geistSans = Geist({
@@ -68,6 +69,9 @@ export default async function RootLayout({ children }) {
             },
           }}
         />
+
+        <ScrollToTop />
+
        
       </body>
     </html>
