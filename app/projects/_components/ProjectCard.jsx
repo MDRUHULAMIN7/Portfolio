@@ -17,7 +17,7 @@ export default function ProjectCard({ project }) {
         className="block  cursor-pointer"
       >
         <CardWrapper hoverGradient="rgba(59,130,246,0.2)" className="p-4">
-          {/* Image */}
+         
           <div className="relative w-full h-56 overflow-hidden rounded-2xl">
             <img
               src={project.images[0]}
@@ -27,14 +27,14 @@ export default function ProjectCard({ project }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-2xl" />
           </div>
 
-          {/* Content */}
-          <div className="flex flex-col flex-grow p-4">
+          
+          <div className="flex flex-col flex-grow pt-4 px-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-xl font-bold text-white">{project?.title}</h2>
               <AccentData>{project.meta.type}</AccentData>
             </div>
 
-            <p className="text-gray-400 text-sm mb-4 line-clamp-4 leading-relaxed">
+            <p className="text-gray-400 text-left text-sm mb-4 line-clamp-4 leading-relaxed">
               {project?.description}
             </p>
 

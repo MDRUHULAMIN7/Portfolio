@@ -1,5 +1,6 @@
 // components/Services.jsx
 
+import Heading from "@/components/Heading";
 import ServiceCard from "./_components/ServiceCard";
 
 import {
@@ -62,15 +63,9 @@ const Services = () => {
       id="services"
       className=" relative z-10  px-4  "
     >
-      <div className="text-center text-white mb-12">
-        <p className="text-sm text-cyan-400 tracking-widest uppercase mb-2">
-          Latest Service
-        </p>
-        <h2 className="text-4xl md:text-5xl font-abold leading-snug">
-          Services I Provide
-        </h2>
-      </div>
+      <Heading title1="Latest Service" title2="Services I Provide" />
 
+   
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-9">
         {services.map((service, idx) => (
           <ServiceCard

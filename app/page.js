@@ -22,7 +22,7 @@ const Home = async () => {
       <SectionWrapper>
         <div
           id="home"
-          className="flex flex-col-reverse lg:flex-row items-center md:items-end w-full xl:gap-10"
+          className="flex flex-col-reverse lg:flex-row items-center md:items-end w-full xl:gap-10 "
         >
        
           
@@ -35,21 +35,22 @@ const Home = async () => {
 
       {/* Services Section */}
       <SectionWrapper>
-        <section id="services">
+        <section id="services" className="">
          <Services></Services>
         </section>
       </SectionWrapper>
 
       {/* About Section */}
       <SectionWrapper>
-        <section id="about">
+        <section id="about" className="">
           <About />
         </section>
       </SectionWrapper>
 
       {/* Projects Section */}
       <SectionWrapper>
-        <section id="projects">
+        <section id="projects" className="">
+
           <Projects/>
         </section>
       </SectionWrapper>
@@ -58,6 +59,8 @@ const Home = async () => {
       {/* Testimonials Section */}
       <SectionWrapper>
         <section id="testimonials" className="">
+
+
           <Testimonials/>
         </section>
       </SectionWrapper>
@@ -66,6 +69,8 @@ const Home = async () => {
       <SectionWrapper>
         <section id="blog" className="" >
 
+
+
           <Blog/>
         </section>
       </SectionWrapper>
@@ -73,6 +78,8 @@ const Home = async () => {
       {/* Contact Section */}
       <SectionWrapper>
         <section id="contact" className="">
+
+
 
           <Contact/>
         </section>

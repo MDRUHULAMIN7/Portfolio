@@ -14,7 +14,7 @@ export default function ScrollToTop() {
       const scrolled = (scrollTop / docHeight) * 100;
       setScrollPercent(Math.round(scrolled));
 
-      setVisible(scrollTop > 300);
+      setVisible(scrollTop > 100);
     };
 
     window.addEventListener("scroll", handleScroll);

@@ -5,6 +5,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Image from 'next/image';
 import { RxCross1 } from 'react-icons/rx';
+import ModalWrapper from '@/components/ModalWrapper';
+import LoadingUi from '@/components/loadings/LoadingUi';
 
 const CourseCard = ({ course }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,22 +25,21 @@ const CourseCard = ({ course }) => {
     <>
       <CardWrapper className="p-6 lg:p-10" ref={cardRef} hoverGradient="rgba(59,130,246,0.2)">
         <div data-aos="fade-up" className="relative z-10">
-          {/* Title */}
+        
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-lg md:text-3xl font-bold text-gray-200">{course.title}</h3>
           </div>
 
-          {/* Institute + Time */}
-          <p className="text-lg text-gray-300 mb-3">
+       
+          <p className="text-lg text-left text-gray-300 mb-3">
             {course.from} <span className="text-white">({course.time})</span>
           </p>
 
           <hr className="border-[#2c3e57] mb-3 text-lg" />
 
-          {/* Description */}
-          <p className="text-base text-gray-300 leading-relaxed">{course.description}</p>
+          <p className="text-base text-left text-gray-300 leading-relaxed">{course.description}</p>
 
-          {/* Credential Button */}
+         
           {course.credentials && (
             <button
               onClick={() => setIsModalOpen(true)}
@@ -53,18 +54,12 @@ const CourseCard = ({ course }) => {
       {/* Modal */}
       {isModalOpen && (
         <>
-          <div
-            className="fixed inset-0 z-40 bg-black bg-opacity-70 pointer-events-auto"
-            onClick={() => setIsModalOpen(false)}
-          />
-          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-            <div className="bg-white p-6 rounded-lg max-w-lg md:max-w-2xl w-full relative">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-2 right-2 text-cyan-500 cursor-pointer text-xl font-bold"
-              >
-                <RxCross1 />
-              </button>
+        { !course?.credentials && <LoadingUi/> }
+        { course?.credentials && <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+
+       
+            <div className="  rounded-lg p-2 max-w-lg md:max-w-4xl relative">
+            
               <Image
                 height={300}
                 width={400}
@@ -73,7 +68,7 @@ const CourseCard = ({ course }) => {
                 className="w-full h-auto rounded-md"
               />
             </div>
-          </div>
+          </ModalWrapper> }
         </>
       )}
     </>

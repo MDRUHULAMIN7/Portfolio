@@ -106,12 +106,12 @@ const TestimonialCard = ({ testimonials }) => {
                     className="flex items-start gap-4"
                   >
                     <div className="flex flex-col items-start gap-y-1">
-                      <p className="font-semibold text-cyan-400 text-lg">
+                      <p className="font-semibold text-cyan-400 text-lg my-2">
                         {testimonial.name}
                       </p>
-                      <p className="text-gray-300 flex gap-x-2 items-center">
+                      <p className="text-gray-300 flex flex-col sm:flex-row gap-x-2 sm:items-center">
                         {testimonial.role} at
-                        <span className="text-gray-100 font-semibold">
+                        <span className="text-gray-100 text-left font-semibold">
                           {testimonial.company}
                         </span>
                       </p>
