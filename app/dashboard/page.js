@@ -4,12 +4,12 @@
 import Services from "../services/page";
 import Overviewpage from "./overview/page";
 
-// import { dbConnect } from "@/service/mongoose";
+import { dbConnect } from "@/service/mongoose";
 
 
 async function dashboardPage() {
 
-  // await dbConnect();
+  await dbConnect();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/visitor-data`);
 

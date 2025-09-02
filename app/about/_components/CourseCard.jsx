@@ -58,14 +58,14 @@ const CourseCard = ({ course }) => {
         { course?.credentials && <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
 
        
-            <div className="  rounded-lg p-2 max-w-lg md:max-w-4xl relative">
+            <div className="  rounded-lg p-2 max-w-lg md:max-w-6xl relative">
             
               <Image
-                height={300}
-                width={400}
+                height={700}
+                width={700}
                 src={course.credentials}
                 alt="Certificate"
-                className="w-full h-auto rounded-md"
+                className="w-full h-full rounded-md"
               />
             </div>
           </ModalWrapper> }
