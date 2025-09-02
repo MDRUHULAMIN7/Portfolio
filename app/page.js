@@ -17,7 +17,7 @@ const Home = async () => {
 
 
   return (
-    <>
+    <div className="">
       {/* Hero Section */}
       <SectionWrapper>
         <div
@@ -92,7 +92,7 @@ const Home = async () => {
         
       </SectionWrapper>
 
-    </>
+    </div>
   );
 };
 

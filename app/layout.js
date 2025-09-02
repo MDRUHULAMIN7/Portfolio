@@ -51,7 +51,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased `}
       >
         <Navbar loginPermission={loginPermission?.[0]} nav={true} links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
 

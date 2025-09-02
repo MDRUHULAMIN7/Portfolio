@@ -53,6 +53,7 @@ export default function TestimonialEditModal({ testimonial, isOpen, onClose, onU
               <input {...register("name")} placeholder="Name" className="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700" />
               <input {...register("role")} placeholder="Designation" className="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700" />
               <input {...register("company")} placeholder="Company" className="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700" />
+              <input {...register("rating")} placeholder="Rating" className="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700" />
               <input type="email" {...register("email")} placeholder="Email" className="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700" />
               <textarea {...register("review")} placeholder="Review" className="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700" rows={5} />
 
