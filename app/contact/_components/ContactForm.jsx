@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useForm } from "react-hook-form";
 import {
   Phone,
@@ -34,7 +35,7 @@ export default function ContactForm({links}) {
     <div className="flex flex-col md:flex-row  rounded-xl shadow-lg overflow-hidden">
       {/* Left - Contact Info */}
    
-      <div className=" w-full md:w-1/2 lg:w-[40%] bg-gray-700 text-white p-8   flex flex-col justify-between overflow-hidden">
+      <div className=" w-full md:w-1/2 lg:w-[40%] bg-[#203550]/70 text-white p-8   flex flex-col justify-between overflow-hidden">
    
         <div>
           <h2 className="text-xl font-bold mb-2">Contact Information</h2>
@@ -67,13 +68,15 @@ export default function ContactForm({links}) {
        
 
 
-      <Image
-        src="https://res.cloudinary.com/dpomtzref/image/upload/v1756670134/nextjs_uploads/myajvyjvtn9yiuyji3y7.png"
+      <div className="flex justify-end">
+        <Image
+        src="/svg/contact.svg"
         alt="contact"
-        width={400}
-        height={400}
+        width={300}
+        height={300}
         className=" mt-6 "
       />
+      </div>
 
       </div>
 
@@ -204,7 +207,7 @@ export default function ContactForm({links}) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-gray-700 text-white w-full md:w-fit px-6 py-3 rounded-md shadow hover:bg-[#0a1620] transition disabled:opacity-50"
+            className="bg-[#203550]/70 text-white w-full md:w-fit px-6 py-3 rounded-md shadow hover:bg-gray-700 transition disabled:opacity-50"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>

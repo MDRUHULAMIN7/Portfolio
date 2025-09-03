@@ -1,13 +1,13 @@
 
 
-const SectionWrapper = ({ children }) => {
+const SectionWrapper2 = ({ children }) => {
   return (
     <div className="relative w-full  ">
   
       <div
-        // className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        className="absolute inset-0 bg-[#203550] z-0"
-        // style={{ backgroundImage: "url('/bg3.jpg')" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        // className="absolute inset-0 bg-[#203550] z-0"
+        style={{ backgroundImage: "url('/bg3.jpg')" }}
       ></div>
 
       <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
@@ -20,4 +20,4 @@ const SectionWrapper = ({ children }) => {
   );
 };
 
-export default SectionWrapper;
+export default SectionWrapper2;

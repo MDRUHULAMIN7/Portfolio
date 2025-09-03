@@ -10,6 +10,7 @@ import Testimonials from "./testimonials/page";
 import Contact from "./contact/page";
 import Blog from "./blog/page";
 import Footer from "@/components/Footer";
+import SectionWrapper2 from "@/components/sectionWrapper/SectionWrapper2";
 
 
 const Home = async () => {
@@ -19,7 +20,7 @@ const Home = async () => {
   return (
     <div className="">
       {/* Hero Section */}
-      <SectionWrapper>
+      <SectionWrapper2>
         <div
           id="home"
           className="flex flex-col-reverse lg:flex-row items-center md:items-end w-full xl:gap-10 "
@@ -31,7 +32,7 @@ const Home = async () => {
             <Avatar avatarData={avatarData} />
           </div>
         </div>
-      </SectionWrapper>
+      </SectionWrapper2>
 
       {/* Services Section */}
       <SectionWrapper>

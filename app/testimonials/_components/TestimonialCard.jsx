@@ -18,18 +18,10 @@ const TestimonialCard = ({ testimonials }) => {
 
   return (
     <div className="relative w-full pb-2">
-      {/* Title + Nav (nav placed to the right of the title) */}
-      <div className="flex items-center justify-between px-4 md:px-12 mb-8">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold text-cyan-400"
-        >
-          What People Say
-        </motion.h2>
+    
+      <div className="flex items-center justify-end px-4 md:px-12 mb-8">
+        
 
-        {/* Custom nav buttons (inline right of title) */}
         <div className= " hidden md:flex items-center gap-3">
           <motion.button
             whileHover={{ scale: 1.08 }}
@@ -58,7 +50,7 @@ const TestimonialCard = ({ testimonials }) => {
         centeredSlides={true}
         loop={true}
         spaceBetween={30}
-        speed={700} // smooth transition speed
+        speed={400} 
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
@@ -87,7 +79,7 @@ const TestimonialCard = ({ testimonials }) => {
           
         }}
         onSwiper={(swiper) => {
-          // ensure external nav/pagination elements initialize correctly
+          
           try {
             swiper.params.navigation.prevEl = ".custom-prev";
             swiper.params.navigation.nextEl = ".custom-next";
@@ -106,7 +98,7 @@ const TestimonialCard = ({ testimonials }) => {
             <CardWrapper>
               <div className="flex flex-col md:flex-row items-center gap-6 p-6">
                 {/* Left Side - Avatar & Info */}
-                <div className="flex flex-col items-center md:items-start gap-3 w-full md:w-1/3">
+                <div className="flex flex-col items-center md:items-start gap-3 w-full md:w-1/3 ">
                   <div className="relative w-20 h-20 rounded-full overflow-hidden shadow-lg">
                     <Image
                       src={testimonial.avatar}
