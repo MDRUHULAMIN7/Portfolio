@@ -1,4 +1,4 @@
-import { getBlogs } from "@/queries/blog";
+import { getAllBlogs } from "@/queries/blog";
 import { dbConnect } from "@/service/mongoose";
 import BlogTable from "./BlogTable";
 
@@ -6,7 +6,7 @@ import BlogTable from "./BlogTable";
 
 export default async function BlogPage() {
     dbConnect()
-    const blogs = await getBlogs();
+    const blogs = await getAllBlogs();
   
   return (
     <div> 

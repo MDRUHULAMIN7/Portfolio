@@ -20,7 +20,7 @@ const Home = async () => {
   return (
     <div className="">
       {/* Hero Section */}
-      <SectionWrapper2>
+      <SectionWrapper>
         <div
           id="home"
           className="flex flex-col-reverse lg:flex-row items-center md:items-end w-full xl:gap-10 "
@@ -32,7 +32,7 @@ const Home = async () => {
             <Avatar avatarData={avatarData} />
           </div>
         </div>
-      </SectionWrapper2>
+      </SectionWrapper>
 
       {/* Services Section */}
       <SectionWrapper>

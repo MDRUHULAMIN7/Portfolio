@@ -3,11 +3,19 @@ import { replaceMongoIdInObject,replaceMongoIdInArray } from "@/lib/convertData"
 import { Blog } from "@/model/blog-model";
 
 // GET all blogs
-export async function getBlogs() {
+export async function getAllBlogs() {
 
   const blogData = await Blog?.find()?.lean();
   return replaceMongoIdInArray(blogData)
 }
+export async function getBlogs() {
+
+  const blogData = await Blog?.find({ status: "Published" })?.lean();
+  
+  
+  return replaceMongoIdInArray(blogData);
+}
+
 // GET only published blogs
 export async function getPublishedBlogs() {
   const blogs = await Blog.find({ status: "Published" }).lean();

@@ -53,7 +53,7 @@ export default function BlogTable({ blogsData }) {
         </button>
       </div>
 
-      {/* Table for md+ screens */}
+      {/* Table for big screens */}
       <div className="hidden md:block overflow-x-auto rounded-lg bg-gray-800 shadow-md">
         <table className="min-w-full divide-y divide-gray-700">
           <thead className="bg-gray-900">
