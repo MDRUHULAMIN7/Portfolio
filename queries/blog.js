@@ -1,12 +1,6 @@
 
-
 import { replaceMongoIdInObject,replaceMongoIdInArray } from "@/lib/convertData";
 import { Blog } from "@/model/blog-model";
-
-
-
-
-
 
 // GET all blogs
 export async function getBlogs() {
@@ -21,22 +15,22 @@ export async function getPublishedBlogs() {
 }
 
 // GET single blog by id
-// export async function getBlogById(id) {
-//   const blog = await Blog.findById(id).lean();
-//   return replaceMongoIdInObject(blog);
-// }
+export async function getBlogById(id) {
+  const blog = await Blog.findById(id).lean();
+  return replaceMongoIdInObject(blog);
+}
 
 // CREATE blog
 export async function createBlog(data) {
   const blog = new Blog(data);
   await blog.save();
-  return replaceMongoId(blog);
+  return replaceMongoIdInObject(blog);
 }
 
 // UPDATE blog
 export async function updateBlog(id, data) {
   const blog = await Blog.findByIdAndUpdate(id, data, { new: true }).lean();
-  return replaceMongoId(blog);
+  return replaceMongoIdInObject(blog);
 }
 
 // DELETE blog

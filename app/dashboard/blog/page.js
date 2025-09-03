@@ -9,7 +9,7 @@ export default async function BlogPage() {
     const blogs = await getBlogs();
   
   return (
-    <div> blog page
+    <div> 
 
         <BlogTable blogsData={blogs}></BlogTable>
     </div>

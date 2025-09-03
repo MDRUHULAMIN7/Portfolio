@@ -8,7 +8,7 @@ const blogSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
   status: { type: String, enum: ["Published", "Unpublished"], default: "Unpublished" },
   description: { type: String, required: true },
-  readingTime: { type: String },
+  readingTime: { type: Number },
 });
 
 export const Blog = mongoose?.models?.Blog || mongoose?.model("Blog", blogSchema);

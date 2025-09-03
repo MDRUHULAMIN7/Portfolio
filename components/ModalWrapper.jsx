@@ -6,7 +6,7 @@ export default function ModalWrapper({ isOpen, onClose, children }) {
 
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-lg bg-opacity-50 flex items-center justify-center p-4 z-99">
-      <div className="relative bg-[#1f2937] rounded-lg max-w-md w-full p-6 border border-gray-700">
+      <div className="relative bg-[#1f2937] rounded-lg  max-w-2xl w-full p-6 border border-gray-700">
         {/* Close Button - top right */}
         <button
           onClick={onClose}
