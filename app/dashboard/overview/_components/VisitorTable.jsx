@@ -8,6 +8,10 @@ export default function VisitorsTable({ visitorsData }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [selectedVisitor, setSelectedVisitor] = useState(null)
 
+  // New state for user agent modal
+  const [showUserAgentModal, setShowUserAgentModal] = useState(false)
+  const [selectedUserAgent, setSelectedUserAgent] = useState("")
+
   const handleDeleteClick = (visitor) => {
     setSelectedVisitor(visitor)
     setShowDeleteModal(true)
@@ -60,6 +64,17 @@ export default function VisitorsTable({ visitorsData }) {
       : userAgent.substring(0, maxLength) + "..."
   }
 
+  // New handlers for User Agent modal
+  const handleUserAgentHover = (userAgent) => {
+    setSelectedUserAgent(userAgent)
+    setShowUserAgentModal(true)
+  }
+
+  const handleUserAgentClose = () => {
+    setShowUserAgentModal(false)
+    setSelectedUserAgent("")
+  }
+
   return (
     <>
       <div className="overflow-hidden bg-gray-800 shadow-xl rounded-2xl border border-gray-700">
@@ -92,7 +107,10 @@ export default function VisitorsTable({ visitorsData }) {
                     {visitor.ip}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-400 max-w-xs">
-                    <span title={visitor.userAgent}>
+                    <span
+                      onClick={() => handleUserAgentHover(visitor.userAgent)}
+                      className="cursor-pointer "
+                    >
                       {truncateUserAgent(visitor.userAgent)}
                     </span>
                   </td>
@@ -138,7 +156,10 @@ export default function VisitorsTable({ visitorsData }) {
                   <Trash2 size={18} />
                 </button>
               </div>
-              <div className="text-xs text-gray-400 mt-2 break-words">
+              <div
+                onClick={() => handleUserAgentHover(visitor.userAgent)}
+                className="text-xs text-gray-400 mt-2 break-words cursor-pointer "
+              >
                 <span className="font-semibold text-gray-300">User Agent:</span>{" "}
                 {truncateUserAgent(visitor.userAgent, 80)}
               </div>
@@ -160,6 +181,28 @@ export default function VisitorsTable({ visitorsData }) {
         onCancel={handleCancelDelete}
         visitorInfo={selectedVisitor}
       />
+
+      {/* User Agent Modal */}
+      {showUserAgentModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-xl max-w-lg w-10/12 p-6">
+            <h3 className="text-lg font-semibold text-gray-100 mb-4">
+              User Agent
+            </h3>
+            <p className="text-sm text-gray-300 break-words">
+              {selectedUserAgent}
+            </p>
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={handleUserAgentClose}
+                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-200 rounded-lg transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

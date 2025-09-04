@@ -24,7 +24,7 @@ export default function ExperienceCard({ experiences }) {
                 />
               </div>
               <div>
-                <h2 className="font-bold sm:text-lg text-gray-900 dark:text-white">
+                <h2 className="font-bold text-left sm:text-lg text-gray-900 dark:text-white">
                   {exp.designation}
                 </h2>
                 <p className="text-gray-500 dark:text-gray-300 text-sm">
@@ -39,7 +39,7 @@ export default function ExperienceCard({ experiences }) {
                 className={`inline-block px-3 py-1 text-xs rounded-full font-medium mb-3
                   ${
                     exp.status === "Ongoing"
-                      ? "bg-cyan-400 text-white"
+                      ? "bg-cyan-400 text-gray-800"
                       : exp.status === "Completed"
                       ? "bg-green-400 text-white"
                       : "bg-red-400 text-white"

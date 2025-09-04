@@ -1,10 +1,12 @@
 // import { auth } from "@/auth";
 
 // import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 import Services from "../services/page";
 import Overviewpage from "./overview/page";
 
 import { dbConnect } from "@/service/mongoose";
+import { redirect } from "next/navigation";
 
 
 async function dashboardPage() {
@@ -14,21 +16,21 @@ async function dashboardPage() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/visitor-data`);
 
 const data = await response?.json();
+ const session = await auth();
 
-console.log(data);
 
 //   // Check if the user is authenticated and has the correct role
 
    
-// if (
-//   !session
-//    ||
-//   session.user?.email !== 'ruhulthisis@gmail.com'
-//   //   ||
-//   // session.user?.role !== 'admin'
-// ) {
-//   redirect("/login");
-// }
+if (
+  !session
+   ||
+  session.user?.email !== 'ruhulthisis@gmail.com'
+  //   ||
+  // session.user?.role !== 'admin'
+) {
+  redirect("/login");
+}
   return (
 
 <div className=" ">   
@@ -36,7 +38,7 @@ console.log(data);
 
       <Overviewpage></Overviewpage>
     </div>
-    <Services></Services>
+   
   </div>
   )
 }

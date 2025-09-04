@@ -10,7 +10,7 @@ import Testimonials from "./testimonials/page";
 import Contact from "./contact/page";
 import Blog from "./blog/page";
 import Footer from "@/components/Footer";
-import SectionWrapper2 from "@/components/sectionWrapper/SectionWrapper2";
+
 
 
 const Home = async () => {
