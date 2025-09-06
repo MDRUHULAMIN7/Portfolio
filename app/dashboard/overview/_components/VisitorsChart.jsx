@@ -237,7 +237,7 @@ export default function VisitorsChart() {
       <div className="container mx-auto md:px-4 px-2">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-400 via-gray-500 to-gray-700 bg-clip-text text-transparent mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-400 via-gray-500 to-gray-700 bg-clip-text text-transparent pb-4">
               Visitor Analytics
             </h1>
             <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
