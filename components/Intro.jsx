@@ -26,7 +26,7 @@ export default function Intro({ onFinish }) {
       {[...Array(20)].map((_, i) => (
     <span
       key={i}
-      className="star"
+      className="star2"
       style={{
         top: `${Math.random() * 100}%`,
         left: `${Math.random() * 100}%`,

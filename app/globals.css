@@ -296,7 +296,7 @@ button{
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-.star {
+.star2 {
   position: absolute;
   color: #03b8ff;
   font-size: 20px; /* adjust size */

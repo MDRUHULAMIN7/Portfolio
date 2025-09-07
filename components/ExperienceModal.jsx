@@ -17,15 +17,14 @@ export default function ExperienceModal({ exp, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center mx-2">
-      {/* Overlay */}
+
       <div
         className="absolute inset-0 bg-black/50"
         onClick={onClose}
       ></div>
 
-      {/* Modal content */}
       <div className="relative bg-gray-900 rounded-xl shadow-lg max-w-3xl h-[80vh] w-full sm:p-6 p-3 noscrollbar overflow-y-auto">
-        {/* Close button */}
+       
         <div className="flex justify-end">
           <button
             onClick={onClose}
@@ -38,7 +37,7 @@ export default function ExperienceModal({ exp, onClose }) {
         <h2 className="text-xl font-bold text-left text-white mb-2">
           {exp.designation} @ {exp.company}
         </h2>
-        <p className="text-sm text-gray-400 mb-4">
+        <p className="text-sm text-gray-400 mb-4 text-left">
           {exp.type} ·{" "}
           {new Date(exp.startDate).toLocaleDateString()} –{" "}
           {exp.endDate
@@ -50,7 +49,7 @@ export default function ExperienceModal({ exp, onClose }) {
           {exp.opinion}
         </p>
 
-        {/* Images */}
+    
         <div className="w-[100%] md:w-[80%] h-72 md:h-80">
           <p className="text-lg text-left text-cyan-400 mb-3">Memories..</p>
           {exp.images?.length > 0 && (

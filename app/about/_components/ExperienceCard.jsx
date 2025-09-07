@@ -12,7 +12,7 @@ export default function ExperienceCard({ experiences }) {
       <div className="grid grid-cols-1 md:grid-cols-2">
         {experiences.map((exp) => (
           <CardWrapper key={exp.id} className="relative">
-            {/* Header */}
+         
             <div className="flex items-center gap-x-2 sm:gap-4 p-2 sm:p-6 border-b border-gray-200 dark:border-gray-700">
               <div className="w-20 h-20 rounded-full border-2 border-gray-500 shadow-md overflow-hidden flex-shrink-0">
                 <Image
@@ -27,7 +27,7 @@ export default function ExperienceCard({ experiences }) {
                 <h2 className="font-bold text-left sm:text-lg text-gray-900 dark:text-white">
                   {exp.designation}
                 </h2>
-                <p className="text-gray-500 dark:text-gray-300 text-sm">
+                <p className="text-left text-gray-500 dark:text-gray-300 text-sm">
                   {exp.company} · <span className="italic">{exp.type}</span>
                 </p>
               </div>
