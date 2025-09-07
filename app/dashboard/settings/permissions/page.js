@@ -7,7 +7,7 @@ export default async function Permissions() {
   const permissions = await getPermissions();
 
   return (
-    <div className="p-6">
+    <div className="">
       <Heading title1="Permissions" title2="Manage user permissions" />
       <PermissionsTableClient permissionsData={permissions} />
     </div>

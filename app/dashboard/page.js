@@ -1,10 +1,6 @@
-// import { auth } from "@/auth";
 
-// import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import Services from "../services/page";
 import Overviewpage from "./overview/page";
-
 import { dbConnect } from "@/service/mongoose";
 import { redirect } from "next/navigation";
 
@@ -18,9 +14,6 @@ async function dashboardPage() {
 const data = await response?.json();
  const session = await auth();
 
-
-//   // Check if the user is authenticated and has the correct role
-
    
 if (
   !session
@@ -33,13 +26,10 @@ if (
 }
   return (
 
-<div className=" ">   
-    <div className=" ">
-
+  
       <Overviewpage></Overviewpage>
-    </div>
-   
-  </div>
+    
+
   )
 }
 

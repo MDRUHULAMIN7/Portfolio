@@ -1,11 +1,11 @@
 import Heading from "@/components/Heading";
-import Image from "next/image";
+
 import SkillCard from "./SkillCard";
 import { getSkills } from "@/queries/skill";
 
 const Skills = async () => {
   const data = await getSkills();
-
+ 
   return (
     <div className="pt-16 ">
       <Heading title1={"My Qualifications"} title2={"Skills & Tools"} />

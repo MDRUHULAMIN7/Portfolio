@@ -59,7 +59,7 @@ export default function LoginButton({loginPermission}) {
             <div className="absolute left-6 sm:-left-30   bottom-7 sm:-bottom-24   mt-2 w-40 bg-[#0d1622] text-white shadow-lg rounded-md z-50 overflow-hidden">
               {isAdmin && (
                 <Link
-                  href="/dashboard"
+                  href="/dashboard/overview"
                   className="block px-4 py-2 hover:text-cyan-400 transition"
                 >
                   Dashboard

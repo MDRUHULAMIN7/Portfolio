@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 
 const SkillCard = ({skill,index}) => {
+ 
       const cardRef = useRef(null);
   const iconRef = useRef(null);
   const [transform, setTransform] = useState('none');
@@ -81,8 +82,8 @@ const SkillCard = ({skill,index}) => {
       alt={`${skill.title} icon`}
       className="w-18 h-18 object-contain mx-auto mb-4 drop-shadow-md"
     />
-    <h3 className={`${skill.color} text-center text-xl font-semibold tracking-wider uppercase`}>
-      {skill.title}
+    <h3 style={{ color: skill?.color }}  className={`${skill?.color} text-center text-xl font-semibold tracking-wider uppercase`}>
+      {skill?.title}
     </h3>
   </div>
 
