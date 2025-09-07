@@ -244,3 +244,29 @@ button{
 .fil0 {
   fill: var(--color);
 }
+
+
+/* customize scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1622; 
+
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #00c3ff;
+  border-radius: 10px;
+  cursor: pointer;
+ 
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #25b3df; 
+}

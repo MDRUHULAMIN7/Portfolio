@@ -1,5 +1,5 @@
 "use client";
-import { Menu, X, LayoutDashboard, PlusSquare, BarChart2, Settings, SquareChartGantt, TextQuote, ChevronDown, ChevronUp, ShieldPlus, ImageUp, ImageUpIcon, RefreshCcwDot, BookOpenText, BriefcaseMedical, CodeXml, Library } from "lucide-react";
+import { Menu, X, LayoutDashboard, PlusSquare, BarChart2, Settings, SquareChartGantt, TextQuote, ChevronDown, ChevronUp, ShieldPlus, ImageUpIcon, RefreshCcwDot, BookOpenText, BriefcaseMedical, CodeXml, Library, LinkIcon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -19,7 +19,7 @@ export function DashboardSidebar() {
     { href: "/dashboard/addexperience", label: "Add Experience", icon: <BriefcaseMedical className="w-5 h-5" /> },
     { href: "/dashboard/skills", label: "Skills", icon: <CodeXml className="w-5 h-5" /> },
     { href: "/dashboard/course", label: "Course", icon: <Library className="w-5 h-5" /> },
-    { href: "/dashboard/socials", label: "Socials", icon: <Library className="w-5 h-5" /> },
+    { href: "/dashboard/socials", label: "Socials", icon: <LinkIcon className="w-5 h-5" /> },
     { href: "/dashboard/blog", label: "Blog", icon: <BookOpenText className="w-5 h-5" /> },
 
   ];
