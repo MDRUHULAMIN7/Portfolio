@@ -18,7 +18,7 @@ const Home = async () => {
 
 
   return (
-    <div className="">
+    <div className="max-w-[1880px] mx-auto">
       {/* Hero Section */}
       <SectionWrapper>
         <div

@@ -7,7 +7,7 @@ import Socials from "./Socials/Socials";
 export default async function Footer() {
   const links =await getSocialLinks()
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 rounded-t-xl">
+    <footer className="bg-gray-900 text-gray-300 py-10 rounded-t-xl mx-2">
       <div className=" px-6 flex flex-col md:flex-row justify-between items-start md:items-center">
         
    

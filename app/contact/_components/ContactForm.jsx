@@ -35,7 +35,7 @@ export default function ContactForm({links}) {
     <div className="flex flex-col md:flex-row  rounded-xl shadow-lg overflow-hidden">
       {/* Left - Contact Info */}
    
-      <div className=" w-full md:w-1/2 lg:w-[40%] bg-[#203550]/70 text-white p-8   flex flex-col justify-between overflow-hidden">
+      <div className=" w-full md:w-1/2 lg:w-[40%] bg-gray-800/60 text-white p-8   flex flex-col justify-between overflow-hidden">
    
         <div>
           <h2 className="text-xl font-bold mb-2">Contact Information</h2>

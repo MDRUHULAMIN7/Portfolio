@@ -61,7 +61,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className=" relative z-10  px-4  "
+      className=" relative z-10  px-3  "
     >
       <Heading title1="Latest Service" title2="Services I Provide" />
 
