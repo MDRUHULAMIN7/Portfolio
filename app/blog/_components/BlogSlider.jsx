@@ -18,7 +18,7 @@ export default function BlogSlider({ blogs }) {
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={20}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        autoplay={{ delay: 7000, disableOnInteraction: false }}
         pagination={{
           clickable: true,
           bulletClass: "swiper-pagination-bullet !bg-cyan-400 opacity-50",

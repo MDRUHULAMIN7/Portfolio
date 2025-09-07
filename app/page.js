@@ -10,6 +10,7 @@ import Testimonials from "./testimonials/page";
 import Contact from "./contact/page";
 import Blog from "./blog/page";
 import Footer from "@/components/Footer";
+import HeroContainer from "@/components/HeroContainer";
 
 
 
@@ -18,21 +19,10 @@ const Home = async () => {
 
 
   return (
-    <div className="max-w-[1880px] mx-auto">
+    <div className="max-w-[1920px] mx-auto">
+
       {/* Hero Section */}
-      <SectionWrapper>
-        <div
-          id="home"
-          className="flex flex-col-reverse lg:flex-row items-center md:items-end w-full xl:gap-10 "
-        >
-       
-          
-          <LeftSection avatarData={avatarData?.[0]} />
-          <div className="w-full xl:w-2/5 lg:1/2">
-            <Avatar avatarData={avatarData} />
-          </div>
-        </div>
-      </SectionWrapper>
+      <HeroContainer avatarData={avatarData}></HeroContainer>
 
       {/* Services Section */}
       <SectionWrapper>
