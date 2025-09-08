@@ -67,7 +67,7 @@ useEffect(() => {
             className="flex items-center justify-between p-6 bg-gray-900 rounded-2xl shadow hover:shadow-lg transition"
           >
             <div>
-              <h2 className="text-sm text-gray-500">{card.title}</h2>
+              <h2 className="text-sm text-gray-400">{card.title}</h2>
               <p className="text-2xl font-bold">{card.value}</p>
             </div>
             {card.icon}
@@ -83,10 +83,10 @@ useEffect(() => {
         {currentWork ? (
           <div className="mt-3">
             <p className="text-lg font-semibold">{currentWork.designation}</p>
-            <p className="text-gray-600 ">{currentWork.company}</p>
-            <span className="px-3 py-1 text-xs bg-green-100 text-green-600 rounded-full">
+           <div className="flex justify-start gap-x-2 items-center mt-2"> <p className="text-gray-400 ">{currentWork.company}</p>
+            <p className="px-3 py-1 text-xs border border-gray-700 text-green-600 rounded-full">
               {currentWork.status}
-            </span>
+            </p></div>
           </div>
         ) : (
           <p className="text-gray-500 mt-2">No ongoing workplace found</p>

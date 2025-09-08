@@ -31,8 +31,8 @@ export default function BlogCard({ blog, setOpen, setSelectedBlog }) {
           <p className="text-xs text-gray-400">
             {new Date(blog.createdAt).toDateString()}
           </p>
-          <p className="text-sm text-gray-500 line-clamp-4">
-            {blog.description}
+          <p className="text-sm text-gray-500 line-clamp-4"   dangerouslySetInnerHTML={{ __html: blog.description }}>
+        
           </p>
           <span className="block text-cyan-400 text-xs">Read More...</span>
         </div>

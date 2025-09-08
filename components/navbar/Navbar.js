@@ -5,10 +5,9 @@ import { HiOutlineX } from "react-icons/hi";
 import { VscThreeBars } from "react-icons/vsc";
 import Logo from "../Logo/Logo";
 import Navs from "../Navs/Navs";
-
-
 import Sidebar from "../Sidebar/Sidebar";
 import Socials from "../Socials/Socials";
+import LoadingUi from "../loadings/LoadingUi";
 
 
 function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermission }) {
@@ -52,23 +51,13 @@ function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermissi
   
   if (isLoading) {
     return (
-      <div className="fixed top-0 left-0 px-10 xl:px-16 w-full h-16 z-50">
-        <div className="relative flex justify-between items-center h-full">
-          <div className="animate-pulse bg-gray-300 h-8 w-32 rounded"></div>
-          <div className="hidden xl:flex gap-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="animate-pulse bg-gray-300 h-6 w-16 rounded"></div>
-            ))}
-          </div>
-          <div className="animate-pulse bg-gray-300 h-8 w-8 rounded"></div>
-        </div>
-      </div>
+      <LoadingUi />
     );
   }
 
   return (
     <>
-      <div className="fixed top-0 left-0 px-10 xl:px-16 w-full h-16 z-50">
+      <div className="fixed top-0 left-0 px-5 sm:px-10 xl:px-16 w-full h-16 z-50">
         <div
           className={`absolute inset-0 transition-all duration-500 ease-in-out pointer-events-none transform ${
             scrolled

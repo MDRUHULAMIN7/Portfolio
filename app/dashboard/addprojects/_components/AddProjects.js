@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import {
   Plus,
   X,
-  Upload,
   Calendar,
-  DollarSign,
   Globe,
   Github,
   Tag,
@@ -15,6 +13,7 @@ import {
   Image,
   Layers,
 } from "lucide-react";
+import { Editor } from '@tinymce/tinymce-react';
 
 export const AddProjects = () => {
   const {
@@ -217,14 +216,27 @@ export const AddProjects = () => {
                 <label className="label">
                   Project Description <span className="text-red-400">*</span>
                 </label>
-                <textarea
-                  {...register("description")}
-                  value={watchDescription}
-                  onChange={(e) => setValue("description", e.target.value)}
-                  rows="6"
-                  className="input-field resize-none"
-                  placeholder="Describe your project in detail (minimum 200 characters)"
-                />
+              <Editor
+
+      apiKey={process.env.NEXT_PUBLIC_EDITOR_API_KEY}
+  value={watchDescription}
+  init={{
+    height: 300,
+    menubar: false,
+    plugins: [
+      'advlist autolink lists link image charmap preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table paste code help wordcount'
+    ],
+    toolbar:
+      'undo redo | formatselect | bold italic backcolor | \
+      alignleft aligncenter alignright alignjustify | \
+      bullist numlist outdent indent | removeformat | help',
+    content_style: 'body { font-family:Arial,sans-serif; font-size:14px; color:#fff; background-color:#1f2937; }'
+  }}
+  onEditorChange={(content) => setValue("description", content)}
+/>
+
                 <div className="flex justify-between items-center mt-2">
                   <span
                     className={`text-sm ${

@@ -70,7 +70,7 @@ const SkillCard = ({skill,index}) => {
        <div
   key={skill.id}
   data-aos="zoom-in"
-  data-aos-delay={index * 100}
+  data-aos-delay={index * 50}
   className={`relative   transition-all duration-300 `}
 >
  

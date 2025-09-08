@@ -31,9 +31,10 @@ export default function ProjectDetail({ project }) {
           <h1 className="text-4xl text-left  md:text-5xl font-bold text-white mb-4 leading-tight">
             {project.title}
           </h1>
-          <p className="text-lg text-left text-gray-300 leading-relaxed max-w-4xl">
-            {project.description}
-          </p>
+         <p
+  className="text-lg text-left text-gray-300 leading-relaxed max-w-4xl"
+  dangerouslySetInnerHTML={{ __html: project.description }}
+/>
         </div>
 
         {/* Hashtags */}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import ModalWrapper from "@/components/ModalWrapper";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
+import { Editor } from "@tinymce/tinymce-react";
 
 export default function EditBlogModal({ isOpen, blog, onClose, onUpdate }) {
   const [formData, setFormData] = useState(blog || {});
@@ -13,6 +14,10 @@ export default function EditBlogModal({ isOpen, blog, onClose, onUpdate }) {
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleDescriptionChange = (content) => {
+    setFormData((prev) => ({ ...prev, description: content }));
   };
 
   const handleSubmit = async () => {
@@ -47,18 +52,18 @@ export default function EditBlogModal({ isOpen, blog, onClose, onUpdate }) {
       <h2 className="text-xl font-bold text-white mb-4">Edit Blog</h2>
 
       <div className="space-y-3">
-    <p>
-  Created at :{" "}
-  {formData?.createdAt
-    ? new Date(formData.createdAt).toLocaleString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    : "N/A"}
-</p>
+        <p>
+          Created at:{" "}
+          {formData?.createdAt
+            ? new Date(formData.createdAt).toLocaleString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })
+            : "N/A"}
+        </p>
 
         <input
           type="text"
@@ -76,7 +81,7 @@ export default function EditBlogModal({ isOpen, blog, onClose, onUpdate }) {
           placeholder="Blog Topic"
           className="input-field"
         />
-        <Image 
+        <Image
           src={formData.banner || ""}
           alt={formData.title || ""}
           width={300}
@@ -100,13 +105,27 @@ export default function EditBlogModal({ isOpen, blog, onClose, onUpdate }) {
           className="input-field"
         />
 
-        <textarea
-          name="description"
+        {/* TinyMCE Editor for description */}
+        <Editor
+         
+        apiKey={process.env.NEXT_PUBLIC_EDITOR_API_KEY}
           value={formData.description || ""}
-          onChange={handleChange}
-          placeholder="Blog Description"
-          rows={5}
-          className="input-field"
+          init={{
+            height: 250,
+            menubar: false,
+            plugins: [
+              "advlist autolink lists link image charmap preview anchor",
+              "searchreplace visualblocks code fullscreen",
+              "insertdatetime media table paste code help wordcount",
+            ],
+            toolbar:
+              "undo redo | formatselect | bold italic backcolor | " +
+              "alignleft aligncenter alignright alignjustify | " +
+              "bullist numlist outdent indent | removeformat | help",
+            content_style:
+              "body { font-family:Arial,sans-serif; font-size:14px; color:#fff; background-color:#203550; }",
+          }}
+          onEditorChange={handleDescriptionChange}
         />
       </div>
 

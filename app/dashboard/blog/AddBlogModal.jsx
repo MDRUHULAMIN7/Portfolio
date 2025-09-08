@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import ModalWrapper from "@/components/ModalWrapper";
 import { toast } from "react-hot-toast";
+import { Editor } from "@tinymce/tinymce-react";
 
 export default function AddBlogModal({ isOpen, onClose, onAdd }) {
   const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ export default function AddBlogModal({ isOpen, onClose, onAdd }) {
   const [isSaving, setIsSaving] = useState(false);
   const [isValid, setIsValid] = useState(false);
 
-  // ✅ hooks must always run, no matter what
+  // ✅ hooks must always run
   useEffect(() => {
     const { banner, title, topic, description } = formData;
     setIsValid(
@@ -26,6 +27,10 @@ export default function AddBlogModal({ isOpen, onClose, onAdd }) {
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleDescriptionChange = (content) => {
+    setFormData((prev) => ({ ...prev, description: content }));
   };
 
   const handleSubmit = async () => {
@@ -62,7 +67,6 @@ export default function AddBlogModal({ isOpen, onClose, onAdd }) {
     }
   };
 
-  // ✅ render conditionally here
   if (!isOpen) return null;
 
   return (
@@ -100,14 +104,26 @@ export default function AddBlogModal({ isOpen, onClose, onAdd }) {
           required
         />
 
-        <textarea
-          name="description"
+        {/* TinyMCE Editor */}
+        <Editor
+        apiKey={process.env.NEXT_PUBLIC_EDITOR_API_KEY}
           value={formData.description}
-          onChange={handleChange}
-          placeholder="Blog Description"
-          rows={5}
-          className="w-full p-2 rounded border border-gray-600 bg-gray-800 text-white"
-          required
+          init={{
+            height: 250,
+            menubar: false,
+            plugins: [
+              "advlist autolink lists link image charmap preview anchor",
+              "searchreplace visualblocks code fullscreen",
+              "insertdatetime media table paste code help wordcount",
+            ],
+            toolbar:
+              "undo redo | formatselect | bold italic backcolor | \
+              alignleft aligncenter alignright alignjustify | \
+              bullist numlist outdent indent | removeformat | help",
+            content_style:
+              "body { font-family:Arial,sans-serif; font-size:14px; color:#fff; background-color:#1f2937; }",
+          }}
+          onEditorChange={handleDescriptionChange}
         />
 
         <input

@@ -67,7 +67,7 @@ const ServiceCard = ({ title, description, icon, index }) => {
       {/* Content */}
       <div
         data-aos="zoom-in"
-        data-aos-delay="200"
+        data-aos-delay="100"
         data-aos-duration="800"
         data-aos-easing="ease-in-out"
         className="relative z-10"

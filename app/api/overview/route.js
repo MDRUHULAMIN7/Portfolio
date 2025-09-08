@@ -1,5 +1,5 @@
 import { Visitor } from "@/model/visitor-model";
-import { Testimonial } from "@/model/testimonial-model"; // ✅ using Testimonial (not Review)
+import { Testimonial } from "@/model/testimonial-model";
 import { User } from "@/model/user-model";
 import { Blog } from "@/model/blog-model";
 import { Project } from "@/model/project-model";
@@ -21,19 +21,19 @@ export async function GET() {
       totalBlogs,
       totalProjects,
       totalSkills,
-      currentWork
+      currentWork,
     ] = await Promise.all([
       Visitor.countDocuments(),
       Testimonial.countDocuments({ status: "approved" }), // only approved
       Testimonial.aggregate([
         { $match: { status: "approved" } },
-        { $group: { _id: null, avg: { $avg: "$rating" } } }
+        { $group: { _id: null, avg: { $avg: "$rating" } } },
       ]),
       User.countDocuments(),
       Blog.countDocuments({ status: "Published" }),
       Project.countDocuments(),
       Skill.countDocuments(),
-      Experience.findOne({ status: "Ongoing" }).lean()
+      Experience.findOne({ status: "Ongoing" }).lean(),
     ]);
 
     return NextResponse.json({
@@ -50,10 +50,13 @@ export async function GET() {
             company: currentWork.company,
             status: currentWork.status,
           }
-        : null
+        : null,
     });
   } catch (err) {
     console.error("Overview API Error:", err);
-    return NextResponse.json({ error: "Failed to load overview" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to load overview" },
+      { status: 500 }
+    );
   }
 }

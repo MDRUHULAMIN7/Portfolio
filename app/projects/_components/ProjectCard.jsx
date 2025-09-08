@@ -34,8 +34,8 @@ export default function ProjectCard({ project }) {
               <AccentData>{project.meta.type}</AccentData>
             </div>
 
-            <p className="text-gray-400 text-left text-sm mb-4 line-clamp-4 leading-relaxed">
-              {project?.description}
+            <p className="text-gray-400 text-left text-sm mb-4 line-clamp-4 leading-relaxed" dangerouslySetInnerHTML={{ __html: project.description }}>
+             
             </p>
 
             <div className="flex flex-wrap gap-2 text-xs text-gray-300">
