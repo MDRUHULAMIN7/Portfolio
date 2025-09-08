@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Edit3 } from "lucide-react";
 import ModalWrapper from "@/components/ModalWrapper";
-import EditSocialModal from "./EditSocialMOdal";
+import EditSocialModal from "./EditSocialModal";
 
 
 export default function SocialsTable({ socials: initialSocials }) {
