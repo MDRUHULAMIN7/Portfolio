@@ -107,7 +107,7 @@ const ReviewAdd = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 mx-4 sm:mx-0 pt-10 sm:pt-0 "
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 mx-4 sm:mx-0 pt-10 sm:pt-0 p-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

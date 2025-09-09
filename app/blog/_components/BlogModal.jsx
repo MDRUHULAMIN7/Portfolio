@@ -23,7 +23,7 @@ export default function BlogModal({ open, onClose, blog }) {
   return (
     <ModalWrapper isOpen={open} onClose={onClose}>
     
-      <h2 className="text-xl font-semibold mb-4">{blog.title}</h2>
+     <div className="p-2 sm:p-4 pt-6"> <h2 className="text-xl font-semibold mb-4 mt-4 ">{blog.title}</h2>
 
    
       <div className="relative w-full h-60 ">
@@ -50,7 +50,7 @@ export default function BlogModal({ open, onClose, blog }) {
         {new Date(blog.createdAt).toDateString()}
       </p>
 
-      <p className="mb-3 text-gray-300"   dangerouslySetInnerHTML={{ __html: blog.description }}></p>
+      <p className="mb-3 text-gray-300"   dangerouslySetInnerHTML={{ __html: blog.description }}></p></div>
 
     </ModalWrapper>
   );

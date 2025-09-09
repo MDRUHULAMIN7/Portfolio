@@ -35,7 +35,7 @@ export default function ModalWrapper({ isOpen, onClose, children }) {
       onClick={onClose} 
     >
       <div
-        className="relative bg-[#1f2937] rounded-lg overflow-y-auto noscrollbar max-w-2xl lg:max-w-5xl max-h-[80vh] md:max-h-[90vh] w-full p-6 border border-gray-700"
+        className="relative bg-[#1f2937] rounded-lg overflow-y-auto noscrollbar max-w-2xl lg:max-w-5xl max-h-[80vh] md:max-h-[90vh] w-full sm:p-6 border border-gray-700"
         onClick={(e) => e.stopPropagation()} 
       >
         {/* Close Button */}

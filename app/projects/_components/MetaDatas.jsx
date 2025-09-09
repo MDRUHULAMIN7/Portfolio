@@ -10,8 +10,8 @@ import { useState } from "react";
 export default function MetaDatas({ meta, links,projectId }) {
     const [loves, setLoves] = useState(meta.loves || 0);
   return (
-    <div className="space-y-3 text-left">
-    <div className="space-y-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="sm:space-y-3 text-left">
+    <div className="sm:space-y-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-4">
       <p>
         <strong>Type:</strong> {meta.type ?? "N/A"}
       </p>
