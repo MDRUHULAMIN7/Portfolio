@@ -155,8 +155,8 @@ const ReviewAdd = () => {
                 {rating === 0 && <p className="text-red-400 text-sm">Rating is required</p>}
 
                 <input
-                  {...register("company", { required: "Company is required" })}
-                  placeholder="Company"
+                  {...register("company" )}
+                  placeholder="Company (Optional)"
                   className={inputClass}
                 />
                 {errors.company && <p className="text-red-400 text-sm">{errors.company.message}</p>}
@@ -200,11 +200,12 @@ const ReviewAdd = () => {
                 <textarea
                   {...register("review", {
                     required: "Review text is required",
-                    minLength: { value: 150, message: "Review must be at least 150 characters" },
+                    minLength: { value: 200, message: "Review must be at least 200 characters" },
+                    maxLength: { value: 350, message: "Review must be at most 350 characters" },
                   })}
-                  placeholder="Review Text"
+                  placeholder="Please Give a short review (200-350 characters)"
                   className={`${inputClass} shadow-inner`}
-                  rows={3}
+                  rows={4}
                 />
                 {errors.review && <p className="text-red-400 text-sm">{errors.review.message}</p>}
 
