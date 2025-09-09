@@ -5,6 +5,7 @@ import CardWrapper from '@/components/CardWrapper';
 import { Heart } from 'lucide-react';
 import { useState } from 'react';
 import ProjectDetailModal from './ProjectDetailModal';
+import Image from 'next/image';
 
 export default function ProjectCard({ project }) {
   const [detailsModal, setDetailsModal] = useState(false);
@@ -19,10 +20,12 @@ export default function ProjectCard({ project }) {
         <CardWrapper hoverGradient="rgba(59,130,246,0.2)" className="p-4">
          
           <div className="relative w-full h-56 overflow-hidden rounded-2xl">
-            <img
+            <Image
               src={project.images[0]}
+              width={300}
+              height={400}
               alt={project.title}
-              className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
+              className="w-full h-full object-container transform group-hover:scale-110 transition duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-2xl" />
           </div>
