@@ -1,13 +1,30 @@
 "use client";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import LoadingUi from "./loadings/LoadingUi";
+
+
+
 
 export default function ModalWrapper({ isOpen, onClose, children }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 1000); // 1 second
+
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-lg bg-opacity-50 flex items-center justify-center p-2 md:p-4 z-99">
-      <div className="relative bg-[#1f2937] rounded-lg overflow-y-auto noscrollbar max-w-2xl max-h-[80vh] md:max-h-[90vh] w-full p-6 border border-gray-700">
-     
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-lg bg-opacity-50 flex items-center justify-center p-2 md:p-4 z-[99] ">
+      <div className="relative bg-[#1f2937] rounded-lg overflow-y-auto noscrollbar max-w-2xl lg:max-w-5xl max-h-[80vh] md:max-h-[90vh] w-full p-6 border border-gray-700">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors duration-200"
@@ -16,7 +33,7 @@ export default function ModalWrapper({ isOpen, onClose, children }) {
         </button>
 
         <div onClick={(e) => e.stopPropagation()}>
-          {children}
+          {isLoading ? <LoadingUi /> : children}
         </div>
       </div>
     </div>

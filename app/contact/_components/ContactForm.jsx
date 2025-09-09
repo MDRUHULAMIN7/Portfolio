@@ -35,7 +35,7 @@ export default function ContactForm({links}) {
     <div className="flex flex-col md:flex-row  rounded-xl shadow-lg overflow-hidden">
       {/* Left - Contact Info */}
    
-      <div className=" w-full md:w-1/2 lg:w-[40%] bg-gray-800/60 text-white p-8   flex flex-col justify-between overflow-hidden">
+      <div className=" w-full md:w-1/2 lg:w-[40%] bg-gray-900 text-white p-8   flex flex-col justify-between overflow-hidden">
    
         <div>
           <h2 className="text-xl font-bold mb-2">Contact Information</h2>
@@ -79,13 +79,13 @@ export default function ContactForm({links}) {
       </div>
 
       </div>
-
+ <div className="border-t border-dotted border-cyan-300 md:border-t-0 md:border-l hidden md:block w-px bg-transparent"></div>
       {/* Right - Form */}
       <div className=" w-full md:w-1/2 lg:w-[60%] bg-gray-900">
      
 
         <form onSubmit={handleSubmit(onSubmit)} className="p-8 space-y-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <label className="label">First Name</label>
               <input
@@ -120,7 +120,7 @@ export default function ContactForm({links}) {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <label className="label">Email</label>
               <input
