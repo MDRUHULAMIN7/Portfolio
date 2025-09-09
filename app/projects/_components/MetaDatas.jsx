@@ -11,7 +11,7 @@ export default function MetaDatas({ meta, links,projectId }) {
     const [loves, setLoves] = useState(meta.loves || 0);
   return (
     <div className="space-y-3 text-left">
-  
+    <div className="space-y-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <p>
         <strong>Type:</strong> {meta.type ?? "N/A"}
       </p>
@@ -30,7 +30,7 @@ export default function MetaDatas({ meta, links,projectId }) {
       <p>
         <strong>Loves:</strong> {loves ?? 0}
       </p>
-
+</div>
       {/* Action buttons */}
      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
   
