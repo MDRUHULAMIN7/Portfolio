@@ -17,21 +17,21 @@ export default function ProjectCard({ project }) {
         onClick={() => setDetailsModal(true)}
         className="block  cursor-pointer"
       >
-        <CardWrapper hoverGradient="rgba(59,130,246,0.2)" className="p-4">
+        <CardWrapper hoverGradient="rgba(59,130,246,0.2)" className="">
          
-          <div className="relative w-full h-56 overflow-hidden rounded-2xl">
+          <div className="w-full h-56 rounded-t-md">
             <Image
               src={project.images[0]}
-              width={300}
-              height={400}
+              height={500}
+              width={500}
               alt={project.title}
-              className="w-full h-full object-container transform group-hover:scale-110 transition duration-700"
+              className=" object-cover h-full transform group-hover:scale-105 transition duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-2xl" />
+   
           </div>
 
           
-          <div className="flex flex-col flex-grow pt-4 px-1">
+          <div className="flex flex-col flex-grow p-4">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-xl font-bold text-white">{project?.title}</h2>
               <AccentData>{project.meta.type}</AccentData>
