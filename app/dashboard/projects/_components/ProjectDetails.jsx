@@ -7,7 +7,7 @@ const ProjectDetails = ({ project }) => {
 
   return (
     <div>
-           <div className="flex flex-col md:flex-row gap-6 md:items-center py-6">
+           <div className="flex flex-col  gap-6 py-6">
        
        <ProjectSlide images={project?.images} />
 
@@ -25,8 +25,8 @@ const ProjectDetails = ({ project }) => {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
             {project.title}
           </h1>
-          <p className="text-lg text-gray-300 leading-relaxed max-w-4xl">
-            {project.description}
+          <p className="text-lg text-gray-300 leading-relaxed max-w-4xl" dangerouslySetInnerHTML={{ __html: project.description }}>
+      
           </p>
         </div>
 

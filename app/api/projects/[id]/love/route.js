@@ -12,7 +12,7 @@ export async function POST(req, { params }) {
     console.log("POST req",id,loves);
 
 
-    const project = await Project.findById('68ab7f1b824feeeb54bf6990');
+    const project = await Project.findById(id);
     if (!project) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 });
     }

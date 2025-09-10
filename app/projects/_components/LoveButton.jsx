@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 
 export default function LoveButton({ projectId, initialLoves, loves, setLoves}) {
-  const [loved, setLoved] = useState(false);
+const [loved, setLoved] = useState(false);
 
 
 
@@ -30,12 +30,13 @@ export default function LoveButton({ projectId, initialLoves, loves, setLoves}) 
     }
 
     // Send the current loves count to API
-    await fetch(`/api/projects/68ab7f1b824feeeb54bf6990/love`, {
+    await fetch(`/api/projects/${projectId}/love`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ loves: newLoves }), 
     });
   };
+
 
   return (
     <button

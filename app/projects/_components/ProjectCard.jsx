@@ -15,20 +15,19 @@ export default function ProjectCard({ project }) {
       {/* Card */}
       <div
         onClick={() => setDetailsModal(true)}
-        className="block  cursor-pointer"
+        className=" cursor-pointer"
       >
         <CardWrapper hoverGradient="rgba(59,130,246,0.2)" className="">
          
-          <div className="w-full h-56 rounded-t-md">
-            <Image
-              src={project.images[0]}
-              height={500}
-              width={500}
-              alt={project.title}
-              className=" object-cover h-full transform group-hover:scale-105 transition duration-700"
-            />
-   
-          </div>
+       
+  <div className="relative w-full h-52">
+          <Image
+            src={project.images[0]}
+            alt={project.title}
+            fill
+            className="object-cover rounded-t-md group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
 
           
           <div className="flex flex-col flex-grow p-4">
