@@ -45,7 +45,7 @@ export default function BlogModal({ open, onClose, blog }) {
        <Clock8 size={16}/> {blog.readingTime} min 
       
       </p>
-      <p className="text-base text-gray-200 mb-2">
+      <p className="text-base text-gray-400 mb-2">
      
         {new Date(blog.createdAt).toDateString()}
       </p>

@@ -11,7 +11,7 @@ const blogs = await getBlogs()
 
     return(
 
-        <div className="pt-16 px-3 ">
+        <div className="pt-16 pb-10 px-3 ">
             <Heading title1="Blogs" title2="Read my latest articles" />
   
 

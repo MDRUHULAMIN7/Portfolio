@@ -11,7 +11,7 @@ export default function ModalWrapper({ isOpen, onClose, children }) {
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 500);
+      }, 300);
 
       return () => clearTimeout(timer);
     }
@@ -31,7 +31,7 @@ export default function ModalWrapper({ isOpen, onClose, children }) {
 
   return (
     <div
-      className="fixed inset-0 bg-black/30 backdrop-blur-lg bg-opacity-50 flex items-center justify-center p-2 md:p-4 z-[99]"
+      className="fixed inset-0 bg-black/30 backdrop-blur-lg bg-opacity-50 flex items-center justify-center p-2   md:p-4 z-[99]"
       onClick={onClose} 
     >
       <div

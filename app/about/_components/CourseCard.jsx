@@ -43,7 +43,7 @@ const CourseCard = ({ course }) => {
           {course.credentials && (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="mt-4 inline-block bg-[#2c3e57] hover:bg-cyan-600 cursor-pointer text-white px-4 py-2 rounded-md transition duration-300"
+              className="mt-4  bg-[#2c3e57] hover:bg-cyan-600 flex justify-start cursor-pointer text-white px-4 py-2 rounded-md transition duration-300"
             >
               See Credential
             </button>
@@ -58,14 +58,14 @@ const CourseCard = ({ course }) => {
         { course?.credentials && <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
 
        
-            <div className="  rounded-lg p-2 max-w-lg md:max-w-6xl relative">
+            <div className="  rounded-lg p-2 mt-8 sm:mt-1 max-w-lg md:max-w-6xl relative">
             
               <Image
                 height={700}
                 width={700}
                 src={course.credentials}
                 alt="Certificate"
-                className="w-full h-full rounded-md"
+                className="w-full h-full rounded-md "
               />
             </div>
           </ModalWrapper> }
