@@ -56,7 +56,7 @@ function Avatar({ avatarData }) {
     <div className="relative w-full h-[80vh] sm:h-[100vh] pt-10 2xl:pt-0 sm:pt-0 overflow-hidden">
       <div
         className="absolute top-0  w-full  -right-6 md:-right-4"
-        style={{ zIndex: -1, transform: "scaleX(-1)" }}
+        style={{ zIndex: 1, transform: "scaleX(-1)" }}
       >
         <Image
           src={"/bg-blue.svg"}
@@ -125,3 +125,4 @@ function Avatar({ avatarData }) {
 }
 
 export default Avatar;
+

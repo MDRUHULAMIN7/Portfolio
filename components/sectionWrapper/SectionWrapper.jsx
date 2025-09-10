@@ -7,7 +7,7 @@ const SectionWrapper = ({ children }) => {
       <div
         // className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         className="absolute inset-0 bg-[#203550] z-0"
-        // style={{ backgroundImage: "url('/bg3.jpg')" }}
+        // style={{ backgroundImage: "url('/theme_frame.jpeg')" }}
       ></div>
 
       <div className="absolute inset-0 bg-black/90 opacity-70 z-0"></div>
