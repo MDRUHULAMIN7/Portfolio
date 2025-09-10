@@ -17,7 +17,7 @@ export const GET = async (request) => {
     const user = await getUserByEmail(session.user.email);
 
     // Cookies access
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const allCookies = cookieStore.getAll();
 
     const lastAccessLocal = user?.lastAccess ;

@@ -53,7 +53,7 @@ export default function CourseTable({ courses: initialCourses }) {
           </thead>
           <tbody>
             {courses.map((course) => (
-              <tr key={course._id} className="border-b border-gray-700 p-2">
+              <tr key={course.id} className="border-b border-gray-700 p-2">
                 <td className="p-2">{course.title}</td>
                 <td className="p-2">{course.from}</td>
                 <td className="p-2">{course.time}</td>

@@ -1,17 +1,55 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Trash2 } from "lucide-react"
 import DeleteConfirmModal from "./DeleteConfirmModal"
 
-export default function VisitorsTable({ visitorsData }) {
-  const [visitors, setVisitors] = useState(visitorsData)
+export default function VisitorsTable() {
+  const [loading, setLoading] = useState(false)
+  const [visitors, setVisitors] = useState([])
+  const [totalVisitors, setTotalVisitors] = useState(0)
+  const [page, setPage] = useState(1)
+  const [limit] = useState(5) 
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [selectedVisitor, setSelectedVisitor] = useState(null)
-
-  // New state for user agent modal
   const [showUserAgentModal, setShowUserAgentModal] = useState(false)
   const [selectedUserAgent, setSelectedUserAgent] = useState("")
 
+useEffect(() => {
+  const fetchVisitors = async () => {
+    setLoading(true)
+    try {
+      console.log(`Fetching: /api/limit-visitor?page=${page}&limit=${limit}`);
+      const res = await fetch(`/api/limit-visitor?page=${page}&limit=${limit}`);
+      
+      // Check if response is ok
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      
+      const data = await res.json();
+      console.log("API Response:", data);
+      setVisitors(data.visitors || []);
+      setTotalVisitors(data.total || 0);
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch visitors", error);
+        setLoading(false);
+    }
+  }
+  fetchVisitors()
+}, [page, limit])
+
+  const totalPages = Math.ceil(totalVisitors / limit)
+
+  const handlePrevPage = () => {
+    if (page > 1) setPage(page - 1)
+  }
+
+  const handleNextPage = () => {
+    if (page < totalPages) setPage(page + 1)
+  }
+
+  // Delete functionality
   const handleDeleteClick = (visitor) => {
     setSelectedVisitor(visitor)
     setShowDeleteModal(true)
@@ -47,6 +85,18 @@ export default function VisitorsTable({ visitorsData }) {
     setSelectedVisitor(null)
   }
 
+  // User agent modal handlers
+  const handleUserAgentHover = (userAgent) => {
+    setSelectedUserAgent(userAgent)
+    setShowUserAgentModal(true)
+  }
+
+  const handleUserAgentClose = () => {
+    setShowUserAgentModal(false)
+    setSelectedUserAgent("")
+  }
+
+  // Utility functions
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString("en-US", {
       year: "numeric",
@@ -64,20 +114,9 @@ export default function VisitorsTable({ visitorsData }) {
       : userAgent.substring(0, maxLength) + "..."
   }
 
-  // New handlers for User Agent modal
-  const handleUserAgentHover = (userAgent) => {
-    setSelectedUserAgent(userAgent)
-    setShowUserAgentModal(true)
-  }
-
-  const handleUserAgentClose = () => {
-    setShowUserAgentModal(false)
-    setSelectedUserAgent("")
-  }
-
   return (
     <>
-      <div className="overflow-hidden bg-gray-800 shadow-xl rounded-2xl border border-gray-700">
+    { !loading ?  <div className="overflow-hidden bg-gray-800 shadow-xl rounded-2xl border border-gray-700">
         {/* Desktop Table */}
         <div className="hidden md:block">
           <table className="min-w-full divide-y divide-gray-700">
@@ -133,7 +172,7 @@ export default function VisitorsTable({ visitorsData }) {
         </div>
 
         {/* Mobile Cards */}
-        <div className="md:hidden">
+        <div className="md:hidden p-2">
           {visitors.map((visitor) => (
             <div
               key={visitor.id}
@@ -172,8 +211,29 @@ export default function VisitorsTable({ visitorsData }) {
             No visitors found
           </div>
         )}
-      </div>
 
+        {/* Pagination Controls */}
+        <div className="flex justify-center items-center mt-4 gap-4">
+          <button
+            onClick={handlePrevPage}
+            disabled={page === 1}
+            className="px-3 py-1 bg-gray-700 hover:bg-gray-600 text-gray-200 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Prev
+          </button>
+          <span className="text-gray-300">
+            Page {page} of {totalPages}
+          </span>
+          <button
+            onClick={handleNextPage}
+            disabled={page === totalPages}
+            className="px-3 py-1 bg-gray-700 hover:bg-gray-600 text-gray-200 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Next
+          </button>
+        </div>
+      </div> : <div className="bg-gray-800 shadow-xl rounded-2xl border border-gray-700 mx-auto p-4"> <h1 className="text-center text-2xl">Visitors Data Loading ...</h1> </div>
+}
       {/* Delete Modal */}
       <DeleteConfirmModal
         isOpen={showDeleteModal}

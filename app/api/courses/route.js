@@ -23,8 +23,13 @@ export async function POST(req) {
     
     const newCourse = new Course(body);
     console.log(newCourse, 'new course');
-    await newCourse.save();
-    return NextResponse.json(newCourse, { status: 201 });
+    const savedCourse = await newCourse.save();
+    
+    // Convert the MongoDB document to a plain JavaScript object and handle the _id
+    const courseObj = savedCourse.toObject();
+    courseObj._id = courseObj._id.toString();
+    
+    return NextResponse.json(courseObj, { status: 201 });
   } catch (error) {
     console.error('Error adding course:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });

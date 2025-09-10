@@ -56,7 +56,7 @@ useEffect(() => {
   ];
 
   return (
-    <div className="p-8">
+    <div className="md:p-8">
       
 
       {/* Overview Cards */}
