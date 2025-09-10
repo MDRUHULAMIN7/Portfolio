@@ -70,11 +70,11 @@ export default function ContactForm({links}) {
 
       <div className="flex justify-end">
         <Image
-        src="/svg/contact.svg"
+        src="/svg/ruhul.svg"
         alt="contact"
         width={300}
         height={300}
-        className=" mt-6 "
+        className="  "
       />
       </div>
 
