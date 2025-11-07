@@ -20,12 +20,19 @@ export default function ProjectCard({ project }) {
         <CardWrapper hoverGradient="rgba(59,130,246,0.2)" className="">
          
        
-  <div className="relative w-full h-52">
+<div className="relative w-full  overflow-hidden rounded-t-md bg-gray-800">
           <Image
             src={project.images[0]}
-            alt={project.title}
-            fill
-            className="object-cover rounded-t-md group-hover:scale-105 transition-transform duration-300"
+            alt={`${project.title} project thumbnail`}
+            height={700}
+            width={500}
+            // fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1124px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            quality={100}
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
           />
         </div>
 
