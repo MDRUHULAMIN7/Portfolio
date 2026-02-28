@@ -7,7 +7,7 @@
 
 // const { id } = params;
 // const projectsData = await getProjectById(id);
-// // console.log(projectsData)
+
 //  const project = JSON.parse(JSON.stringify(projectsData));
 
 //   return (

@@ -12,8 +12,10 @@ import {
   Star,
   Image,
   Layers,
+  ImageIcon,
 } from "lucide-react";
 import { Editor } from '@tinymce/tinymce-react';
+import toast from "react-hot-toast";
 
 export const AddProjects = () => {
   const {
@@ -135,7 +137,6 @@ export const AddProjects = () => {
     watchLinks.some((l) => !l.live );
 
   const onSubmit = async (data) => {
-    console.log(data, "Submitting...");
     try {
       setIsLoading(true);
       const response = await fetch("/api/projects", {
@@ -146,13 +147,14 @@ export const AddProjects = () => {
       const result = await response.json();
       setIsLoading(false);
       if (result.success) {
-        console.log("Project saved:", result.project);
+        reset();
+        toast.success("Project saved successfully!");
       } else {
-        console.error("Failed to save project:", result.error);
+       toast.error("Failed to save project:", result.error);
       }
     } catch (err) {
       setIsLoading(false);
-      console.error("Error:", err);
+      toast.error("Error:", err);
     }
   };
 
@@ -426,7 +428,7 @@ export const AddProjects = () => {
                 <div className="space-y-3">
                   {imageFields.map((field, index) => (
                     <div key={field.id} className="relative">
-                      <Image className="w-4 h-4 text-gray-400 absolute left-3 top-4" />
+                      <ImageIcon  className="w-4 h-4 text-gray-400 absolute left-3 top-4" />
                       <input
                         {...register(`images.${index}`)}
                         className="input-field"

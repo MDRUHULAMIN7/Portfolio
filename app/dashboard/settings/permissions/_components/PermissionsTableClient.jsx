@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 export default function PermissionsTableClient({ permissionsData }) {
   const [permissions, setPermissions] = useState(permissionsData);
   const [loadingField, setLoadingField] = useState(null);
-  console.log(permissions)
+
 
   const togglePermission = async (permId, field) => {
     try {

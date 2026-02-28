@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { Trash2 } from "lucide-react"
 import DeleteConfirmModal from "./DeleteConfirmModal"
+import toast from "react-hot-toast"
 
 export default function VisitorsTable() {
   const [loading, setLoading] = useState(false)
@@ -18,7 +19,6 @@ useEffect(() => {
   const fetchVisitors = async () => {
     setLoading(true)
     try {
-      console.log(`Fetching: /api/limit-visitor?page=${page}&limit=${limit}`);
       const res = await fetch(`/api/limit-visitor?page=${page}&limit=${limit}`);
       
       // Check if response is ok
@@ -27,12 +27,11 @@ useEffect(() => {
       }
       
       const data = await res.json();
-      console.log("API Response:", data);
       setVisitors(data.visitors || []);
       setTotalVisitors(data.total || 0);
       setLoading(false);
     } catch (error) {
-      console.error("Failed to fetch visitors", error);
+      toast.error("Failed to fetch visitors", error);
         setLoading(false);
     }
   }
@@ -63,12 +62,12 @@ useEffect(() => {
 
       if (response.ok) {
         setVisitors((prev) => prev.filter((v) => v.id !== visitorId))
-        console.log("Visitor deleted successfully")
+        toast.success("Visitor deleted successfully")
       } else {
-        console.error("Failed to delete visitor")
+        toast.error("Failed to delete visitor")
       }
     } catch (error) {
-      console.error("Error deleting visitor:", error)
+     toast.error("Error deleting visitor:", error)
     }
   }
 

@@ -19,7 +19,6 @@ export async function PATCH(req, context) {
     }
 
     const { status } = await req.json();
- console.log(status)
     if (!["publish", "unpublish"].includes(status)) {
       return NextResponse.json(
         { success: false, message: "Invalid status value" },

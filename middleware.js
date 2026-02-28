@@ -27,18 +27,14 @@ export async function middleware(req) {
   }
 
    const pathname = req.nextUrl.pathname;
-    console.log("Path:", pathname);
-
 
   const protectedRoutes = ["/dashboard"];
   const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
-console.log("Is Protected Route:", isProtectedRoute);
 
   
   const token =
     req.cookies.get("authjs.session-token")?.value ||
     req.cookies.get("__Secure-authjs.session-token")?.value;
-  console.log("Token:", token);
 
   if (isProtectedRoute && !token) {
 

@@ -23,28 +23,6 @@ export const GET = async (request) => {
     const lastAccessLocal = user?.lastAccess ;
     const loginTimeLocal = user?.loginTime ;
 
-    // console.log("User data:", user);
-
-    // if (lastAccessLocal) {
-    //   console.log(
-    //     "Last Access Date:",
-    //     lastAccessLocal.toLocaleDateString(),
-    //     "Time:",
-    //     lastAccessLocal.toLocaleTimeString()
-    //   );
-    // }
-
-    // if (loginTimeLocal) {
-    //   console.log(
-    //     "Login Time Date:",
-    //     loginTimeLocal.toLocaleDateString(),
-    //     "Time:",
-    //     loginTimeLocal.toLocaleTimeString()
-    //   );
-    // }
-
-    // console.log("Cookies data:", allCookies);
-
     
 
 

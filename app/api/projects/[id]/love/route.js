@@ -4,12 +4,10 @@ import { NextResponse } from "next/server";
 
 export async function POST(req, { params }) {
   await dbConnect();
-  console.log("POST req", req);
 
   try {
     const { id } = params;
     const { loves } = await req.json();
-    console.log("POST req",id,loves);
 
 
     const project = await Project.findById(id);

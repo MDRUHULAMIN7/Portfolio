@@ -22,7 +22,6 @@ export default function ContactForm({links}) {
 
   const onSubmit = async (data) => {
     try {
-      console.log("Form data:", data);
       await new Promise((res) => setTimeout(res, 1500));
       toast.success("Message sent successfully!");
       reset();

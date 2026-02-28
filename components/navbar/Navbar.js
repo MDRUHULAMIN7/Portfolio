@@ -14,7 +14,6 @@ function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermissi
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animateSidebar, setAnimateSidebar] = useState(false);
-  console.log(loginPermission)
 
   useEffect(() => {
     const handleScroll = () => {

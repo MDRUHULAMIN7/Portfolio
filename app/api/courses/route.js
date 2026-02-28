@@ -22,7 +22,6 @@ export async function POST(req) {
     }
     
     const newCourse = new Course(body);
-    console.log(newCourse, 'new course');
     const savedCourse = await newCourse.save();
     
     // Convert the MongoDB document to a plain JavaScript object and handle the _id

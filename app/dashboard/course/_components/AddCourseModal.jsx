@@ -11,7 +11,6 @@ export default function AddCourseModal({ onClose, onSuccess }) {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data, "form data");
     try {
       const res = await fetch("/api/courses", {
         method: "POST",
