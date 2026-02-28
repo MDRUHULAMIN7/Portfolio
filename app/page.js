@@ -2,6 +2,7 @@ import Avatar from "@/components/avatar/Avatar";
 import LeftSection from "@/components/leftSection/LeftSection";
 
 import HeroServer from "@/components/HeroServer";
+import { Suspense } from "react";
 import About from "./about/page";
 import SectionWrapper from "@/components/sectionWrapper/SectionWrapper";
 import Services from "./services/page";
@@ -12,74 +13,66 @@ import Blog from "./blog/page";
 import Footer from "@/components/Footer";
 import HeroContainer from "@/components/HeroContainer";
 
-
-
 const Home = async () => {
   return (
     <div className="max-w-[1920px] mx-auto">
-
       {/* Hero Section */}
       <HeroServer />
 
       {/* Services Section */}
       <SectionWrapper>
         <section id="services" className="">
-         <Services></Services>
+          <Services></Services>
         </section>
       </SectionWrapper>
 
       {/* About Section */}
       <SectionWrapper>
         <section id="about" className="">
-          <About />
+          <Suspense fallback={null}>
+            <About />
+          </Suspense>
         </section>
       </SectionWrapper>
 
       {/* Projects Section */}
       <SectionWrapper>
         <section id="projects" className="">
-
-          <Projects/>
+          <Suspense fallback={null}>
+            <Projects />
+          </Suspense>
         </section>
       </SectionWrapper>
-     
 
       {/* Testimonials Section */}
       <SectionWrapper>
         <section id="testimonials" className="">
-
-
-          <Testimonials/>
+          <Suspense fallback={null}>
+            <Testimonials />
+          </Suspense>
         </section>
       </SectionWrapper>
 
       {/* Blog Section */}
       <SectionWrapper>
-        <section id="blog" className="" >
-
-
-
-          <Blog/>
+        <section id="blog" className="">
+          <Suspense fallback={null}>
+            <Blog />
+          </Suspense>
         </section>
       </SectionWrapper>
 
       {/* Contact Section */}
       <SectionWrapper>
         <section id="contact" className="">
-
-
-
-          <Contact/>
+          <Suspense fallback={null}>
+            <Contact />
+          </Suspense>
         </section>
       </SectionWrapper>
       <SectionWrapper>
-       
-
-        <Footer/>
-
-        
+        <Footer />
       </SectionWrapper>
-
     </div>
   );
 };

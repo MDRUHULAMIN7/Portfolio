@@ -1,6 +1,11 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import {
+  Navigation,
+  EffectCoverflow,
+  Autoplay,
+  Pagination,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
@@ -26,12 +31,12 @@ function truncateReview(text, wordsPerLine = 10, maxLines = 5) {
     if (lineCount === maxLines) {
       const lastStop = Math.max(
         lineWords.lastIndexOf("."),
-        lineWords.lastIndexOf("!")
+        lineWords.lastIndexOf("!"),
       );
       if (lastStop !== -1) {
         truncated = truncated.slice(
           0,
-          truncated.length - (lineWords.length - lastStop) + 1
+          truncated.length - (lineWords.length - lastStop) + 1,
         );
       }
       break;
@@ -73,12 +78,25 @@ const TestimonialCard = ({ testimonials }) => {
       </div>
 
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, EffectCoverflow, Autoplay, Pagination]}
+        effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
         loop={true}
-        spaceBetween={24}
-        speed={320}
+        spaceBetween={30}
+        speed={400}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+        }}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 140,
+          modifier: 2,
+          slideShadows: false,
+        }}
         navigation={{
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
@@ -109,7 +127,7 @@ const TestimonialCard = ({ testimonials }) => {
           // Memoize truncated review to avoid recalculation
           const shortReview = useMemo(
             () => truncateReview(testimonial.review),
-            [testimonial.review]
+            [testimonial.review],
           );
 
           return (
@@ -163,7 +181,7 @@ const TestimonialCard = ({ testimonials }) => {
                           >
                             <AiFillStar size={20} />
                           </motion.span>
-                        )
+                        ),
                       )}
                     </div>
                   </div>
@@ -184,7 +202,9 @@ const TestimonialCard = ({ testimonials }) => {
           width: 10px;
           height: 10px;
           opacity: 1;
-          transition: transform 220ms ease, background 220ms ease;
+          transition:
+            transform 220ms ease,
+            background 220ms ease;
         }
         .custom-pagination .swiper-pagination-bullet-active {
           background: #06b6d4;

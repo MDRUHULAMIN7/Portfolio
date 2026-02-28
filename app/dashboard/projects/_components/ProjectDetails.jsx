@@ -1,5 +1,5 @@
 import MetaDatas from "@/app/projects/_components/MetaDatas"
-import ProjectSlide from "@/app/projects/_components/ProjectSlide"
+import ProjectSlideLazy from "@/app/projects/_components/ProjectSlideLazy"
 
 
 
@@ -9,7 +9,7 @@ const ProjectDetails = ({ project }) => {
     <div>
            <div className="flex flex-col  gap-6 py-6">
        
-       <ProjectSlide images={project?.images} />
+       <ProjectSlideLazy images={project?.images} />
 
 
        

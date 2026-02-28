@@ -2,11 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-const TestimonialCardDynamic = dynamic(() => import("./TestimonialCard"), {
+const ProjectSlideDynamic = dynamic(() => import("./ProjectSlide"), {
   ssr: false,
 });
 
-export default function TestimonialClientWrapper({ testimonials }) {
+export default function ProjectSlideLazy({ images }) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
@@ -18,15 +18,11 @@ export default function TestimonialClientWrapper({ testimonials }) {
           io.disconnect();
         }
       },
-      { rootMargin: "200px" },
+      { rootMargin: "200px" }
     );
     if (ref.current) io.observe(ref.current);
     return () => io.disconnect();
   }, []);
 
-  return (
-    <div ref={ref}>
-      {inView ? <TestimonialCardDynamic testimonials={testimonials} /> : null}
-    </div>
-  );
+  return <div ref={ref}>{inView ? <ProjectSlideDynamic images={images} /> : null}</div>;
 }
