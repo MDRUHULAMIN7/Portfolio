@@ -2,16 +2,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Luckiest_Guy } from "next/font/google";
 import "./globals.css";
 
-import { dbConnect } from "@/service/mongoose";
-
-import Navbar from "@/components/navbar/Navbar";
-import { getAvatar } from "@/queries/avatar";
-import { getSocialLinks } from "@/queries/social";
-import { auth } from "@/auth";
 import { Loader2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
-import { getPermissions } from "@/queries/permissions";
 import ScrollToTop from "@/components/ScrollToTop";
+import NavbarServer from "@/components/navbar/NavbarServer";
 
 
 const geistSans = Geist({
@@ -37,23 +31,12 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  await dbConnect();
-   const avatarData = await getAvatar();
-   const links =await getSocialLinks()
-      const session = await auth();
-
-
- if (!links || !avatarData) return <Loader2 />;
-
-   const loginPermission = await getPermissions();
-
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased bg-[#203550]`}
       >
-        <Navbar loginPermission={loginPermission?.[0]} nav={true} links={links?.[0]} session={session}  avatarData={avatarData?.[0]}></Navbar>
+        <NavbarServer fallback={<Loader2 />} />
 
        
  {children}
@@ -77,5 +60,4 @@ export default async function RootLayout({ children }) {
     </html>
   )
 
- 
 }

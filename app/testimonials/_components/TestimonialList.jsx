@@ -1,26 +1,12 @@
-
 import { getTestimonials } from "@/queries/testimonial";
-import TestimonialCard from "./TestimonialCard";
-
-
-
-
+import TestimonialClientWrapper from "./TestimonialClientWrapper";
 
 export default async function TestimonialList() {
-
-     
-  
-    const testimonials = await getTestimonials();
+  const testimonials = await getTestimonials();
 
   return (
-   <div className="">
-
-    <TestimonialCard testimonials={testimonials} />
-    
-
-
-
-   
-   </div>
+    <div className="">
+      <TestimonialClientWrapper testimonials={testimonials} />
+    </div>
   );
 }

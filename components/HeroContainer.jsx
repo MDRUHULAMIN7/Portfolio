@@ -1,18 +1,18 @@
 'use client';
 
-import { useState } from "react";
-import Intro from "./Intro";
+import { useState, useMemo } from "react";
 import SectionWrapper from "./sectionWrapper/SectionWrapper";
 import LeftSection from "./leftSection/LeftSection";
 import Avatar from "./avatar/Avatar";
 
 export default function HeroContainer({ avatarData }) {
-  const [introFinished, setIntroFinished] = useState(false);
+  const enableIntro = useMemo(() => process.env.NEXT_PUBLIC_ENABLE_INTRO === "true", []);
+  const [introFinished, setIntroFinished] = useState(!enableIntro);
 
   return (
     <>
-      
-      {!introFinished && <Intro onFinish={() => setIntroFinished(true)} />}
+      {/* Intro disabled by default; can be enabled via env */}
+      {!introFinished && enableIntro && <></>}
 
  
       {introFinished && (

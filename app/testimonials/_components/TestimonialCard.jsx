@@ -1,11 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  EffectCoverflow,
-  Autoplay,
-  Pagination,
-} from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
@@ -78,25 +73,12 @@ const TestimonialCard = ({ testimonials }) => {
       </div>
 
       <Swiper
-        modules={[Navigation, EffectCoverflow, Autoplay, Pagination]}
-        effect="coverflow"
+        modules={[Navigation, Pagination]}
         grabCursor={true}
         centeredSlides={true}
         loop={true}
-        spaceBetween={30}
-        speed={400}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: false,
-        }}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 140,
-          modifier: 2,
-          slideShadows: false,
-        }}
+        spaceBetween={24}
+        speed={320}
         navigation={{
           nextEl: ".custom-next",
           prevEl: ".custom-prev",

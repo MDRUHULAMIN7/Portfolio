@@ -1,7 +1,7 @@
 import Avatar from "@/components/avatar/Avatar";
 import LeftSection from "@/components/leftSection/LeftSection";
 
-import { getAvatar } from "@/queries/avatar";
+import HeroServer from "@/components/HeroServer";
 import About from "./about/page";
 import SectionWrapper from "@/components/sectionWrapper/SectionWrapper";
 import Services from "./services/page";
@@ -15,14 +15,11 @@ import HeroContainer from "@/components/HeroContainer";
 
 
 const Home = async () => {
-  const avatarData = await getAvatar();
-
-
   return (
     <div className="max-w-[1920px] mx-auto">
 
       {/* Hero Section */}
-      <HeroContainer avatarData={avatarData}></HeroContainer>
+      <HeroServer />
 
       {/* Services Section */}
       <SectionWrapper>

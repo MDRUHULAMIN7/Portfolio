@@ -15,104 +15,109 @@ export default function Intro({ onFinish }) {
   useEffect(() => {
     if (!show) return;
 
-    // === Progress Bar Simulation ===
     let progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + 2; // ~2% every tick
+        return prev + 5;
       });
-    }, 40); // fill ~2 seconds total
+    }, 80);
 
-    // === THREE.js Setup ===
-    const canvas = canvasRef.current;
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      antialias: true,
-      alpha: true,
-    });
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x0a0a0a, 1);
-
-    sceneRef.current = scene;
-    rendererRef.current = renderer;
-    cameraRef.current = camera;
-
-    camera.position.z = 5;
-
-    // Create particles
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 600;
-    const positions = new Float32Array(particlesCount * 3);
-    const colors = new Float32Array(particlesCount * 3);
-
-    for (let i = 0; i < particlesCount * 3; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 15;
-      positions[i + 1] = (Math.random() - 0.5) * 15;
-      positions[i + 2] = (Math.random() - 0.5) * 15;
-
-      colors[i] = 0.2 + Math.random() * 0.3;
-      colors[i + 1] = 0.4 + Math.random() * 0.4;
-      colors[i + 2] = 0.8 + Math.random() * 0.2;
-    }
-
-    particlesGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(positions, 3)
-    );
-    particlesGeometry.setAttribute(
-      "color",
-      new THREE.BufferAttribute(colors, 3)
-    );
-
-    const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.012,
-      sizeAttenuation: true,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.7,
-      blending: THREE.AdditiveBlending,
-    });
-
-    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-    scene.add(particles);
-    particlesRef.current = particles;
-
-    // Animation loop
-    const clock = new THREE.Clock();
-    const animate = () => {
-      if (!show) return;
-      const time = clock.getElapsedTime();
-      if (particlesRef.current) {
-        particlesRef.current.rotation.y = time * 0.08;
-        particlesRef.current.rotation.x = time * 0.03;
+    const idleStart = (cb) => {
+      if (typeof window.requestIdleCallback === "function") {
+        window.requestIdleCallback(cb, { timeout: 500 });
+      } else {
+        setTimeout(cb, 200);
       }
-      camera.position.x = Math.sin(time * 0.3) * 0.08;
-      camera.position.y = Math.cos(time * 0.3) * 0.04;
-      camera.lookAt(0, 0, 0);
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
     };
-    animate();
 
-    // Auto finish in ~2s
+    idleStart(() => {
+      const canvas = canvasRef.current;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+      });
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      renderer.setClearColor(0x0a0a0a, 1);
+
+      sceneRef.current = scene;
+      rendererRef.current = renderer;
+      cameraRef.current = camera;
+
+      camera.position.z = 5;
+
+      const particlesGeometry = new THREE.BufferGeometry();
+      const particlesCount = 200;
+      const positions = new Float32Array(particlesCount * 3);
+      const colors = new Float32Array(particlesCount * 3);
+
+      for (let i = 0; i < particlesCount * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 15;
+        positions[i + 1] = (Math.random() - 0.5) * 15;
+        positions[i + 2] = (Math.random() - 0.5) * 15;
+
+        colors[i] = 0.2 + Math.random() * 0.3;
+        colors[i + 1] = 0.4 + Math.random() * 0.4;
+        colors[i + 2] = 0.8 + Math.random() * 0.2;
+      }
+
+      particlesGeometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(positions, 3)
+      );
+      particlesGeometry.setAttribute(
+        "color",
+        new THREE.BufferAttribute(colors, 3)
+      );
+
+      const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.012,
+        sizeAttenuation: true,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.7,
+        blending: THREE.AdditiveBlending,
+      });
+
+      const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particles);
+      particlesRef.current = particles;
+
+      const clock = new THREE.Clock();
+      const animate = () => {
+        if (!show) return;
+        const time = clock.getElapsedTime();
+        if (particlesRef.current) {
+          particlesRef.current.rotation.y = time * 0.06;
+          particlesRef.current.rotation.x = time * 0.02;
+        }
+        camera.position.x = Math.sin(time * 0.25) * 0.06;
+        camera.position.y = Math.cos(time * 0.25) * 0.03;
+        camera.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      };
+      animate();
+    });
+
     const timer = setTimeout(() => {
       if (window.gsap) {
         window.gsap.to(".intro-container", {
           opacity: 0,
           scale: 0.95,
-          duration: 0.6,
+          duration: 0.4,
           ease: "power2.inOut",
           onComplete: () => {
             setShow(false);
@@ -123,14 +128,17 @@ export default function Intro({ onFinish }) {
         setShow(false);
         onFinish && onFinish();
       }
-    }, 2000);
+    }, 800);
 
     return () => {
       clearInterval(progressInterval);
       clearTimeout(timer);
+      const renderer = rendererRef.current;
       if (renderer) renderer.dispose();
-      particlesGeometry.dispose();
-      particlesMaterial.dispose();
+      const particles = particlesRef.current;
+      if (particles) {
+        particles.geometry.dispose();
+      }
     };
   }, [show, onFinish]);
 

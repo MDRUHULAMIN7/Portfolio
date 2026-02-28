@@ -5,14 +5,20 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
 
-export default function LoginButton({loginPermission}) {
+export default function LoginButton({loginPermission, session}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(session?.user ? { 
+    id: session.user.id, 
+    email: session.user.email, 
+    image: session.user.image, 
+    role: session.user.role 
+  } : null);
 
   const isAdmin = loggedInUser?.role === "admin";
 
   
   useEffect(() => {
+    if (session?.user) return;
     const fetchLoggedInUser = async () => {
       try {
         const response = await fetch("/api/me", { cache: "no-store" });
@@ -27,9 +33,8 @@ export default function LoginButton({loginPermission}) {
         setLoggedInUser(null);
       }
     };
-
     fetchLoggedInUser();
-  }, []);
+  }, [session]);
 
   const handleSignOut = () =>
     signOut({

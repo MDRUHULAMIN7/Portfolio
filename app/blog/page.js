@@ -1,21 +1,15 @@
 import Heading from "@/components/Heading";
-import BlogSlider from "./_components/BlogSlider";
+import BlogSliderLazy from "./_components/BlogSliderLazy";
 import { getBlogs } from "@/queries/blog";
-import { dbConnect } from "@/service/mongoose";
-
 
 export default async function Blog() {
-await dbConnect()
-const blogs = await getBlogs()
-  
+  const blogs = await getBlogs();
 
-    return(
+  return (
+    <div className="pt-16 pb-10 px-3 ">
+      <Heading title1="Blogs" title2="Read my latest articles" />
 
-        <div className="pt-16 pb-10 px-3 ">
-            <Heading title1="Blogs" title2="Read my latest articles" />
-  
-
-   <BlogSlider blogs={blogs} />
-        </div>
-    )
+      <BlogSliderLazy blogs={blogs} />
+    </div>
+  );
 }

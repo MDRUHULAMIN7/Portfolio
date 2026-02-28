@@ -2,7 +2,7 @@ import LoginButton from "@/components/auth/LoginButton";
 import Link from "next/link";
 import { RiFacebookLine, RiGithubLine, RiLinkedinLine } from "react-icons/ri";
 
-export default  function Socials({links,loginPermission}) {
+export default  function Socials({links,loginPermission,session}) {
 
     
 
@@ -51,7 +51,7 @@ export default  function Socials({links,loginPermission}) {
             <span className="relative z-10"> <RiFacebookLine /></span>
           </Link>
           
-      <LoginButton loginPermission={loginPermission} />
+      <LoginButton loginPermission={loginPermission} session={session} />
 
 
        

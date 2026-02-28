@@ -13,7 +13,12 @@ const CourseCard = ({ course }) => {
   const cardRef = useRef(null);
 
   useEffect(() => {
-    AOS.init({ duration: 300, once: false });
+    const init = () => AOS.init({ duration: 300, once: true });
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(init, { timeout: 800 });
+    } else {
+      setTimeout(init, 300);
+    }
   }, []);
 
   useEffect(() => {
