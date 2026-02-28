@@ -1,5 +1,18 @@
 @import 'tailwindcss';
 
+[data-intro="1"] #site-shell {
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-intro="0"] .intro-overlay {
+  display: none;
+}
+
+#site-shell {
+  transition: opacity 180ms ease-out;
+}
+
 button{
   cursor: pointer;
 }

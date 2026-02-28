@@ -3,7 +3,7 @@ import { Project } from "@/model/project-model";
 // get projects for Project card
 export async function getProjects() {
   const projectsData = await Project.find({ status: "publish" })
-    .select("images title meta description hashtags") 
+    .select("images title meta description hashtags createdAt") 
     .lean();
 
   return replaceMongoIdInArray(projectsData);

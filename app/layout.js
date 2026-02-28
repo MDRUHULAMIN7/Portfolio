@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Luckiest_Guy } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
+import Intro from "@/components/Intro";
 
 import { Loader2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
@@ -32,14 +34,20 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-intro="1">
+      <head>
+        <Script id="intro-flag" strategy="beforeInteractive">
+          {`(function(){try{var k='intro_seen_v3';var seen=false;try{seen=localStorage.getItem(k)==='1';}catch(e){}if(!seen){var m=document.cookie.match(new RegExp('(?:^|; )'+k+'=([^;]*)'));if(m&&m[1]==='1'){seen=true;}}document.documentElement.dataset.intro=seen?'0':'1';}catch(e){document.documentElement.dataset.intro='1';}})();`}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased bg-[#203550]`}
       >
-        <NavbarServer fallback={<Loader2 />} />
-
-       
- {children}
+        <Intro />
+        <div id="site-shell">
+          <NavbarServer fallback={<Loader2 />} />
+          {children}
+        </div>
 
          <Toaster 
           position="top-right"

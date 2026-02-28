@@ -9,6 +9,9 @@ import Image from 'next/image';
 
 export default function ProjectCard({ project }) {
   const [detailsModal, setDetailsModal] = useState(false);
+  const isNew =
+    project?.createdAt &&
+    Date.now() - new Date(project.createdAt).getTime() < 1000 * 60 * 60 * 24 * 7;
 
   return (
     <>
@@ -21,6 +24,11 @@ export default function ProjectCard({ project }) {
          
        
 <div className="relative w-full  overflow-hidden rounded-t-md bg-gray-800">
+          {isNew && (
+            <span className="absolute top-2 left-2 z-10 px-2 py-1 rounded-full text-xs font-semibold bg-cyan-400 text-black shadow">
+              New
+            </span>
+          )}
           <Image
             src={project.images[0]}
             alt={`${project.title} project thumbnail`}
