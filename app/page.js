@@ -12,12 +12,13 @@ import Contact from "./contact/page";
 import Blog from "./blog/page";
 import Footer from "@/components/Footer";
 import HeroContainer from "@/components/HeroContainer";
+import SectionSkeleton from "@/components/SectionSkeleton";
 
 const Home = async () => {
   return (
     <div className="max-w-[1920px] mx-auto">
       {/* Hero Section */}
-      <HeroServer />
+      <HeroServer fallback={<SectionSkeleton height={320} />} />
 
       {/* Services Section */}
       <SectionWrapper>
@@ -29,7 +30,7 @@ const Home = async () => {
       {/* About Section */}
       <SectionWrapper>
         <section id="about" className="">
-          <Suspense fallback={null}>
+          <Suspense fallback={<SectionSkeleton height={240} />}>
             <About />
           </Suspense>
         </section>
@@ -38,7 +39,7 @@ const Home = async () => {
       {/* Projects Section */}
       <SectionWrapper>
         <section id="projects" className="">
-          <Suspense fallback={null}>
+          <Suspense fallback={<SectionSkeleton height={260} />}>
             <Projects />
           </Suspense>
         </section>
@@ -47,7 +48,7 @@ const Home = async () => {
       {/* Testimonials Section */}
       <SectionWrapper>
         <section id="testimonials" className="">
-          <Suspense fallback={null}>
+          <Suspense fallback={<SectionSkeleton height={260} />}>
             <Testimonials />
           </Suspense>
         </section>
@@ -56,7 +57,7 @@ const Home = async () => {
       {/* Blog Section */}
       <SectionWrapper>
         <section id="blog" className="">
-          <Suspense fallback={null}>
+          <Suspense fallback={<SectionSkeleton height={220} />}>
             <Blog />
           </Suspense>
         </section>
@@ -65,7 +66,7 @@ const Home = async () => {
       {/* Contact Section */}
       <SectionWrapper>
         <section id="contact" className="">
-          <Suspense fallback={null}>
+          <Suspense fallback={<SectionSkeleton height={220} />}>
             <Contact />
           </Suspense>
         </section>

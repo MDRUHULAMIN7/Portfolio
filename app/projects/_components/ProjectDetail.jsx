@@ -11,7 +11,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function ProjectDetail({ project }) {
   if (!project) return null;
-
+console.log(project)
   const ProjectSlide = ({ images }) => {
     const prevRef = useRef(null);
     const nextRef = useRef(null);

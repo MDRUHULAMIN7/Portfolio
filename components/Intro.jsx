@@ -3,10 +3,15 @@
 import { useEffect } from "react";
 
 export default function Intro({ onFinish }) {
+  const visibleMs = 1500;
+  const exitMs = 500;
   useEffect(() => {
     const root = document.documentElement;
     try {
-      if (localStorage.getItem("intro_seen_v2") === "1") {
+      if (
+        localStorage.getItem("intro_seen_v3") === "1" ||
+        localStorage.getItem("intro_seen_v2") === "1"
+      ) {
         root.dataset.intro = "0";
         return;
       }
@@ -14,14 +19,14 @@ export default function Intro({ onFinish }) {
 
     if (root.dataset.intro !== "1") root.dataset.intro = "1";
 
-    // total visible time ~3.8s, exit animation 800ms → onFinish at 4.6s
     const timer = setTimeout(() => {
       try {
+        localStorage.setItem("intro_seen_v3", "1");
         localStorage.setItem("intro_seen_v2", "1");
       } catch (e) {}
       root.dataset.intro = "0";
       onFinish?.();
-    }, 4600);
+    }, visibleMs + exitMs);
 
     return () => clearTimeout(timer);
   }, [onFinish]);
@@ -85,9 +90,8 @@ export default function Intro({ onFinish }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #06080f;
-          /* exit: gentle scale-up + fade — "breath out" feel */
-          animation: exitBreath 800ms cubic-bezier(0.4, 0, 0.6, 1) forwards 3800ms;
+          background: #082233;
+          animation: exitBreath ${exitMs}ms cubic-bezier(0.4, 0, 0.6, 1) forwards ${visibleMs}ms;
           will-change: opacity, transform;
         }
 
@@ -103,7 +107,7 @@ export default function Intro({ onFinish }) {
           pointer-events: none;
         }
 
-        /* ─── Curtains — split-open ─── */
+        /* ─── Curtains — exit only ─── */
         .curtain {
           position: absolute;
           left: 0;
@@ -115,13 +119,13 @@ export default function Intro({ onFinish }) {
         }
         .curtain-top {
           top: 0;
-          transform-origin: top;
-          animation: curtainUp 900ms cubic-bezier(0.76, 0, 0.24, 1) forwards 2400ms;
+          transform: translateY(-100%);
+          animation: curtainExitTop ${exitMs}ms cubic-bezier(0.76, 0, 0.24, 1) forwards ${visibleMs}ms;
         }
         .curtain-bottom {
           bottom: 0;
-          transform-origin: bottom;
-          animation: curtainDown 900ms cubic-bezier(0.76, 0, 0.24, 1) forwards 2400ms;
+          transform: translateY(100%);
+          animation: curtainExitBottom ${exitMs}ms cubic-bezier(0.76, 0, 0.24, 1) forwards ${visibleMs}ms;
         }
 
         /* ─── Stage ─── */
@@ -262,12 +266,8 @@ export default function Intro({ onFinish }) {
         }
 
         /* ─── Keyframes ─── */
-        @keyframes curtainUp {
-          to { transform: translateY(-100%); }
-        }
-        @keyframes curtainDown {
-          to { transform: translateY(100%); }
-        }
+        @keyframes curtainExitTop { to { transform: translateY(-120%); } }
+        @keyframes curtainExitBottom { to { transform: translateY(120%); } }
         @keyframes drawStroke {
           to { stroke-dashoffset: 0; }
         }

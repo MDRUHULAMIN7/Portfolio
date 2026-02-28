@@ -86,7 +86,7 @@ export default function ProjectCard({ project }) {
       {/* Modal outside clickable card */}
       <ProjectDetailModal
         isOpen={detailsModal}
-        project={project}
+        projectId={project?.id}
         onClose={() => setDetailsModal(false)}
       />
     </>
