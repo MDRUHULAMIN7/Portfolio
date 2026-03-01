@@ -22,8 +22,17 @@ export default function ContactForm({links}) {
 
   const onSubmit = async (data) => {
     try {
-      await new Promise((res) => setTimeout(res, 1500));
-      toast.success("Message sent successfully!");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (!res.ok) {
+        toast.error(json?.error || "Failed to send message");
+        return;
+      }
+      toast.success("Message sent successfully");
       reset();
     } catch (error) {
       toast.error("Something went wrong, please try again.");
@@ -146,10 +155,19 @@ export default function ContactForm({links}) {
                 {...register("phone", {
                   required: "Phone number is required",
                   minLength: { value: 8, message: "Too short" },
+                  pattern: {
+                    value: /^[+]?[\d\s\-()]{8,20}$/,
+                    message: "Invalid phone number",
+                  },
                 })}
                 className="input-field"
                 placeholder="+1 012 3456 789"
               />
+              {errors.phone && (
+                <p className="text-red-500 text-xs mt-1">
+                  {String(errors.phone.message)}
+                </p>
+              )}
             </div>
           </div>
 

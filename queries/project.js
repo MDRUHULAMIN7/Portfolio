@@ -3,6 +3,7 @@ import { Project } from "@/model/project-model";
 // get projects for Project card
 export async function getProjects() {
   const projectsData = await Project.find({ status: "publish" })
+    .sort({ order: 1, createdAt: -1 })
     .select("images title meta description hashtags createdAt") 
     .lean();
 
@@ -10,7 +11,7 @@ export async function getProjects() {
 }
 // get projects for Dashboard
 export async function getAllProjects() {
-  const projectsData = await Project.find().lean();
+  const projectsData = await Project.find().sort({ order: 1, createdAt: -1 }).lean();
 
   return replaceMongoIdInArray(projectsData);
 }

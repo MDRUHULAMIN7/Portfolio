@@ -23,7 +23,7 @@ export default function ExperienceModal({ exp, onClose }) {
         onClick={onClose}
       ></div>
 
-      <div className="relative bg-gray-900 rounded-xl shadow-lg max-w-3xl h-[80vh] w-full sm:p-6 p-3 noscrollbar overflow-y-auto">
+      <div className="relative bg-gray-900 rounded-xl shadow-lg max-w-3xl  w-full sm:p-6 p-3 noscrollbar overflow-y-auto">
        
         <div className="flex justify-end">
           <button
@@ -49,13 +49,12 @@ export default function ExperienceModal({ exp, onClose }) {
           {exp.opinion}
         </p>
 
-    
-        <div className="w-[100%] md:w-[80%] h-72 md:h-80">
-          <p className="text-lg text-left text-cyan-400 mb-3">Memories..</p>
-          {exp.images?.length > 0 && (
+        {Array.isArray(exp.images) && exp.images.length > 0 && (
+          <div className="w-[100%] md:w-[80%] h-72 md:h-80">
+            <p className="text-lg text-left text-cyan-400 mb-3">Memories..</p>
             <ProjectSlide images={exp.images} />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

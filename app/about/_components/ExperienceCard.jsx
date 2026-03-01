@@ -14,14 +14,24 @@ export default function ExperienceCard({ experiences }) {
           <CardWrapper key={exp.id} className="relative">
          
             <div className="flex items-center gap-x-2 sm:gap-4 p-2 sm:p-6 border-b border-gray-200 dark:border-gray-700">
-              <div className="w-20 h-20 rounded-full border-2 border-gray-500 shadow-md overflow-hidden flex-shrink-0">
-                <Image
-                  src={exp.logo}
-                  alt={exp.company}
-                  width={56}
-                  height={56}
-                  className="object-cover rounded-full mx-auto p-2"
-                />
+              <div className="w-20 h-20 rounded-full border-2 border-gray-500 shadow-md overflow-hidden flex-shrink-0 bg-gray-800 flex items-center justify-center">
+                {exp.logo ? (
+                  <Image
+                    src={exp.logo}
+                    alt={exp.company}
+                    width={56}
+                    height={56}
+                    className="object-cover rounded-full mx-auto p-2"
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      el.src = "/logo.png";
+                    }}
+                  />
+                ) : (
+                  <span className="text-white font-semibold">
+                    {String(exp.company || "N/A").slice(0, 2).toUpperCase()}
+                  </span>
+                )}
               </div>
               <div>
                 <h2 className="font-bold text-left sm:text-lg text-gray-900 dark:text-white">

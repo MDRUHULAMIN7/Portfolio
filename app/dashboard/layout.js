@@ -10,17 +10,8 @@ export const metadata = {
 
 export default async function DashboardLayout({ children }) {
   return (
-   
-      <body
-        className={` antialiased `}
-      >
-       <SidebarWrapper>
-        
- {children}
-
-       
-       </SidebarWrapper>
-      </body>
-   
+    <SidebarWrapper>
+      {children}
+    </SidebarWrapper>
   );
 }

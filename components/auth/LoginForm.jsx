@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { login } from "@/app/actions";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -10,6 +10,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -23,7 +24,8 @@ const LoginForm = () => {
       if (!!response.error) {
         setError(response.error);
       } else {
-        router.push("/");
+        const cb = searchParams.get("callbackUrl");
+        router.push(cb || "/dashboard");
       }
     } catch (err) {
       setError(err.message);

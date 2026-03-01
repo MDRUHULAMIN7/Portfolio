@@ -6,6 +6,11 @@ const projectSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  order: {
+    type: Number,
+    default: () => Date.now(),
+    index: true,
+  },
      status: {
       type: String,
       required: true,

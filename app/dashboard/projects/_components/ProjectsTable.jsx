@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Edit, Trash2, ExternalLink, Eye, TriangleAlert } from "lucide-react";
+import { Edit, Trash2, ExternalLink, TriangleAlert, ArrowUp, ArrowDown } from "lucide-react";
 import Link from "next/link";
 import StatusToggle from "./StatusToggle";
 import DeleteConfirmModal from "./DeleteConfirmModal";
@@ -17,7 +17,12 @@ const normalizeProjects = (data) =>
 
 
 export default function ProjectsTable({ projects: initialProjects }) {
-const [projects, setProjects] = useState(normalizeProjects(initialProjects));
+const [projects, setProjects] = useState(
+  normalizeProjects(initialProjects).map((p, i) => ({
+    ...p,
+    order: typeof p.order === "number" ? p.order : i + 1,
+  })).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+);
  
 
   const [deleteModal, setDeleteModal] = useState({ open: false, project: null });
@@ -29,6 +34,33 @@ const [projects, setProjects] = useState(normalizeProjects(initialProjects));
   const handleDelete = (deletedProject) => {
  
     setProjects((prev) => prev.filter((p) => p.id !== deletedProject.id));
+  };
+
+  const persistOrder = async (list) => {
+    const items = list.map((p, idx) => ({ id: p.id, order: idx + 1 }));
+    try {
+      await fetch("/api/projects/reorder", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items }),
+      });
+    } catch (e) {}
+  };
+
+  const move = (id, dir) => {
+    setProjects((prev) => {
+      const idx = prev.findIndex((p) => p.id === id);
+      if (idx < 0) return prev;
+      const target = dir === "up" ? idx - 1 : idx + 1;
+      if (target < 0 || target >= prev.length) return prev;
+      const copy = [...prev];
+      const tmp = copy[idx];
+      copy[idx] = copy[target];
+      copy[target] = tmp;
+      const withOrder = copy.map((p, i) => ({ ...p, order: i + 1 }));
+      persistOrder(withOrder);
+      return withOrder;
+    });
   };
 
   const formatDate = (dateString) => {
@@ -56,6 +88,9 @@ const [projects, setProjects] = useState(normalizeProjects(initialProjects));
                   Project
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                  Order
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                   Type
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
@@ -70,13 +105,34 @@ const [projects, setProjects] = useState(normalizeProjects(initialProjects));
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-700">
-              {projects?.map((project) => (
+              {projects?.map((project, index) => (
                 <tr key={project.id} className="hover:bg-gray-800 transition-colors duration-200">
                   <td className="px-6 py-4">
                     <div>
                       <h3 className="text-sm font-medium text-white truncate max-w-xs">
                         {project.title}
                       </h3>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2 py-0.5 rounded bg-gray-700 text-gray-200 text-xs">{index + 1}</span>
+                      <button
+                        onClick={() => move(project.id, "up")}
+                        className="p-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-200 disabled:opacity-40"
+                        disabled={index === 0}
+                        title="Move Up"
+                      >
+                        <ArrowUp className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => move(project.id, "down")}
+                        className="p-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-200 disabled:opacity-40"
+                        disabled={index === projects.length - 1}
+                        title="Move Down"
+                      >
+                        <ArrowDown className="w-4 h-4" />
+                      </button>
                     </div>
                   </td>
                   <td className="px-6 py-4">
@@ -132,7 +188,7 @@ const [projects, setProjects] = useState(normalizeProjects(initialProjects));
 
         {/* Mobile Cards */}
          <div className="block xl:hidden">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div key={project.id} className="p-6 border-b border-gray-700 last:border-b-0">
               <div className="flex justify-between items-start mb-3">
                 <h3 className="text-lg font-medium text-white truncate flex-1 mr-4">
@@ -144,7 +200,25 @@ const [projects, setProjects] = useState(normalizeProjects(initialProjects));
                 />
               </div>
               
-             
+              <div className="flex items-center gap-2 mb-3">
+                <span className="px-2 py-0.5 rounded bg-gray-700 text-gray-200 text-xs">{index + 1}</span>
+                <button
+                  onClick={() => move(project.id, "up")}
+                  className="p-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-200 disabled:opacity-40"
+                  disabled={index === 0}
+                  title="Move Up"
+                >
+                  <ArrowUp className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => move(project.id, "down")}
+                  className="p-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-200 disabled:opacity-40"
+                  disabled={index === projects.length - 1}
+                  title="Move Down"
+                >
+                  <ArrowDown className="w-4 h-4" />
+                </button>
+              </div>
               
               <div className="flex justify-between items-center mb-4 ">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-900 text-cyan-400">
