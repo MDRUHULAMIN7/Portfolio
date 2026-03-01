@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 import ScrollToTop from "@/components/ScrollToTop";
 import NavbarServer from "@/components/navbar/NavbarServer";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,14 +24,12 @@ const luckiestGuy = Luckiest_Guy({
   weight: "400",
   variable: "--font-luckiest-guy",
   subsets: ["latin"],
-});
+}); 
 
 export const metadata = {
   title: "Ruhul Amin | Frontend Developer",
-  keywords:
-    "Ruhul Amin, Portfolio, Web Developer, Software Engineer, Full Stack Developer, Next.js, React.js, MongoDB, Express.js, Node.js",
-  description:
-    " Iam a passionate web developer skilled in JavaScript, React, and Next.js. I love crafting responsive, user-friendly interfaces with clean design and strong functionality. Let’s build something great together!",
+  keywords: "Ruhul Amin, Portfolio, Web Developer, Software Engineer, Full Stack Developer, Next.js, React.js, MongoDB, Express.js, Node.js",
+  description: " Iam a passionate web developer skilled in JavaScript, React, and Next.js. I love crafting responsive, user-friendly interfaces with clean design and strong functionality. Let’s build something great together!",
 };
 
 export default async function RootLayout({ children }) {
@@ -65,20 +64,23 @@ export default async function RootLayout({ children }) {
           {children}
         </div>
 
-        <Toaster
+         <Toaster 
           position="top-right"
           toastOptions={{
             duration: 3000,
             style: {
-              fontFamily: "inherit",
-              borderRadius: "8px",
-              padding: "12px 16px",
+              fontFamily: 'inherit',
+              borderRadius: '8px',
+              padding: '12px 16px',
             },
           }}
         />
 
         <ScrollToTop />
+
+       
       </body>
     </html>
-  );
+  )
+
 }

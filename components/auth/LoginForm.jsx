@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { login } from "@/app/actions";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-const LoginForm = () => {
+const LoginForm = ({ callbackUrl = null }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -24,8 +23,7 @@ const LoginForm = () => {
       if (!!response.error) {
         setError(response.error);
       } else {
-        const cb = searchParams.get("callbackUrl");
-        router.push(cb || "/dashboard");
+        router.push(callbackUrl || "/dashboard");
       }
     } catch (err) {
       setError(err.message);
@@ -36,7 +34,9 @@ const LoginForm = () => {
 
   return (
     <div className="w-full bg-[#0d1622] absolute p-10 shadow-lg rounded-2xl border border-[#2c3e57]">
-      <h2 className="text-2xl font-bold text-[#93c5fd] text-center mb-8">Please Login</h2>
+      <h2 className="text-2xl font-bold text-[#93c5fd] text-center mb-8">
+        Please Login
+      </h2>
 
       {error && (
         <div className="text-xl text-red-500 text-center mb-4">{error}</div>
@@ -44,7 +44,12 @@ const LoginForm = () => {
 
       <form className="login-form space-y-7" onSubmit={onSubmit}>
         <div>
-          <label htmlFor="email" className="block mb-3 text-left text-[#93c5fd]">Email Address</label>
+          <label
+            htmlFor="email"
+            className="block mb-3 text-left text-[#93c5fd]"
+          >
+            Email Address
+          </label>
           <input
             type="email"
             name="email"
@@ -56,7 +61,12 @@ const LoginForm = () => {
         </div>
 
         <div className="relative">
-          <label htmlFor="password" className="block mb-3 text-left text-[#93c5fd]">Password</label>
+          <label
+            htmlFor="password"
+            className="block mb-3 text-left text-[#93c5fd]"
+          >
+            Password
+          </label>
           <input
             type={showPassword ? "text" : "password"}
             name="password"
@@ -86,8 +96,19 @@ const LoginForm = () => {
                 fill="none"
                 viewBox="0 0 24 24"
               >
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 000 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z"></path>
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 000 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z"
+                ></path>
               </svg>
               Logging in...
             </>
