@@ -48,10 +48,10 @@ export default function BlogModal({ open, onClose, blog }) {
         <p className="text-base text-gray-400 mb-2">
           {new Date(blog.createdAt).toDateString()}
         </p>
-        <p
+        <div
           className="mb-3 text-gray-300"
           dangerouslySetInnerHTML={{ __html: blog.description }}
-        ></p>
+        />
       </div>
     </ModalWrapper>
   );

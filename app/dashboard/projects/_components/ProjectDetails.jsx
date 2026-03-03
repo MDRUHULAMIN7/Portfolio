@@ -25,9 +25,10 @@ const ProjectDetails = ({ project }) => {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
             {project.title}
           </h1>
-          <p className="text-lg text-gray-300 leading-relaxed max-w-4xl" dangerouslySetInnerHTML={{ __html: project.description }}>
-      
-          </p>
+          <div
+            className="text-lg text-gray-300 leading-relaxed max-w-4xl"
+            dangerouslySetInnerHTML={{ __html: project.description }}
+          />
         </div>
 
        

@@ -1,24 +1,8 @@
 @import 'tailwindcss';
 
-[data-intro="1"] #site-shell {
-  opacity: 0;
-  pointer-events: none;
-}
-
-[data-intro="0"] .intro-overlay {
-  display: none;
-}
-
-#site-shell {
-  transition: opacity 180ms ease-out;
-}
-
-/* Hide site navbar and intro on dashboard */
+/* Hide site navbar on dashboard */
 [data-dashboard="1"] #site-nav {
   display: none;
-}
-[data-dashboard="1"] .intro-overlay {
-  display: none !important;
 }
 
 button{

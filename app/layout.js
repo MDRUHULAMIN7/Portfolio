@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Luckiest_Guy } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import Intro from "@/components/Intro";
 
 import { Loader2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
@@ -34,20 +33,15 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   return (
-    <html lang="en" data-intro="1">
+    <html lang="en" data-dashboard="0">
       <head>
-        <Script id="intro-flag" strategy="beforeInteractive">
+        <Script id="dashboard-flag" strategy="beforeInteractive">
           {`(function(){
              try{
-               var k='intro_seen_v3';
-               var seen=false;
-               try{seen=localStorage.getItem(k)==='1';}catch(e){}
                var isDash=false;
                try{isDash=location.pathname.indexOf('/dashboard')===0;}catch(e){}
                document.documentElement.dataset.dashboard = isDash?'1':'0';
-               document.documentElement.dataset.intro = (isDash || seen)?'0':'1';
              }catch(e){
-               document.documentElement.dataset.intro='1';
                document.documentElement.dataset.dashboard='0';
              }
            })();`}
@@ -56,7 +50,6 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased bg-[#203550]`}
       >
-        <Intro />
         <div id="site-shell">
           <div id="site-nav">
             <NavbarServer fallback={<Loader2 />} />

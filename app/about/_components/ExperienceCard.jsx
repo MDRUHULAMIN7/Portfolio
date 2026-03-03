@@ -45,18 +45,6 @@ export default function ExperienceCard({ experiences }) {
 
             {/* Body */}
             <div className="px-6 py-4 text-left">
-              <span
-                className={`inline-block px-3 py-1 text-xs rounded-full font-medium mb-3
-                  ${
-                    exp.status === "Ongoing"
-                      ? "bg-cyan-400 text-gray-800"
-                      : exp.status === "Completed"
-                      ? "bg-green-400 text-white"
-                      : "bg-red-400 text-white"
-                  }`}
-              >
-                {exp.status}
-              </span>
 
               <div className="text-gray-400 text-xs mb-3">
                 {new Date(exp.startDate).toLocaleDateString()} –{" "}
