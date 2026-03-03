@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const HERO_TITLE_TOP = "WEB DESIGNER";
 const HERO_TITLE_BOTTOM = "WEB DEVELOPER";
-const HERO_PHOTO_SRC = "/profile11.png";
+const HERO_PHOTO_SRC = "https://res.cloudinary.com/dpomtzref/image/upload/v1748089262/profile11_pn0hqh.png";
 
 function MovingDots() {
   const ref = useRef();
@@ -55,6 +55,7 @@ function MovingDots() {
 
 function Avatar() {
   const [heroLoaded, setHeroLoaded] = useState(false);
+  const handleHeroLoaded = () => setHeroLoaded(true);
   return (
     <div className="relative w-full h-[80vh] sm:h-[100vh] pt-10 2xl:pt-0 sm:pt-0 overflow-hidden">
       <div
@@ -114,7 +115,7 @@ function Avatar() {
       <div className="relative z-20 flex justify-center items-center h-full md:mt-20 2xl:mt-0 pt-2">
         <div className="relative fade-mask">
           {!heroLoaded && (
-            <div className="absolute inset-0 rounded-full bg-gray-800/80 animate-pulse" />
+            <div className="absolute inset-0 rounded-full bg-gray-800/80 animate-pulse z-20 pointer-events-none" />
           )}
           <Image
             src={HERO_PHOTO_SRC}
@@ -122,9 +123,10 @@ function Avatar() {
             height={800}
             width={500}
             sizes="(max-width: 640px) 80vw, (max-width: 1024px) 60vw, 40vw"
-            className=" w-[900px]  z-30"
+            className="relative w-[900px] z-30"
             priority
-            onLoad={() => setHeroLoaded(true)}
+            onLoadingComplete={handleHeroLoaded}
+            onError={handleHeroLoaded}
           />
         </div>
       </div>
