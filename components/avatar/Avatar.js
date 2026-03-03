@@ -2,7 +2,6 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useMemo, useState } from "react";
-import * as THREE from "three";
 import Image from "next/image";
 
 const HERO_TITLE_TOP = "WEB DESIGNER";
@@ -115,7 +114,7 @@ function Avatar() {
       <div className="relative z-20 flex justify-center items-center h-full md:mt-20 2xl:mt-0 pt-2">
         <div className="relative fade-mask">
           {!heroLoaded && (
-            <div className="absolute inset-0 rounded-lg bg-gray-800/80 animate-pulse" />
+            <div className="absolute inset-0 rounded-full bg-gray-800/80 animate-pulse" />
           )}
           <Image
             src={HERO_PHOTO_SRC}
@@ -124,6 +123,7 @@ function Avatar() {
             width={500}
             sizes="(max-width: 640px) 80vw, (max-width: 1024px) 60vw, 40vw"
             className=" w-[900px]  z-30"
+            priority
             onLoad={() => setHeroLoaded(true)}
           />
         </div>
