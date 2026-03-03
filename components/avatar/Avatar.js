@@ -1,10 +1,13 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState } from "react";
 import * as THREE from "three";
 import Image from "next/image";
 
+const HERO_TITLE_TOP = "WEB DESIGNER";
+const HERO_TITLE_BOTTOM = "WEB DEVELOPER";
+const HERO_PHOTO_SRC = "/profile11.png";
 
 function MovingDots() {
   const ref = useRef();
@@ -51,7 +54,8 @@ function MovingDots() {
   );
 }
 
-function Avatar({ avatarData }) {
+function Avatar() {
+  const [heroLoaded, setHeroLoaded] = useState(false);
   return (
     <div className="relative w-full h-[80vh] sm:h-[100vh] pt-10 2xl:pt-0 sm:pt-0 overflow-hidden">
       <div
@@ -63,6 +67,8 @@ function Avatar({ avatarData }) {
           alt="Hero"
           height={800}
           width={500}
+          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 1200px"
+          priority
           className=" border-0 h-[550px]   sm:h-[400px] md:h-[600px] lg:h-[800px] w-[1000px] sm:w-[800px] lg:w-[1200px] "
         />
       </div>
@@ -103,22 +109,27 @@ function Avatar({ avatarData }) {
       </div>
 
       <h2 className="absolute top-60 md:top-72 lg:top-78 2xl:top-55 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-[65px] lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold text-white z-10 bounce-slow">
-        {avatarData[0]?.title2}
+        {HERO_TITLE_TOP}
       </h2>
 
       <div className="relative z-20 flex justify-center items-center h-full md:mt-20 2xl:mt-0 pt-2">
         <div className="relative fade-mask">
+          {!heroLoaded && (
+            <div className="absolute inset-0 rounded-lg bg-gray-800/80 animate-pulse" />
+          )}
           <Image
-            src={avatarData[0]?.photo}
+            src={HERO_PHOTO_SRC}
             alt="Hero"
             height={800}
             width={500}
+            sizes="(max-width: 640px) 80vw, (max-width: 1024px) 60vw, 40vw"
             className=" w-[900px]  z-30"
+            onLoad={() => setHeroLoaded(true)}
           />
         </div>
       </div>
       <h2 className="absolute bottom-16 sm:bottom-12 md:-bottom-2 lg:bottom-4 xl:bottom-0 2xl:bottom-40 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-center 2xl:text-[62px] lg:text-6xl  md:text-8xl  sm:text-6xl text-4xl font-bold stroke-text bounce-slow z-20">
-        {avatarData[0]?.title1}
+        {HERO_TITLE_BOTTOM}
       </h2>
     </div>
   );

@@ -18,7 +18,7 @@ export default function LoginButton({loginPermission, session}) {
 
   
   useEffect(() => {
-    if (session?.user) return;
+    if (session !== undefined) return;
     const fetchLoggedInUser = async () => {
       try {
         const response = await fetch("/api/me", { cache: "no-store" });
@@ -55,6 +55,7 @@ export default function LoginButton({loginPermission, session}) {
               src={loggedInUser.image || "/logo.png"}
               alt="User Avatar"
               fill
+              sizes="40px"
               className="rounded-full object-cover relative z-10"
             />
           </div>

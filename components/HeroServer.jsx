@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import HeroContainer from "./HeroContainer";
-import { getAvatar } from "@/queries/avatar";
+import { getResume } from "@/queries/avatar";
 import { dbConnect } from "@/service/mongoose";
 
 async function HeroServerInner() {
   await dbConnect();
-  const avatarData = await getAvatar();
-  return <HeroContainer avatarData={avatarData} />;
+  const resumeData = await getResume();
+  return <HeroContainer resumeUrl={resumeData?.resume || ""} />;
 }
 
 export default function HeroServer({ fallback = null }) {

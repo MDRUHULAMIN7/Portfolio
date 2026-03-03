@@ -4,8 +4,8 @@ import { Typewriter } from "react-simple-typewriter";
 import ProjectBtn from "../projectBtn/ResumeBtn";
 import Description from "./Description";
 
-function LeftSection({avatarData}) {
-
+function LeftSection({ resumeUrl }) {
+const jobRoles = ['Next.js Developer.','Frontend Developer.','MernStack Developer.','React Developer.','FullStack Developer.']
 
   return (
     
@@ -17,7 +17,7 @@ function LeftSection({avatarData}) {
       <h2 className="text-3xl  sm:text-5xl xl:text-4xl 2xl:text-7xl  font-semibold text-cyan-400 ">
         A{" "}
         <Typewriter
-          words={avatarData?.jobRoles}
+          words={jobRoles}
           loop={true}
           cursor
           cursorStyle="_"
@@ -26,9 +26,9 @@ function LeftSection({avatarData}) {
           delaySpeed={2000}
         />
       </h2>
-  <Description avatarData={avatarData} mobile={false}></Description>
+  <Description mobile={false}></Description>
 
-      <ProjectBtn resume ={avatarData?.resume}></ProjectBtn>
+      <ProjectBtn resume={resumeUrl}></ProjectBtn>
     </div>
   );
 }

@@ -1,6 +1,3 @@
-import Avatar from "@/components/avatar/Avatar";
-import LeftSection from "@/components/leftSection/LeftSection";
-
 import HeroServer from "@/components/HeroServer";
 import { Suspense } from "react";
 import About from "./about/page";
@@ -11,7 +8,6 @@ import Testimonials from "./testimonials/page";
 import Contact from "./contact/page";
 import Blog from "./blog/page";
 import Footer from "@/components/Footer";
-import HeroContainer from "@/components/HeroContainer";
 import SectionSkeleton from "@/components/SectionSkeleton";
 
 const Home = async () => {

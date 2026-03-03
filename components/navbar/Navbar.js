@@ -10,7 +10,7 @@ import Socials from "../Socials/Socials";
 import LoadingUi from "../loadings/LoadingUi";
 
 
-function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermission }) {
+function Navbar({ links = {}, session = null, nav,loginPermission }) {
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animateSidebar, setAnimateSidebar] = useState(false);
@@ -46,7 +46,7 @@ function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermissi
   };
 
   // Don't render if essential data is missing and we're expecting it
-  const isLoading = !avatarData && !links && !session;
+  const isLoading = !links && !session && !loginPermission;
   
   if (isLoading) {
     return (
@@ -109,10 +109,8 @@ function Navbar({ avatarData = {}, links = {}, session = null, nav,loginPermissi
           <Sidebar
             navs={nav}
             loginPermission={loginPermission}
-
             links={links}
             session={session}
-            avatarData={avatarData}
             toggleSidebar={toggleSidebar}
             animateSidebar={animateSidebar}
           />

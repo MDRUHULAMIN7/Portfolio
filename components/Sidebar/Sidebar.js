@@ -5,7 +5,7 @@ import Socials from '../Socials/Socials'
 import Logo from '../Logo/Logo';
 import Description from '../leftSection/Description';
 
-function Sidebar({animateSidebar, avatarData,links,session,navs,loginPermission}) {
+function Sidebar({animateSidebar,links,session,navs,loginPermission}) {
 
 
 
@@ -21,7 +21,7 @@ function Sidebar({animateSidebar, avatarData,links,session,navs,loginPermission}
          
          </div>
 
-         <Description avatarData={ avatarData}  mobile={true}></Description>
+         <Description mobile={true}></Description>
            
 
             {/* Sidebar navs */}
