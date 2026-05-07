@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Luckiest_Guy } from "next/font/google";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import "./globals.css";
 import Script from "next/script";
 
@@ -50,6 +51,7 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased bg-[#203550]`}
       >
+
         <div id="site-shell">
           <div id="site-nav">
             <NavbarServer fallback={<Loader2 />} />
@@ -73,6 +75,7 @@ export default async function RootLayout({ children }) {
 
        
       </body>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
     </html>
   )
 
