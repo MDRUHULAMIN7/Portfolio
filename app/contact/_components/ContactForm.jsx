@@ -53,7 +53,7 @@ export default function ContactForm({links}) {
 
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <Phone size={20} /> <span>+88 019030 01637</span>
+              <Phone size={20} /> <span>+880 1345347968</span>
             </div>
             <div className="flex items-center gap-3">
               <Mail size={20} /> <span>ruhulthisis@gmail.com</span>
