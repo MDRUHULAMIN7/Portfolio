@@ -1,4 +1,3 @@
-import { Visitor } from "@/model/visitor-model";
 import { Testimonial } from "@/model/testimonial-model";
 import { User } from "@/model/user-model";
 import { Blog } from "@/model/blog-model";
@@ -14,7 +13,6 @@ export async function GET() {
 
     // Run queries in parallel
     const [
-      totalVisitors,
       totalReviews,
       avgRating,
       totalUsers,
@@ -23,7 +21,6 @@ export async function GET() {
       totalSkills,
       currentWork,
     ] = await Promise.all([
-      Visitor.countDocuments(),
       Testimonial.countDocuments({ status: "approved" }), // only approved
       Testimonial.aggregate([
         { $match: { status: "approved" } },
@@ -37,7 +34,6 @@ export async function GET() {
     ]);
 
     return NextResponse.json({
-      totalVisitors,
       totalReviews,
       avgRating: avgRating[0]?.avg || 0,
       totalUsers,

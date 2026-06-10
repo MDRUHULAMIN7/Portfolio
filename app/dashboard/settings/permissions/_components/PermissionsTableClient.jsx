@@ -50,14 +50,13 @@ export default function PermissionsTableClient({ permissionsData }) {
               <th className="px-4 py-2 text-center">Login</th>
               <th className="px-4 py-2 text-center">Register</th>
               <th className="px-4 py-2 text-center">Add Review</th>
-              <th className="px-4 py-2 text-center">See Visitors</th>
             </tr>
           </thead>
           <tbody>
             {permissions?.map((p) => (
               <tr key={p.id} className="border-b border-gray-700">
                 <td className="px-4 py-2">{new Date(p.updatedAt).toLocaleString()}</td>
-                {["login", "register", "addReview", "seeVisitors"].map((field) => (
+                {["login", "register", "addReview"].map((field) => (
                   <td key={field} className="px-4 py-2 text-center">
                     <button
                       disabled={loadingField === `${p.id}-${field}`}
@@ -86,7 +85,7 @@ export default function PermissionsTableClient({ permissionsData }) {
             className="bg-gray-800 text-white p-4 rounded-xl shadow-md space-y-3"
           >
             <div className="font-semibold text-lg">Last Updated: {new Date(p.updatedAt).toLocaleString()}</div>
-            {["login", "register", "addReview", "seeVisitors"].map((field) => (
+            {["login", "register", "addReview"].map((field) => (
               <div key={field} className="flex items-center justify-between">
                 <span className="capitalize">{field}</span>
                 <button

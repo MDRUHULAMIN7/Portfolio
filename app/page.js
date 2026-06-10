@@ -1,4 +1,4 @@
-import HeroServer from "@/components/HeroServer";
+import Hero from "@/components/Hero";
 import { Suspense } from "react";
 import About from "./about/page";
 import SectionWrapper from "@/components/sectionWrapper/SectionWrapper";
@@ -14,7 +14,7 @@ const Home = async () => {
   return (
     <div className="max-w-[1920px] mx-auto">
       {/* Hero Section */}
-      <HeroServer fallback={<SectionSkeleton height={320} />} />
+      <Hero />
 
       {/* Services Section */}
       <SectionWrapper>

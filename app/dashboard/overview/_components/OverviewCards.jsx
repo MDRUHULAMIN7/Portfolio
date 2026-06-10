@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { Users, Eye, Star, FileText, FolderKanban, Layers, Briefcase } from "lucide-react";
+import { Users, Star, FileText, FolderKanban, Layers, Briefcase } from "lucide-react";
 import LoadingUi from "@/components/loadings/LoadingUi";
 
 export default function OverviewCards() {
@@ -35,7 +35,6 @@ useEffect(() => {
   }
 
   const {
-    totalVisitors,
     totalReviews,
     avgRating,
     totalUsers,
@@ -46,7 +45,6 @@ useEffect(() => {
   } = data;
 
   const cards = [
-    { title: "Visitors", value: totalVisitors, icon: <Eye className="w-6 h-6 text-blue-500" /> },
     { title: "Reviews", value: totalReviews, icon: <Star className="w-6 h-6 text-yellow-500" /> },
     { title: "Avg Rating", value: avgRating.toFixed(1), icon: <Star className="w-6 h-6 text-green-500" /> },
     { title: "Users", value: totalUsers, icon: <Users className="w-6 h-6 text-purple-500" /> },

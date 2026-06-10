@@ -49,7 +49,7 @@ export default async function RootLayout({ children }) {
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased bg-[#203550]`}
+        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} antialiased bg-[#070A13]`}
       >
 
         <div id="site-shell">
