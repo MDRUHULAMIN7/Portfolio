@@ -5,55 +5,55 @@ import ServiceCard from "./_components/ServiceCard";
 
 import {
   FaLaptopCode,
-  FaPaintBrush,
-  FaChartLine,
-  FaLock,
-  FaRocket,
-  FaPlug,
+  FaLayerGroup,
+  FaShieldAlt,
+  FaBolt,
+  FaBrain,
+  FaUsers,
 } from "react-icons/fa";
 
 const services = [
   {
-    type: "development",
-    title: "Web Development",
+    type: "fullstack",
+    title: "Full Stack Development",
     icon: <FaLaptopCode className="text-cyan-400 text-7xl mb-4" />,
     description:
-      "I design and build responsive web applications. My focus is on modern, user-friendly interfaces. Every project is crafted for performance and scalability.",
+      "Building production-grade full-stack applications with React.js, Next.js, Node.js, Express.js, and MongoDB. I create scalable architectures, clean APIs, and responsive user experiences.",
   },
   {
-    type: "design",
-    title: "UI's Design",
-    icon: <FaPaintBrush className="text-cyan-400 text-7xl mb-4" />,
+    type: "architecture",
+    title: "Scalable Application Architecture",
+    icon: <FaLayerGroup className="text-cyan-400 text-7xl mb-4" />,
     description:
-      "Creating beautiful and user-friendly interfaces with ReactJS and NextJS, ensuring responsiveness and smooth user interactions",
+      "Designing modular systems with REST APIs, domain-driven backend structures, and maintainable codebases focused on scalability, performance, and long-term growth.",
   },
   {
-    type: "auth",
-    title: "Authentication & Security",
-    icon: <FaLock className="text-cyan-400 text-7xl mb-4" />,
+    type: "security",
+    title: "Authentication & Security Engineering",
+    icon: <FaShieldAlt className="text-cyan-400 text-7xl mb-4" />,
     description:
-      "Implement secure login systems with NextAuth, OAuth, Jwt, and Firebase Authentication. I ensure robust access control and data protection using modern authentication strategies.",
+      "Implementing secure authentication systems with JWT, refresh-token rotation, role-based access control, protected routes, and secure data handling strategies.",
   },
   {
-    type: "seo",
-    title: "SEO Optimization",
-    icon: <FaChartLine className="text-cyan-400 text-7xl mb-4" />,
+    type: "realtime",
+    title: "Real-Time Application Development",
+    icon: <FaBolt className="text-cyan-400 text-7xl mb-4" />,
     description:
-      "I optimize websites for better visibility on search engines. From technical SEO to keyword strategies, I help improve ranking, traffic, and user engagement.",
+      "Developing real-time features using Socket.IO and WebSocket technologies including live chat, notifications, session management, and collaborative experiences.",
   },
   {
-    type: "performance",
-    title: "Performance Optimization",
-    icon: <FaRocket className="text-cyan-400 text-7xl mb-4" />,
+    type: "ai",
+    title: "AI Integration & Automation",
+    icon: <FaBrain className="text-cyan-400 text-7xl mb-4" />,
     description:
-      "Speed matters. I fine-tune assets, lazy load components, and reduce bundle sizes. The result is faster load times and better user experience.",
+      "Integrating modern AI solutions using Gemini API, LLM workflows, and prompt engineering to build intelligent features and improve product experiences.",
   },
   {
-    type: "api",
-    title: "API Integration & Development",
-    icon: <FaPlug className="text-cyan-400 text-7xl mb-4" />,
+    type: "leadership",
+    title: "Technical Leadership & Delivery",
+    icon: <FaUsers className="text-cyan-400 text-7xl mb-4" />,
     description:
-      "I develop powerful RESTful APIs using Node.js and Express. From integrating third-party services to connecting databases, I ensure smooth communication between frontend and backend.",
+      "Leading development workflows through Git, code reviews, team collaboration, and agile practices. Experienced in guiding teams to deliver client-ready products.",
   },
 ];
 
