@@ -16,12 +16,7 @@ const Home = async () => {
       {/* Hero Section */}
       <Hero />
 
-      {/* Services Section */}
-      <SectionWrapper>
-        <section id="services" className="">
-          <Services></Services>
-        </section>
-      </SectionWrapper>
+    
 
       {/* About Section */}
       <SectionWrapper>
@@ -40,7 +35,12 @@ const Home = async () => {
           </Suspense>
         </section>
       </SectionWrapper>
-
+  {/* Services Section */}
+      <SectionWrapper>
+        <section id="services" className="">
+          <Services></Services>
+        </section>
+      </SectionWrapper>
       {/* Testimonials Section */}
       <SectionWrapper>
         <section id="testimonials" className="">
